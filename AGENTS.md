@@ -7,7 +7,7 @@ Flake-based NixOS configuration for `x86_64-linux`, user `ace`.
 | Host | Path | CPU | GPU |
 |------|------|-----|-----|
 | `desktop` | `hosts/desktop/` | Intel (integrated) | Intel |
-| `AbsoluteCinema` | `hosts/desktop-AbsoluteCinema/` | Intel | Intel + NVIDIA (optimus) |
+| `AbsoluteCinema` | `hosts/desktop-AbsoluteCinema/` | Intel | AMD 9060XT |
 | `p1g7` | `hosts/p1g7/` | Intel | Intel + NVIDIA (optimus) |
 | `z13` | `hosts/z13/` | AMD (integrated) | AMD |
 | `laptop` | `hosts/laptop/` | AMD | AMD (not wired in flake) |

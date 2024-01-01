@@ -32,7 +32,7 @@ input {
     warp-mouse-to-focus
 }
 
-output "HDMI-A-3" {
+output "HDMI-A-1" {
     mode "2560x1440@119.998"
 }
 

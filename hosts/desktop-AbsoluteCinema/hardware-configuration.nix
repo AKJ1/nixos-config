@@ -24,10 +24,12 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+  ];
   boot.kernelModules = [
     "kvm-intel"
-    "nvidia"
+    "amdgpu"
   ];
   boot.extraModulePackages = [ ];
 
@@ -65,23 +67,16 @@
 
   hardware.graphics = {
     enable = true;
-  };
 
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    nvidiaSettings = true;
-    open = false;
-    #
-    #     prime = {
-    #       offload.enable = false;
-    #       intelBusId = "PCI:0:2:0"; # example, run `lspci`
-    #       nvidiaBusId = "PCI:1:0:0";
-    #     };
   };
+  hardware.amdgpu = {
+    initrd.enable = true;
+    opencl.enable = true;
+  };
+  # nixpkgs.config.rocmSupport = true;
+
   services.xserver.videoDrivers = [
-    "nvidia"
+    "amdgpu"
     "modesetting"
   ];
 }

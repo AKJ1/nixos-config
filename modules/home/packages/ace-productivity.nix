@@ -4,6 +4,7 @@
     opencode
     conda
     tk
+    lact
     optipng
     thunderbird # email client
     remmina # remote desktop tunnel client
