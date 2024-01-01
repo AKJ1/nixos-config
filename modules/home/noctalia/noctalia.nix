@@ -31,6 +31,8 @@
           "vicinae"
           "steam"
           "ghostty"
+          "gtk"
+          "qt"
         ];
         enableUserTheming = false;
       };

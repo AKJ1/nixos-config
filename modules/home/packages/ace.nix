@@ -5,6 +5,5 @@
     godot
     jetbrains.webstorm
     jetbrains.datagrip
-
   ];
 }
