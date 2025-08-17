@@ -34,11 +34,16 @@ stdenv.mkDerivation rec {
     ninja
     nodejs
     qt6.wrapQtAppsHook
+    qt6.qtbase
+    qt6
   ];
 
   buildInputs = [
     qt6.qtbase
     qt6.qtsvg
+    qt6.json
+    qt6.JSON
+    qt6
     qt6.qtwayland
     kdePackages.layer-shell-qt
     protobuf
