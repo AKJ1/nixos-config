@@ -6,9 +6,14 @@
 }:
 with lib;
 let
+  unstable = import (fetchTarball {
+    url = "https://github.com/nixos/nixpkgs/tarball/fbcf476f790d8a217c3eab4e12033dc4a0f6d23c";
+    sha256 = "sha256-wNO3+Ks2jZJ4nTHMuks+cxAiVBGNuEBXsT29Bz6HASo=";
+  }) { };
+
   cfg = {
     enable = true;
-    package = "vicinae";
+    package = vicinae;
     autoStart = true;
   };
 
@@ -18,7 +23,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-linux-x86_64-v${version}.tar.gz";
-      sha256 = "736602fe2db2ba5dc829ab147b12ab5b4a3cec713c5fad1a073912f88ee79d02";
+      sha256 = "sha256-736602fe2db2ba5dc829ab147b12ab5b4a3cec713c5fad1a073912f88ee79d02";
     };
 
     nativeBuildInputs = with pkgs; [
@@ -39,7 +44,7 @@ let
       libqalculate
       minizip
       stdenv.cc.cc.lib
-      abseil-cpp
+      unstable.abseil-cpp
       protobuf
     ];
 
