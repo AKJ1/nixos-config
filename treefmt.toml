@@ -1,4 +1,3 @@
-# One CLI to format the code tree - https://github.com/numtide/treefmt
 
 # Exclude files or directories matching the specified globs
 excludes = [

@@ -39,6 +39,7 @@ in
         sensitivity = 0;
         touchpad = {
           natural_scroll = true;
+          scroll_factor = 0.3;
         };
       };
 
@@ -381,7 +382,7 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [ "=,preferred,auto,auto" ];
+      monitor = [ "=,preferred,auto,auto, 1.0" ];
 
       xwayland = {
         force_zero_scaling = true;
