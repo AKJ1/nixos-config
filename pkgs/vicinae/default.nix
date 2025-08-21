@@ -20,7 +20,7 @@ with pkgs;
 
 stdenv.mkDerivation rec {
   pname = "vicinae";
-  version = "0.0.5";
+  version = "0.1.0";
 
   src = fetchFromGitHub {
     owner = "vicinaehq";
@@ -35,15 +35,11 @@ stdenv.mkDerivation rec {
     nodejs
     qt6.wrapQtAppsHook
     qt6.qtbase
-    qt6
   ];
 
   buildInputs = [
     qt6.qtbase
     qt6.qtsvg
-    qt6.json
-    qt6.JSON
-    qt6
     qt6.qtwayland
     kdePackages.layer-shell-qt
     protobuf
@@ -62,8 +58,9 @@ stdenv.mkDerivation rec {
     runHook prePatch
 
     # Replace the entire ExtensionApi.cmake to skip npm builds
-    cat > cmake/ExtensionApi.cmake << 'EOF'
+    # cat > cmake/ExtensionApi.cmake << 'EOF'
     # Dummy ExtensionApi.cmake to skip npm builds
+
     set(EXT_API_SRC_DIR "$\{CMAKE_SOURCE_DIR}/api")
     set(EXT_API_OUT_DIR "$\{CMAKE_SOURCE_DIR}/api/dist")
     set(API_DIST_DIR "$\{CMAKE_SOURCE_DIR}/api/dist")
@@ -75,8 +72,8 @@ stdenv.mkDerivation rec {
     EOF
 
     # Replace ExtensionManager.cmake if it exists
-    if [ -f cmake/ExtensionManager.cmake ]; then
-      cat > cmake/ExtensionManager.cmake << 'EOF'
+    # if [ -f cmake/ExtensionManager.cmake ]; then
+    #  cat > cmake/ExtensionManager.cmake << 'EOF'
     # Dummy ExtensionManager.cmake to skip npm builds
     set(EXT_MANAGER_DIST "$\{CMAKE_SOURCE_DIR}/vicinae/assets/extension-runtime.js")
 

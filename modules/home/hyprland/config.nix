@@ -55,6 +55,15 @@ in
         no_border_on_floating = false;
       };
 
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+        workspace_swipe_direction_lock = false;
+        workspace_swipe_distance = 720;
+        workspace_swipe_forever = true;
+        workspace_swipe_cancel_ratio = 0.35;
+      };
+
       misc = {
         disable_autoreload = true;
         disable_hyprland_logo = true;
@@ -375,6 +384,9 @@ in
         "noblur,class:^()$,title:^()$"
       ];
 
+      #       # windowrulev
+      #       windowrulev2 = [
+      #       ];
       # No gaps when only
       workspace = [
         "w[t1], gapsout:0, gapsin:0"
