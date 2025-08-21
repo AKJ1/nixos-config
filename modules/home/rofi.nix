@@ -45,8 +45,8 @@
     }
 
     window {
-      height: 530px;
-      width: 400px;
+      height: 600px;
+      width: 960px;
       border: 2px;
       border-color: @border-col;
       background-color: @bg-col;
@@ -59,7 +59,7 @@
     inputbar {
       children: [prompt,entry];
       background-color: @bg-col-light;
-      border-radius: 5px;
+      border-radius: 1px;
       padding: 0px;
     }
 

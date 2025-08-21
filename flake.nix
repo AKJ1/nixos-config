@@ -3,58 +3,54 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
+
+    hypr-contrib.url = "github:hyprwm/contrib";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    hyprland.url = "github:hyprwm/Hyprland";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    hypr-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    spicetify-nix = {
+      url = "github:gerg-l/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs = {
-        hyprland = {
-          follows = "hyprland";
-        };
-      };
-    };
-
-    waybar.url = "github:Alexays/Waybar";
-
-    nur.url = "github:nix-community/NUR";
-    nix-gaming.url = "github:fufexan/nix-gaming";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    ghostty.url = "github:ghostty-org/ghostty";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/00e11463876a04a77fb97ba50c015ab9e5bee90d";
+
+    yazi-plugins = {
+      url = "github:yazi-rs/plugins";
+      flake = false;
+    };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
+    zig.url = "github:mitchellh/zig-overlay";
+
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs =
-    { nixpkgs, self, ... }@inputs:
+    {
+      nixpkgs,
+      self,
+      nix-vscode-extensions,
+      ...
+    }@inputs:
     let
       username = "ace";
       system = "x86_64-linux";
