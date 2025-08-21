@@ -1,15 +1,12 @@
 { inputs, pkgs, ... }:
 let
   _2048 = pkgs.callPackage ../../pkgs/2048/default.nix { };
-  _vicinae = pkgs.callPackage ../../pkgs/vicinae/vicinae.nix { };
 in
 {
   home.packages = (
     with pkgs;
     [
       _2048
-      _vicinae
-
       ## CLI utility\\
 
       ani-cli
