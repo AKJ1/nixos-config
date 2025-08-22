@@ -59,7 +59,8 @@ in
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
         workspace_swipe_direction_lock = false;
-        workspace_swipe_distance = 720;
+        workspace_swipe_distance = 740;
+
         workspace_swipe_forever = true;
         workspace_swipe_cancel_ratio = 0.35;
       };
