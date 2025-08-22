@@ -23,7 +23,6 @@
       home.stateVersion = "24.05";
       programs.home-manager.enable = true;
     };
-    backupFileExtension = "hm-backup";
   };
 
   users.users.${username} = {
