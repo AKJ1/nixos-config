@@ -14,7 +14,7 @@ let
 
   vicinae = pkgs.stdenv.mkDerivation rec {
     pname = "vicinae";
-    version = "0.2.1";
+    version = "0.3.0";
 
     src = pkgs.fetchurl {
       url = "https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-linux-x86_64-v${version}.tar.gz";

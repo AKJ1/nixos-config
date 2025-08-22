@@ -394,7 +394,7 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [ "=eDP-1,preferred,0x0,2.0" ];
+      monitor = [ "eDP-1, preferred, 0x0, 1.0" ];
 
       xwayland = {
         force_zero_scaling = true;

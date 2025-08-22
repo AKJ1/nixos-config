@@ -36,7 +36,7 @@
     ./swaync/swaync.nix # notification deamon
     # ./viewnior.nix                    # image viewer
     ./vscodium # vscode fork
-    # ./vicinae.nix # vicinae
+    ./vicinae.nix # vicinae
     ./waybar # status bar
     ./waypaper.nix # GUI wallpaper picker
     ./xdg-mimes.nix # xdg config
