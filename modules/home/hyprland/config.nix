@@ -5,6 +5,11 @@ let
 in
 {
   wayland.windowManager.hyprland = {
+
+    extraConfig = ''
+      gesture = 3, up, scale: 1.5, float
+      gesture = 3, horizontal, workspace
+    '';
     settings = {
       # autostart
       exec-once = [
@@ -39,7 +44,7 @@ in
         sensitivity = 0;
         touchpad = {
           natural_scroll = true;
-          scroll_factor = 0.3;
+          scroll_factor = 1.35;
         };
       };
 
@@ -56,8 +61,7 @@ in
       };
 
       gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
+
         workspace_swipe_direction_lock = false;
         workspace_swipe_distance = 740;
 
@@ -155,6 +159,7 @@ in
       };
 
       bind = [
+        #TP gestures
         # show keybinds list
         "$mainMod, F1, exec, show-keybinds"
 
@@ -395,7 +400,7 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [ "eDP-1, preferred, 0x0, 1.0" ];
+      monitor = [ "eDP-1, preferred, 0x0, 1.33333" ];
 
       xwayland = {
         force_zero_scaling = true;

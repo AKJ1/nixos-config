@@ -1,7 +1,7 @@
 { ... }:
 let
   custom = {
-    font = "Maple Mono";
+    font = "IBM Plex Sans Condensed";
     font_size = "18px";
     font_weight = "bold";
     text_color = "#FBF1C7";

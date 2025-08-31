@@ -17,7 +17,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "IBM Plex";
+      name = "IBM Plex Sans Condensed";
       size = 12;
     };
     theme = {

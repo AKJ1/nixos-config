@@ -6,6 +6,7 @@
 
     settings = {
       font-family = [
+        "BlexMono Nerd Font Condensed"
         "Maple Mono"
         "DejaVu Sans"
       ];
