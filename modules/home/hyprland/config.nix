@@ -34,7 +34,8 @@ in
       ];
 
       input = {
-        kb_layout = "us,fr";
+        kb_layout = "us,bg";
+        kb_variant = ",phonetic";
         kb_options = "grp:alt_caps_toggle";
         numlock_by_default = true;
         repeat_delay = 300;
@@ -143,14 +144,14 @@ in
           "windowsMove, 1, 2, fluent_decel, slide" # everything in between, moving, dragging, resizing.
 
           # Fade
-          "fadeIn,      1, 3,   fade_curve" # fade in (open) -> layers and windows
-          "fadeOut,     1, 3,   fade_curve" # fade out (close) -> layers and windows
+          "fadeIn,      1, 1,   fade_curve" # fade in (open) -> layers and windows
+          "fadeOut,     1, 1,   fade_curve" # fade out (close) -> layers and windows
           "fadeSwitch,  0, 1,   easeOutCirc" # fade on changing activewindow and its opacity
-          "fadeShadow,  1, 10,  easeOutCirc" # fade on changing activewindow for shadows
-          "fadeDim,     1, 4,   fluent_decel" # the easing of the dimming of inactive windows
+          "fadeShadow,  1, 5,  easeOutCirc" # fade on changing activewindow for shadows
+          "fadeDim,     1, 2,   fluent_decel" # the easing of the dimming of inactive windows
           # "border,      1, 2.7, easeOutCirc"  # for animating the border's color switch speed
           # "borderangle, 1, 30,  fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
-          "workspaces,  1, 4,   easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+          "workspaces,  1, 4,   easeOutCubic, slidefade" # styles: slide, slidevert, fade, slidefade, slidefadevert
         ];
       };
 
