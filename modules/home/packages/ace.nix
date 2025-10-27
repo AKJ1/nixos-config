@@ -10,7 +10,6 @@
     fontpreview
     remmina
     steam
-    proton-ge-bin
     (texlive.combine {
       inherit (texlive)
         scheme-full
