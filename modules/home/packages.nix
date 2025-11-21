@@ -8,7 +8,7 @@ in
     with pkgs;
     [
       _2048
-      vicinae
+      # vicinae
       ## CLI utility\\
 
       ani-cli
@@ -53,8 +53,6 @@ in
       qbittorrent
       tldr
       todo # cli todo list
-      toipe # typing test in the terminal
-      ttyper # cli typing test
       unzip
       valgrind # c memory analyzer
       wavemon # monitoring for wireless network devices
@@ -75,7 +73,6 @@ in
       audacity
       bleachbit # cache cleaner
       filezilla
-      gimp
       gnome-disk-utility
       ldtk # 2D level editor
       tiled # tile map editor
@@ -84,9 +81,7 @@ in
       obs-studio
       pavucontrol # pulseaudio volume controle (GUI)
       pitivi # video editing
-      gnome-calculator # calculator
       mission-center # GUI resources monitor
-      soundwireserver
       thunderbird
       vlc
       winetricks

@@ -34,23 +34,12 @@
     ./swaylock.nix # lock screen
     ./swayosd.nix # brightness / volume wiget
     ./swaync/swaync.nix # notification deamon
-    # ./viewnior.nix                    # image viewer
-<<<<<<< Updated upstream
-    ./vscodium # vscode fork
-    # ./vicinae.nix # vicinae
-    ./waybar # status bar
-    ./waypaper.nix # GUI wallpaper picker
-    ./xdg-mimes.nix # xdg config
-    # ./yazi.nix # terminal file manager
-    ./zsh # shell
-=======
+    ./viewnior.nix                    # image viewer
+    ./yazi.nix # terminal file manager
     ./vscodium                        # vscode fork
     ./waybar                          # status bar
     ./waypaper.nix                    # GUI wallpaper picker
     ./xdg-mimes.nix                   # xdg config
-    ./rider.nix
-    ./unity.nix
     ./zsh                             # shell
->>>>>>> Stashed changes
   ];
 }
