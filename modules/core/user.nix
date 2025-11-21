@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   inputs,
   username,
   host,
@@ -16,9 +17,9 @@
       imports =
         if (host == "desktop") then
           [ ./../home/default.desktop.nix ]
-        if (host == "p1g7") then
+        else if (host == "p1g7") then
           [ ./../home/default.p1g7.nix ]
-        if (host == "z13") then
+        else if (host == "z13") then
           [ ./../home/default.z13.nix ]
         else
           [ ./../home ];
