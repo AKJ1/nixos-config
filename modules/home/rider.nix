@@ -43,6 +43,9 @@ in
 {
   home.packages = with pkgs; [
     _rider
+    dotnet-sdk_10
+    dotnet-sdk_8
+    dotnet-sdk_9
     dotnet-sdk_7
   ];
 

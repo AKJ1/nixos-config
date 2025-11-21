@@ -16,11 +16,15 @@
       imports =
         if (host == "desktop") then
           [ ./../home/default.desktop.nix ]
+        if (host == "p1g7") then
+          [ ./../home/default.p1g7.nix ]
+        if (host == "z13") then
+          [ ./../home/default.z13.nix ]
         else
           [ ./../home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
-      home.stateVersion = "24.05";
+      home.stateVersion = "24.11";
       programs.home-manager.enable = true;
     };
   };

@@ -1,0 +1,30 @@
+{
+  description = "P1 G7 NixOS cfg";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Latest stable branch of nixpkgs, used for version rollback
+    # The current latest version is 25.05
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+  };
+
+  outputs = { self, nixpkgs, nixpkgs-stable }: {
+    nixosConfigurations.p1g7 = nixpkgs.lib.nixosSystem
+    {
+      specialArgs = let
+        system = "x86_64-linux";
+      in {
+        pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            # To use Chrome, we need to allow the
+            # installation of non-free software.
+            config.allowUnfree = true;
+          };
+      };
+      modules = [
+        ./configuration.nix
+        ./hardware-configuration.nix
+      ];
+    };
+  };
+}

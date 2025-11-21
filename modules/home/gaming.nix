@@ -11,9 +11,9 @@
     # prismlauncher
 
     ## Cli games
-    _2048-in-terminal
-    vitetris
-    nethack
+    # _2048-in-terminal
+    # vitetris
+    # nethack
 
     ## Celeste
     # celeste-classic
@@ -21,12 +21,12 @@
 
     ## Doom
     # gzdoom
-    crispy-doom
+    # crispy-doom
 
     ## Emulation
     sameboy
     snes9x
-    # cemu
+    cemu
     # dolphin-emu
   ];
 }

@@ -1,19 +1,22 @@
 {
-  description = "FrostPhoenix's nixos configuration";
+  description = "Ace's modified nixos configuration (based on FrostPhoenix)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    nur.url = "github:nix-community/NUR";
-
-    hypr-contrib.url = "github:hyprwm/contrib";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
     hyprlock = {
       url = "github:hyprwm/hyprlock";
       inputs = {
@@ -24,7 +27,6 @@
         systems.follows = "hyprland/systems";
       };
     };
-
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs = {
@@ -33,20 +35,11 @@
         };
       };
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     waybar.url = "github:Alexays/Waybar";
-
-    spicetify-nix = {
-      url = "github:gerg-l/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    nur.url = "github:nix-community/NUR";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/00e11463876a04a77fb97ba50c015ab9e5bee90d";
@@ -68,6 +61,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-stable,
       self,
       nix-vscode-extensions,
       ...
@@ -95,19 +89,19 @@
             inherit self inputs username;
           };
         };
-        laptop = nixpkgs.lib.nixosSystem {
+        p1g7 = nixpkgs.lib.nixosSystem{
           inherit system;
-          modules = [ ./hosts/laptop ];
+          modules = [ ./hosts/p1g7 ];
           specialArgs = {
-            host = "laptop";
+            host = "p1g7";
             inherit self inputs username;
           };
         };
-        vm = nixpkgs.lib.nixosSystem {
+        z13= nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/vm ];
+          modules = [ ./hosts/z13 ];
           specialArgs = {
-            host = "vm";
+            host = "z13";
             inherit self inputs username;
           };
         };
