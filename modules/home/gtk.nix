@@ -1,6 +1,6 @@
-{ pkgs,pkgs-stable, ... }:
+{ pkgs,stablepkgs, ... }:
 {
-  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     nerd-fonts.blex-mono
     ibm-plex
@@ -12,7 +12,9 @@
     noto-fonts-color-emoji
     fantasque-sans-mono
     maple-mono.truetype-autohint
+
   ];
+  fonts.fontconfig.enable = true;
 
   gtk = {
     enable = true;

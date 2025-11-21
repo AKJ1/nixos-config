@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-stable,
+  stablepkgs,
   inputs,
   username,
   host,

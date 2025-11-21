@@ -73,11 +73,17 @@
         inherit system;
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
+          "electron-36.9.5"
           "qtwebkit-5.212.0-alpha4"
           "libsForQt5"
         ];
       };
-      lib = nixpkgs.lib;
+      stablepkgs = import nixpkgs-stable
+      {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      lib = nixpkgs-stable.lib;
     in
     {
       nixosConfigurations = {
