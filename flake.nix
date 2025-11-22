@@ -69,25 +69,28 @@
     let
       username = "ace";
       system = "x86_64-linux";
+
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
-        config.permittedInsecurePackages = [
-          "electron-36.9.5"
-          "qtwebkit-5.212.0-alpha4"
-          "libsForQt5"
-        ];
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+            "electron-36.9.5"
+            "qtwebkit-5.212.0-alpha4"
+            "libsForQt5"
+          ];
+        };
       };
       stablepkgs = import nixpkgs-stable
       {
         inherit system;
         config.allowUnfree = true;
       };
-      lib = nixpkgs-stable.lib;
+      lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
+        desktop = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/desktop ];
           specialArgs = {
@@ -95,7 +98,7 @@
             inherit self inputs username;
           };
         };
-        p1g7 = nixpkgs.lib.nixosSystem{
+        p1g7 = lib.nixosSystem{
           inherit system;
           modules = [ ./hosts/p1g7 ];
           specialArgs = {
@@ -103,7 +106,7 @@
             inherit self inputs username;
           };
         };
-        z13= nixpkgs.lib.nixosSystem {
+        z13 = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/z13 ];
           specialArgs = {

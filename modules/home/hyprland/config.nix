@@ -58,7 +58,6 @@ in
         "col.active_border" = "rgb(98971A) rgb(CC241D) 45deg";
         "col.inactive_border" = "0x00000000";
         # border_part_of_window = false;
-        no_border_on_floating = false;
       };
 
       gestures = {
@@ -310,90 +309,92 @@ in
 
       # windowrule
       windowrule = [
-        "float,class:^(Viewnior)$"
-        "float,class:^(imv)$"
-        "float,class:^(mpv)$"
-        "tile,class:^(Aseprite)$"
-        "float,class:^(Audacious)$"
-        "pin,class:^(rofi)$"
-        "pin,class:^(waypaper)$"
+
+        "float on,match:class ^(Viewnior)$"
+        "float on,match:class ^(imv)$"
+        "float on,match:class ^(mpv)$"
+        # "pin,^(rofi)$"
+        # "pin,^(waypaper)$"
         # "idleinhibit focus,mpv"
         # "float,udiskie"
-        "float,title:^(Transmission)$"
-        "float,title:^(Volume Control)$"
-        "float,title:^(Firefox — Sharing Indicator)$"
-        "move 0 0,title:^(Firefox — Sharing Indicator)$"
-        "size 700 450,title:^(Volume Control)$"
-        "move 40 55%,title:^(Volume Control)$"
+        # "float,^(Transmission)$"
+        # "float,^(Volume Control)$"
+        # "float,^(Firefox — Sharing Indicator)$"
+        # "move 0 0,^(Firefox — Sharing Indicator)$"
+        # "size 700 450,^(Volume Control)$"
+        # "move 40 55%,^(Volume Control)$"
 
-        "float, title:^(Picture-in-Picture)$"
-        "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
-        "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
-        "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
-        "opacity 1.0 override 1.0 override, class:(Aseprite)"
-        "opacity 1.0 override 1.0 override, class:(Unity)"
-        "opacity 1.0 override 1.0 override, class:(zen)"
-        "opacity 1.0 override 1.0 override, class:(evince)"
-        "workspace 1, class:^(${browser})$"
-        "workspace 3, class:^(evince)$"
-        "workspace 4, class:^(Gimp-2.10)$"
-        "workspace 4, class:^(Aseprite)$"
-        "workspace 5, class:^(Audacious)$"
-        "workspace 5, class:^(Spotify)$"
-        "workspace 8, class:^(com.obsproject.Studio)$"
-        "workspace 10, class:^(discord)$"
-        "workspace 10, class:^(WebCord)$"
-        "idleinhibit focus, class:^(mpv)$"
-        "idleinhibit fullscreen, class:^(firefox)$"
-        "float,class:^(org.gnome.Calculator)$"
-        "float,class:^(waypaper)$"
-        "float,class:^(zenity)$"
-        "size 850 500,class:^(zenity)$"
-        "size 725 330,class:^(SoundWireServer)$"
-        "float,class:^(org.gnome.FileRoller)$"
-        "float,class:^(org.pulseaudio.pavucontrol)$"
-        "float,class:^(SoundWireServer)$"
-        "float,class:^(.sameboy-wrapped)$"
-        "float,class:^(file_progress)$"
-        "float,class:^(confirm)$"
-        "float,class:^(dialog)$"
-        "float,class:^(download)$"
-        "float,class:^(notification)$"
-        "float,class:^(error)$"
-        "float,class:^(confirmreset)$"
-        "float,title:^(Open File)$"
-        "float,title:^(File Upload)$"
-        "float,title:^(branchdialog)$"
-        "float,title:^(Confirm to replace files)$"
-        "float,title:^(File Operation Progress)$"
+        # "float,^(Picture-in-Picture)$"
+        # "opacity 1.0 override 1.0 override,^(Picture-in-Picture)$"
+        # "pin,^(Picture-in-Picture)$"
+        # "opacity 1.0 override 1.0 override,^(.*imv.*)$"
+        # "opacity 1.0 override 1.0 override,^(.*mpv.*)$"
+        # "opacity 1.0 override 1.0 override,(Unity)"
+        # "opacity 1.0 override 1.0 override,(zen)"
+        # "opacity 1.0 override 1.0 override, class:(evince)"
+        # "workspace 1, class:^(zen-beta)$"
+        # "workspace 3, class:^(evince)$"
+        # "workspace 4, class:^(Gimp-2.10)$"
+        # "workspace 4, class:^(Aseprite)$"
+        # "workspace 5, class:^(Audacious)$"
+        # "workspace 5, class:^(Spotify)$"
+        # "workspace 8, class:^(com.obsproject.Studio)$"
+        # "workspace 10,match:class:^(discord)$"
+        # "workspace 10,match:class:^(WebCord)$"
+        # "workspace 10,match:class:^(Vescord)$"
+        # "idleinhibit focus, class:^(mpv)$"
+        # "idleinhibit fullscreen, class:^(firefox)$"
+        # "float,class:^(org.gnome.Calculator)$"
+        # "float,class:^(waypaper)$"
+        # "float,class:^(zenity)$"
+        # "size 850 500,class:^(zenity)$"
+        # "size 725 330,class:^(SoundWireServer)$"
+        # "float,class:^(org.gnome.FileRoller)$"
+        # "float,class:^(org.pulseaudio.pavucontrol)$"
+        # "float,class:^(SoundWireServer)$"
+        # "float,class:^(.sameboy-wrapped)$"
+        # "float,class:^(file_progress)$"
+        # "float,class:^(confirm)$"
+        # "float,class:^(dialog)$"
+        # "float,class:^(download)$"
+        # "float,class:^(notification)$"
+        # "float,class:^(error)$"
+        # "float,class:^(confirmreset)$"
+        # "float,title:^(Open File)$"
+        # "float,title:^(File Upload)$"
+        # "float,title:^(branchdialog)$"
+        # "float,title:^(Confirm to replace files)$"
+        # "float,title:^(File Operation Progress)$"
 
-        "opacity 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
-        "maxsize 1 1,class:^(xwaylandvideobridge)$"
-        "noblur,class:^(xwaylandvideobridge)$"
+        # "opacity 0.0 override,class:^(xwaylandvideobridge)$"
+        # "noanim,class:^(xwaylandvideobridge)$"
+        # "noinitialfocus,class:^(xwaylandvideobridge)$"
+        # "maxsize 1 1,class:^(xwaylandvideobridge)$"
+        # "noblur,class:^(xwaylandvideobridge)$"
 
-        # No gaps when only
-        "bordersize 0, floating:0, onworkspace:w[t1]"
-        "rounding 0, floating:0, onworkspace:w[t1]"
-        "bordersize 0, floating:0, onworkspace:w[tg1]"
-        "rounding 0, floating:0, onworkspace:w[tg1]"
-        "bordersize 0, floating:0, onworkspace:f[1]"
-        "rounding 0, floating:0, onworkspace:f[1]"
+        # # No gaps when only
+        # "bordersize 0, floating:0, onworkspace:w[t1]"
+        # "rounding 0, floating:0, onworkspace:w[t1]"
+        # "bordersize 0, floating:0, onworkspace:w[tg1]"
+        # "rounding 0, floating:0, onworkspace:w[tg1]"
+        # "bordersize 0, floating:0, onworkspace:f[1]"
+        # "rounding 0, floating:0, onworkspace:f[1]"
 
-        # "maxsize 1111 700, floating: 1"
-        # "center, floating: 1"
+        # # "maxsize 1111 700, floating: 1"
+        # # "center, floating: 1"
 
-        # Remove context menu transparency in chromium based apps
-        "opaque,class:^()$,title:^()$"
-        "noshadow,class:^()$,title:^()$"
-        "noblur,class:^()$,title:^()$"
+        # # Remove context menu transparency in chromium based apps
+        # "opaque,class:^()$,title:^()$"
+        # "noshadow,class:^()$,title:^()$"
+        # "noblur,class:^()$,title:^()$"
       ];
 
-      #       # windowrulev
-      #       windowrulev2 = [
-      #       ];
+      layerrule = [
+        "dimaround on, match: vicinae"
+        "dimaround on, match: rofi"
+        "dimaround on, match: swaync-control-center"
+      ];
+
       # No gaps when only
       workspace = [
         "w[t1], gapsout:0, gapsin:0"
@@ -401,7 +402,7 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [ "eDP-1, preferred, 0x0, 1.33333" ];
+      monitor = [ "eDP-1,preferred,0x0,1.0" ];
 
       xwayland = {
         force_zero_scaling = true;
