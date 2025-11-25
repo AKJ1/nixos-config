@@ -6,5 +6,7 @@
     ./dev.nix
     ./gui.nix
     ./ace.nix
+    ./ace-productivity.nix
+    ./ace-3d.nix
   ];
 }
