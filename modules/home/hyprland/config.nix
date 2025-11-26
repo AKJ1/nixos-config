@@ -10,8 +10,8 @@ in
       gesture = 3, up, scale: 1.5, fullscreen
       gesture = 3, down, scale: 1.5, float
       gesture = 3, horizontal, workspace
-      gesture = 3, pinchout, expo
     '';
+
     settings = {
       # autostart
       exec-once = [
