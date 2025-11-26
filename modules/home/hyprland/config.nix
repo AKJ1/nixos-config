@@ -7,13 +7,15 @@ in
   wayland.windowManager.hyprland = {
 
     extraConfig = ''
-      gesture = 3, up, scale: 1.5, float
+      gesture = 3, up, scale: 1.5, fullscreen
+      gesture = 3, down, scale: 1.5, float
       gesture = 3, horizontal, workspace
+      gesture = 3, pinchout, expo
     '';
     settings = {
       # autostart
       exec-once = [
-        # "hash dbus-update-activation-environment 2>/dev/null"
+        # "hash dbus-update-activation-environ``ment 2>/dev/null"
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
