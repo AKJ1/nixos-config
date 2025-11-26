@@ -18,7 +18,7 @@
       # hyprlang noerror true
       bind=$mainMod, tab, hyprexpo:expo, toggle
       # hyprlang noerror false
-      gesture = 3, pinchout, expo
+      # hyprexpo-gesture = 4, vertical, expo
     '';
   };
 }

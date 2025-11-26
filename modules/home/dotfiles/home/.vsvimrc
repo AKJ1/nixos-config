@@ -19,7 +19,6 @@ let mapleader="\<space>"
 map <leader>u :vsc Edit.FindAllReferences<CR>
 map <leader>b :vsc Edit.GoToDefinition<CR>
 map <leader>p :vsc Edit.PeekDefinition<CR>
-
 map <leader><leader> :vsc View.QuickActions<CR>
 map <leader>a :action ShowIntentionActions<CR>
 map <leader>d :action QuickJavadoc<CR>
@@ -50,6 +49,7 @@ nnoremap <C-[> :action EditorMatchBrace <CR>
 nnoremap <C-]> :action EditorMatchBrace <CR>
 noremap <C-_> :vsc Edit.ToggleLineComment <CR>
 noremap <C-/> :vsc Edit.ToggleLineComment <CR>
+nnoremap <C-p> <Nop>
 
 nnoremap <A-b> :action ToggleLineBreakpoint <CR>
 

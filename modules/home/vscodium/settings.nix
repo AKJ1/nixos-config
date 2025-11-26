@@ -50,6 +50,8 @@
         "--inlay-hints=false"
       ];
 
+      "vim.vimrc.enable" = true;
+      "vim.vimrc.path" = "~/.vsvimrc";
       # Zig
       # "zig.initialSetupDone" = true;
       "zig.checkForUpdate" = false;
