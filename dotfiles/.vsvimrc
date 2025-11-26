@@ -1,0 +1,67 @@
+nmap <space> <Leader>
+imap jk <Esc>
+set scrolloff=15
+
+" set surround
+set incsearch
+
+" Previous method.
+nnoremap [m :vsc Edit.NextMethod<cr>
+" Next method.
+nnoremap ]m :vsc Edit.PreviousMethod<cr>
+
+" Insert line above.
+" nnoremap [<space> O<esc>0C<esc>j
+" Insert line below.
+" nnoremap ]<space> o<esc>0C<esc>k
+
+let mapleader="\<space>"
+map <leader>u :vsc Edit.FindAllReferences<CR>
+map <leader>b :vsc Edit.GoToDefinition<CR>
+map <leader>p :vsc Edit.PeekDefinition<CR>
+
+map <leader><leader> :vsc View.QuickActions<CR>
+map <leader>a :action ShowIntentionActions<CR>
+map <leader>d :action QuickJavadoc<CR>
+map <leader>h :action TypeHierarchy<CR>
+map <leader>f :action Find<CR>
+map <leader>T :action ActivateTerminalToolWindow<CR>
+map <leader>c :action CommentByLineComment<CR>
+map zd :vsc Debug.DisableAllBreakpoints<CR>
+map ze :vsc Debug.EnableAllBreakpoints<CR>
+map zb :vsc Debug.ToggleBreakpoint<CR>
+
+nnoremap J :vsc Edit.NextMethod<cr>
+nnoremap K :vsc Edit.PreviousMethod<cr>
+
+nnoremap ss :vsc Window.QuickLaunch<CR>
+nnoremap sa :action GotoAction<CR>
+nnoremap sf :vsc Edit.GoToFile<CR>
+nnoremap sd :action GotoSymbol<CR>
+nnoremap sv :vsc Window.Split<CR>
+nnoremap sh :vsc Window.Split<CR>
+nnoremap s <Nop>
+nnoremap S <Nop>
+nnoremap rr :vsc Refactor.Rename<CR>
+
+nnoremap H ^
+nnoremap L $
+nnoremap <C-[> :action EditorMatchBrace <CR>
+nnoremap <C-]> :action EditorMatchBrace <CR>
+noremap <C-_> :vsc Edit.ToggleLineComment <CR>
+noremap <C-/> :vsc Edit.ToggleLineComment <CR>
+
+nnoremap <A-b> :action ToggleLineBreakpoint <CR>
+
+nmap <A-h> :vsc Window.NextDocumentWindow<CR>
+nmap <A-l> :vsc Window.PreviousDocumentWindow<CR>
+
+" nnoremap <leader><tab> :action ToggleDistractionFreeMode<CR>
+
+" command pl :action TriggerPlayInUnity<CR>
+" command dbg :action Debug<CR>
+" command RL e ~\.ideavimrc | :action IdeaVim.ReloadVimRc.reload<CR>
+" nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+nnoremap \e :e ~\.vsvimrc<CR>
+nnoremap \r :source ~\.vsvimrc<CR>

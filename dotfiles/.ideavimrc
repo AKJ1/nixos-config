@@ -1,0 +1,65 @@
+nmap <space> <Leader>
+imap jk <Esc>
+set scrolloff=5
+
+set surround
+set incsearch
+
+" Previous method.
+nnoremap [m :action MethodUp<cr>
+" Next method.
+nnoremap ]m :action MethodDown<cr>
+
+" Insert line above.
+nnoremap [<space> O<esc>0C<esc>j
+" Insert line below.
+nnoremap ]<space> o<esc>0C<esc>k
+
+let mapleader = " "
+map <leader>u :action ShowUsages<CR>
+map <leader>b :action GotoDeclaration<CR>
+map <leader>B :action GotoImplementation<CR>
+map <leader>U :action FindUsages<CR>
+
+map <leader><leader> :action ShowIntentionActions<CR>
+map <leader>a :action ShowIntentionActions<CR>
+map <leader>d :action QuickJavadoc<CR>
+map <leader>h :action TypeHierarchy<CR>
+map <leader>f :action Find<CR>
+map <leader>T :action ActivateTerminalToolWindow<CR>
+map <leader>c :action CommentByLineComment<CR>
+
+nnoremap J :action MethodDown<CR>
+nnoremap K :action MethodUp<CR>
+
+nnoremap ss :action SearchEverywhere<CR>
+nnoremap sa :action GotoAction<CR>
+nnoremap sf :action GotoFile<CR>
+nnoremap sd :action GotoSymbol<CR>
+nnoremap sv :action SplitHorizontally<CR>
+nnoremap sh :action SplitVertically<CR>
+nnoremap s <Nop>
+nnoremap S <Nop>
+nnoremap rr :action RenameElement<CR>
+
+nnoremap H ^
+nnoremap L $
+nnoremap <C-[> :action EditorMatchBrace <CR>
+nnoremap <C-]> :action EditorMatchBrace <CR>
+
+nnoremap <A-b> :action ToggleLineBreakpoint <CR>
+
+nmap <A-h> :action PrevSplitter<CR>
+nmap <A-l> :action NextSplitter<CR>
+
+" nnoremap <leader><tab> :action ToggleDistractionFreeMode<CR>
+
+command pl :action TriggerPlayInUnity<CR>
+command dbg :action Debug<CR>
+command RL e ~\.ideavimrc | :action IdeaVim.ReloadVimRc.reload<CR>
+" nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+nnoremap \e :e ~\.ideavimrc<CR>
+nnoremap \r :source ~\.ideavimrc<CR>
+
+set clipboard-=ideaput
