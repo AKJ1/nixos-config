@@ -54,6 +54,7 @@
     };
 
     zig.url = "github:mitchellh/zig-overlay";
+    vicinae.url = "github:vicinaehq/vicinae";
 
     nvf.url = "github:notashelf/nvf";
   };
@@ -81,8 +82,7 @@
           ];
         };
       };
-      stablepkgs = import nixpkgs-stable
-      {
+      stablepkgs = import nixpkgs-stable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -98,7 +98,7 @@
             inherit self inputs username;
           };
         };
-        p1g7 = lib.nixosSystem{
+        p1g7 = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/p1g7 ];
           specialArgs = {

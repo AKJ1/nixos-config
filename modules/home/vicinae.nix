@@ -1,115 +1,101 @@
-# {
-  lib,
-  pkgs,
-  ...
-}:
-with lib;
+{ inputs, pkgs, ... }:
 let
-  unstable = import (fetchTarball {
-    url = "https://github.com/nixos/nixpkgs/tarball/fbcf476f790d8a217c3eab4e12033dc4a0f6d23c";
-    sha256 = "sha256-wNO3+Ks2jZJ4nTHMuks+cxAiVBGNuEBXsT29Bz6HASo=";
-  }) { };
-
-  cfg = {
-    enable = true;
-    package = vicinae;
-    autoStart = true;
-  };
-
-  vicinae = pkgs.stdenv.mkDerivation rec {
-    pname = "vicinae";
-    version = "0.2.1";
-
-    src = pkgs.fetchurl {
-      url = "https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-linux-x86_64-v${version}.tar.gz";
-      sha256 = "sha256-736602fe2db2ba5dc829ab147b12ab5b4a3cec713c5fad1a073912f88ee79d02";
-    };
-
-    nativeBuildInputs = with pkgs; [
-      autoPatchelfHook
-      qt6.wrapQtAppsHook
-    ];
-    buildInputs = with pkgs; [
-      qt6.qtbase
-      qt6.qtsvg
-      qt6.qttools
-      qt6.qtwayland
-      qt6.qtdeclarative
-      qt6.qt5compat
-      kdePackages.qtkeychain
-      kdePackages.layer-shell-qt
-      openssl
-      cmark-gfm
-      libqalculate
-      minizip
-      stdenv.cc.cc.lib
-      unstable.abseil-cpp
-      protobuf
-    ];
-
-    unpackPhase = ''
-      tar -xzf $src
-    '';
-
-    installPhase = ''
-      mkdir -p $out/bin $out/share/applications
-      cp bin/vicinae $out/bin/
-      cp share/applications/vicinae.desktop $out/share/applications/
-      chmod +x $out/bin/vicinae
-    '';
-
-    meta = {
-      description = "A focused launcher for your desktop — native, fast, extensible";
-      homepage = "https://github.com/vicinaehq/vicinae";
-      license = pkgs.lib.licenses.gpl3;
-      maintainers = [ ];
-      platforms = pkgs.lib.platforms.linux;
-    };
-  };
+  system = pkgs.stdenv.hostPlatform.system;
 in
 {
-  options.services.vicinae = {
-    enable = mkEnableOption "vicinae launcher daemon" // {
-      default = true;
+  imports = [ inputs.vicinae.homeManagerModules.default ];
+
+  services.vicinae = {
+    enable = true;
+    package = inputs.vicinae.packages.${system}.default;
+
+    autoStart = true;
+    useLayerShell = true;
+
+    settings = {
+      font = {
+        normal = "Maple Mono";
+        size = 12;
+      };
+
+      theme = {
+        iconTheme = "Papirus-Dark";
+        name = "custom";
+      };
+
+      window = {
+        csd = true;
+        opacity = 1;
+        rounding = 0;
+      };
+
+      faviconService = "twenty";
+      popToRootOnClose = true;
+      closeOnFocusLoss = true;
+
+      rootSearch = {
+        searchFiles = true;
+      };
     };
 
-    package = mkOption {
-      type = types.package;
-      default = vicinae;
-      defaultText = literalExpression "vicinae";
-      description = "The vicinae package to use.";
-    };
-
-    autoStart = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Whether to start the vicinae daemon automatically on login.";
-    };
+#     themes = {
+#       gruvbox-dark-hard = {
+#         meta = {
+#           name = "Gruvbox Dark Hard";
+#           description = "Custom Gruvbox-Dark-Hard theme";
+#
+#           icon = "";
+#           version = 1;
+#           variant = "dark";
+#         };
+#
+#         colors = {
+#           core = {
+#             background = "#1d2021";
+#             foreground = "#ebdbb2";
+#             secondary_background = "#282828";
+#             border = "#A89984";
+#             accent = "#98971a";
+#           };
+#
+#           accents = {
+#             blue = "#458588";
+#             green = "#98971a";
+#             magenta = "#b16286";
+#             orange = "#d65d0e";
+#             purple = "#b16286";
+#             red = "#cc241d";
+#             yellow = "#d79921";
+#             cyan = "#689d6a";
+#           };
+#         };
+#       };
+#    };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = [ cfg.package ];
+  home.file.".local/share/vicinae/themes/custom.toml".text = ''
+    [meta]
+    name = "Gruvbox Dark Hard"
+    description = "Custom Gruvbox-Dark-Hard theme"
+    icon = ""
+    version = 1
+    variant = "dark"
 
-    systemd.user.services.vicinae = {
-      Unit = {
-        Description = "Vicinae launcher daemon";
-        After = [ "graphical-session-pre.target" ];
-        PartOf = [ "graphical-session.target" ];
-      };
+    [colors.core]
+    background = "#1d2021"
+    foreground = "#ebdbb2"
+    secondary_background = "#282828"
+    border = "#928374"
+    accent = "#98971a"
 
-      Service = {
-        Type = "simple";
-        ExecStart = "${cfg.package}/bin/vicinae server";
-        Restart = "on-failure";
-        RestartSec = 3;
-        Environment = [
-          "PATH=${pkgs.lib.makeBinPath [ cfg.package ]}"
-        ];
-      };
-
-      Install = mkIf cfg.autoStart {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
-  };
+    [colors.accents]
+    blue = "#458588"
+    green = "#98971a"
+    magenta = "#b16286"
+    orange = "#d65d0e"
+    purple = "#b16286"
+    red = "#cc241d"
+    yellow = "#d79921"
+    cyan = "#689d6a"
+  '';
 }
