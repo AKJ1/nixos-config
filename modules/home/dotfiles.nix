@@ -15,7 +15,7 @@ in
   #   # No 'force' or immutability — symlink is writable because the target is.
   # });
 
-  home.mutableFile = lib.genAttrs (builtins.attrNames homefiles) (name: {
+  home.file = lib.genAttrs (builtins.attrNames homefiles) (name: {
     source = ./dotfiles/home/${name};
     recursive = true;
   });
