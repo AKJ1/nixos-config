@@ -16,11 +16,17 @@
     users.${username} = {
       imports =
         if (host == "desktop") then
-          [ ./../home/default.desktop.nix ]
+          [
+            ./../home/default.desktop.nix
+            ./optional/bluetooth.nix
+          ]
         else if (host == "p1g7") then
           [ ./../home/default.p1g7.nix ]
         else if (host == "z13") then
-          [ ./../home/default.z13.nix ]
+          [
+            ./../home/default.z13.nix
+            ./optional/bluetooth.nix
+          ]
         else
           [ ./../home ];
       home.username = "${username}";

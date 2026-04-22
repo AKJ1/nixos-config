@@ -1,4 +1,4 @@
-{ pkgs,stablepkgs, ... }:
+{ pkgs, stablepkgs, ... }:
 {
 
   home.packages = with pkgs; [
@@ -22,6 +22,7 @@
       name = "IBM Plex Sans Condensed";
       size = 12;
     };
+    gtk4.theme = null;
     theme = {
       name = "Colloid-Green-Dark-Gruvbox";
       package = pkgs.colloid-gtk-theme.override {

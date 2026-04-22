@@ -9,8 +9,8 @@ in
     enable = true;
     package = inputs.vicinae.packages.${system}.default;
 
-    autoStart = true;
-    useLayerShell = true;
+    systemd.enable = true;
+    systemd.autoStart = true;
 
     settings = {
       font = {
@@ -38,39 +38,39 @@ in
       };
     };
 
-#     themes = {
-#       gruvbox-dark-hard = {
-#         meta = {
-#           name = "Gruvbox Dark Hard";
-#           description = "Custom Gruvbox-Dark-Hard theme";
-#
-#           icon = "";
-#           version = 1;
-#           variant = "dark";
-#         };
-#
-#         colors = {
-#           core = {
-#             background = "#1d2021";
-#             foreground = "#ebdbb2";
-#             secondary_background = "#282828";
-#             border = "#A89984";
-#             accent = "#98971a";
-#           };
-#
-#           accents = {
-#             blue = "#458588";
-#             green = "#98971a";
-#             magenta = "#b16286";
-#             orange = "#d65d0e";
-#             purple = "#b16286";
-#             red = "#cc241d";
-#             yellow = "#d79921";
-#             cyan = "#689d6a";
-#           };
-#         };
-#       };
-#    };
+    #     themes = {
+    #       gruvbox-dark-hard = {
+    #         meta = {
+    #           name = "Gruvbox Dark Hard";
+    #           description = "Custom Gruvbox-Dark-Hard theme";
+    #
+    #           icon = "";
+    #           version = 1;
+    #           variant = "dark";
+    #         };
+    #
+    #         colors = {
+    #           core = {
+    #             background = "#1d2021";
+    #             foreground = "#ebdbb2";
+    #             secondary_background = "#282828";
+    #             border = "#A89984";
+    #             accent = "#98971a";
+    #           };
+    #
+    #           accents = {
+    #             blue = "#458588";
+    #             green = "#98971a";
+    #             magenta = "#b16286";
+    #             orange = "#d65d0e";
+    #             purple = "#b16286";
+    #             red = "#cc241d";
+    #             yellow = "#d79921";
+    #             cyan = "#689d6a";
+    #           };
+    #         };
+    #       };
+    #    };
   };
 
   home.file.".local/share/vicinae/themes/custom.toml".text = ''

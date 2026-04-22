@@ -1,13 +1,11 @@
 { inputs, pkgs, ... }:
 let
-  _2048 = pkgs.callPackage ../../pkgs/2048/default.nix { };
-#   vicinae = pkgs.callPackage ../../pkgs/vicinae/vicinae.nix { };
+  #   vicinae = pkgs.callPackage ../../pkgs/vicinae/vicinae.nix { };
 in
 {
   home.packages = (
     with pkgs;
     [
-      _2048
       # vicinae
       ## CLI utility\\
 
@@ -38,7 +36,7 @@ in
       ncdu # disk space
       nitch # systhem fetch util
       nixd # nix lsp
-      nixfmt-rfc-style # nix formatter
+      nixfmt
       openssl
       onefetch # fetch utility for git repo
       pamixer # pulseaudio command line mixer
@@ -85,7 +83,7 @@ in
       thunderbird
       vlc
       winetricks
-      wineWowPackages.wayland
+      wineWow64Packages.wayland
       zenity
 
       # C / C++
@@ -99,8 +97,8 @@ in
       # zls
 
       # Python
-      python3
-      python312Packages.ipython
+      # python3
+      # python312Packages.ipython
 
       inputs.alejandra.defaultPackage.${system}
     ]

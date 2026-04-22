@@ -14,6 +14,11 @@ in
     '';
 
     settings = {
+
+      aaa = {
+        "$mainMod" = "SUPER";
+      };
+
       # autostart
       exec-once = [
         # "hash dbus-update-activation-environ``ment 2>/dev/null"
@@ -81,7 +86,6 @@ in
         animate_manual_resizes = false;
         enable_swallow = true;
         focus_on_activate = true;
-        new_window_takes_over_fullscreen = 2;
         middle_click_paste = false;
       };
 
@@ -184,7 +188,6 @@ in
         "ALT, Escape, exec, hyprlock"
         "$mainMod SHIFT, Escape, exec, power-menu"
         "$mainMod, P, pseudo,"
-        "$mainMod, X, togglesplit,"
         "$mainMod, T, exec, toggle-oppacity"
         "$mainMod, E, exec, nemo"
         "ALT, E, exec, hyprctl dispatch exec '[float; size 1111 700] nemo'"

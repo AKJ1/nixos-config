@@ -18,7 +18,7 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = null;
+    # package = inputs.self.packages.${pkgs.system}.hyprland-with-plugins;
     portalPackage = null;
 
     xwayland = {

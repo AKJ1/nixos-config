@@ -21,6 +21,7 @@
       };
       core.excludesFile = "/home/${username}/.config/git/.gitignore";
     };
+    signing.format = "openpgp";
 
     delta = {
       enable = true;

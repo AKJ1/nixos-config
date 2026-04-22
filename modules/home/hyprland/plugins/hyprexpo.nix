@@ -1,8 +1,9 @@
 { inputs, pkgs, ... }:
 {
   wayland.windowManager.hyprland = {
-    plugins = [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo ];
-
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
     settings = {
       plugin.hyprexpo = {
         rows = 3;

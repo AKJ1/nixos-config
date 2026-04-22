@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
+    opencode
+    conda
+    tk
+    optipng
     thunderbird # email client
     remmina # remote desktop tunnel client
     fontbakery

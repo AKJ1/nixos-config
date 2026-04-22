@@ -7,7 +7,7 @@
     ## formating
     shfmt
     treefmt
-    nixfmt-rfc-style
+    nixfmt
 
     ## C / C++
     gcc
@@ -19,7 +19,8 @@
     llvmPackages_20.clang-tools
 
     ## Python
-    python3
-    python312Packages.ipython
+    python313
+    python313Packages.tkinter
+    python313Packages.ipython
   ];
 }
