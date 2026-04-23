@@ -1,4 +1,4 @@
-{ ... }:
+{ displayConfig, ... }:
 let
   browser = "zen-beta";
   terminal = "ghostty";
@@ -34,8 +34,6 @@ in
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
         "swww-daemon &"
         "vicinae server &"
-
-        "hyprlock"
 
         "${terminal} --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
         "[workspace 1 silent] ${browser}"
@@ -183,7 +181,6 @@ in
         "$mainMod ALT, D, exec, rofi -show drun || pkill rofi"
         "$mainMod, D, exec, vicinae vicinae://toggle"
         "$mainMod SHIFT, D, exec, webcord --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
         "$mainMod, Escape, exec, swaylock"
         "ALT, Escape, exec, hyprlock"
         "$mainMod SHIFT, Escape, exec, power-menu"
@@ -204,6 +201,9 @@ in
         ",Print, exec, screenshot --copy"
         "$mainMod, Print, exec, screenshot --save"
         "$mainMod SHIFT, Print, exec, screenshot --swappy"
+
+        "$mainMod SHIFT, S, exec, screenshot --swappy"
+        "$mainMod SHIFT ALT, S, exec, screenshot --copy"
 
         # switch focus
         "$mainMod, left,  movefocus, l"
@@ -411,10 +411,10 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [ "eDP-1,preferred,0x0,1.0" ];
+      monitor = [ "eDP-1,preferred,0x0,${displayConfig}" ];
 
       xwayland = {
-        force_zero_scaling = true;
+        force_zero_scaling = false;
       };
     };
   };
