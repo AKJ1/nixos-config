@@ -3,7 +3,9 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/core
+    ./../../modules/core/optional/bluetooth.nix
   ];
+  _module.args.displayConfig = "1.5";
 
   environment.systemPackages = with pkgs; [
     acpi

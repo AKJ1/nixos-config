@@ -4,6 +4,7 @@
   inputs,
   username,
   host,
+  displayConfig,
   ...
 }:
 {
@@ -12,20 +13,25 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs username host; };
+    extraSpecialArgs = {
+      inherit
+        inputs
+        username
+        host
+        displayConfig
+        ;
+    };
     users.${username} = {
       imports =
         if (host == "desktop") then
           [
             ./../home/default.desktop.nix
-            ./optional/bluetooth.nix
           ]
         else if (host == "p1g7") then
           [ ./../home/default.p1g7.nix ]
         else if (host == "z13") then
           [
             ./../home/default.z13.nix
-            ./optional/bluetooth.nix
           ]
         else
           [ ./../home ];

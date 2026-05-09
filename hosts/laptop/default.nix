@@ -1,3 +1,6 @@
+let
+  display_scaling_factor = 1.5;
+in
 { pkgs, config, ... }:
 {
   imports = [

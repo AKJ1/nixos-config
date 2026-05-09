@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+
     hypr-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
@@ -89,6 +90,13 @@
       lib = nixpkgs.lib;
     in
     {
+      packages.${system}.hyprland-with-plugins =
+        inputs.hyprland.packages.${system}.hyprland-with-plugins
+          {
+            plugins = [
+              inputs.hyprland-plugins.packages.${system}.hyprexpo
+            ];
+          };
       nixosConfigurations = {
         desktop = lib.nixosSystem {
           inherit system;
