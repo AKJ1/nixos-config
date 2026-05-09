@@ -1,12 +1,9 @@
 { inputs, pkgs, ... }:
-let
-  hyprland-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
   hardware = {
     graphics = {
       enable = true;
-      package = hyprland-pkgs.mesa;
+      package = pkgs.mesa;
       extraPackages = with pkgs; [
         intel-media-driver
         (intel-vaapi-driver.override { enableHybridCodec = true; })
