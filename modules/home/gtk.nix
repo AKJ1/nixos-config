@@ -17,7 +17,7 @@
   fonts.fontconfig.enable = true;
 
   gtk = {
-    enable = true;
+    # enable = true;
     # gtk4.theme = null;
     # theme = {
     #   name = "Colloid-Green-Dark-Gruvbox";

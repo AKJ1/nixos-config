@@ -15,7 +15,6 @@ in
     tokyonight-gtk-theme
     swayimg
     rose-pine-cursor
-    papirus-icon-theme
     nemo
     fuzzel
     gpu-screen-recorder
@@ -87,7 +86,7 @@ in
     XCURSOR_THEME = "BreezeX-RosePine-Linux";
     XCURSOR_SIZE = "24";
     NIXOS_OZONE_WL = "1";
-    ICON_THEME = "Papirus";
-    QS_ICON_THEME = "Papirus";
+    # ICON_THEME = "Papirus";
+    # QS_ICON_THEME = "Papirus";
   };
 }
