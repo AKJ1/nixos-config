@@ -58,6 +58,7 @@ spawn-at-startup "wl-clip-persist" "--clipboard" "both"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "vicinae" "server"
+spawn-at-startup "noctalia-shell"
 spawn-at-startup "${terminal}" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
 
 cursor {
@@ -135,50 +136,39 @@ binds {
     Super+Shift+L { move-column-right; }
     
     // Window resizing
-    Super+Ctrl+Left { set-column-width "-80"; }
-    Super+Ctrl+Right { set-column-width "80"; }
-    Super+Ctrl+Up { set-window-height "-80"; }
-    Super+Ctrl+Down { set-window-height "80"; }
+    Super+Alt+Left { set-column-width "-80"; }
+    Super+Alt+Right { set-column-width "+80"; }
+    Super+Alt+Up { set-window-height "-80"; }
+    Super+Alt+Down { set-window-height "+80"; }
     
-    Super+Ctrl+H { set-column-width "-80"; }
-    Super+Ctrl+J { set-window-height "80"; }
-    Super+Ctrl+K { set-window-height "-80"; }
-    Super+Ctrl+L { set-column-width "80"; }
-    
-    // Alt move window
-    Super+Alt+Left { move-column-left; }
-    Super+Alt+Right { move-column-right; }
-    Super+Alt+Up { move-window-up; }
-    Super+Alt+Down { move-window-down; }
-    
-    Super+Alt+H { move-column-left; }
-    Super+Alt+J { move-window-down; }
-    Super+Alt+K { move-window-up; }
-    Super+Alt+L { move-column-right; }
+    Super+Alt+H { set-column-width "-80"; }
+    Super+Alt+J { set-window-height "+80"; }
+    Super+Alt+K { set-window-height "-80"; }
+    Super+Alt+L { set-column-width "+80"; }
     
     // Workspace switching (1-9)
-    Super+1 { focus-workspace 0; }
-    Super+2 { focus-workspace 1; }
-    Super+3 { focus-workspace 2; }
-    Super+4 { focus-workspace 3; }
-    Super+5 { focus-workspace 4; }
-    Super+6 { focus-workspace 5; }
-    Super+7 { focus-workspace 6; }
-    Super+8 { focus-workspace 7; }
-    Super+9 { focus-workspace 8; }
-    Super+0 { focus-workspace 9; }
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+6 { focus-workspace 6; }
+    Super+7 { focus-workspace 7; }
+    Super+8 { focus-workspace 8; }
+    Super+9 { focus-workspace 9; }
+    Super+0 { focus-workspace 10; }
     
     // Move to workspace
-    Super+Shift+1 { move-column-to-workspace 0; }
-    Super+Shift+2 { move-column-to-workspace 1; }
-    Super+Shift+3 { move-column-to-workspace 2; }
-    Super+Shift+4 { move-column-to-workspace 3; }
-    Super+Shift+5 { move-column-to-workspace 4; }
-    Super+Shift+6 { move-column-to-workspace 5; }
-    Super+Shift+7 { move-column-to-workspace 6; }
-    Super+Shift+8 { move-column-to-workspace 7; }
-    Super+Shift+9 { move-column-to-workspace 8; }
-    Super+Shift+0 { move-column-to-workspace 9; }
+    Super+Shift+1 { move-column-to-workspace 1; }
+    Super+Shift+2 { move-column-to-workspace 2; }
+    Super+Shift+3 { move-column-to-workspace 3; }
+    Super+Shift+4 { move-column-to-workspace 4; }
+    Super+Shift+5 { move-column-to-workspace 5; }
+    Super+Shift+6 { move-column-to-workspace 6; }
+    Super+Shift+7 { move-column-to-workspace 7; }
+    Super+Shift+8 { move-column-to-workspace 8; }
+    Super+Shift+9 { move-column-to-workspace 9; }
+    Super+Shift+0 { move-column-to-workspace 10; }
     
     // Media controls
     XF86AudioPlay { spawn "playerctl" "play-pause"; }
@@ -192,6 +182,12 @@ binds {
 }
 
 // Window rules
+window-rule {
+    match app-id="vicinae"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
+}
 window-rule {
     match app-id="Viewnior" 
     open-floating true
