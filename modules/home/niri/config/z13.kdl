@@ -59,7 +59,7 @@ spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "noctalia-shell"
-spawn-at-startup "${terminal}" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
+spawn-at-startup "@terminal@" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
 
 cursor {
     xcursor-theme "BreezeX-RosePine-Linux"
@@ -70,11 +70,11 @@ cursor {
 
 // Keybindings
 binds {
-    Super+Return { spawn "${terminal}" "--gtk-single-instance=true"; }
-    Alt+Return { spawn "${terminal}" "--gtk-single-instance=true"; }
-    Super+Shift+Return { spawn "${terminal}" "--gtk-single-instance=true"; }
+    Super+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+    Alt+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+    Super+Shift+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
     
-    Super+B { spawn "${browser}"; }
+    Super+B { spawn "@browser@"; }
     Super+Q { close-window; }
     Super+F { maximize-column; }
     Super+Shift+F { fullscreen-window; }
@@ -229,6 +229,6 @@ window-rule {
     open-floating true
 }
 window-rule {
-    match app-id="Vescord" 
+    match app-id="Vesktop" 
     open-floating true
 }

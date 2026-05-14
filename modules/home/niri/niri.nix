@@ -6,7 +6,14 @@
   ...
 }:
 let
-  niriConfig = ./config/z13.kdl;
+  terminal = "${pkgs.alacritty}/bin/alacritty";
+  browser = "${pkgs.firefox}/bin/firefox";
+
+  kdlTemplate = builtins.readFile ./config/z13.kdl;
+
+  niriConfig = pkgs.writeText "niri-config.kdl" (
+    lib.replaceStrings [ "@terminal@" "@browser@" ] [ terminal browser ] kdlTemplate
+  );
 in
 {
 
@@ -69,7 +76,10 @@ in
     "gtk-3.0/settings.ini".force = true;
     "gtk-4.0/settings.ini".force = true;
     "gtk-4.0/gtk.css".force = true;
-    "niri/config.kdl".source = niriConfig;
+    "niri/config.kdl" = {
+      source = niriConfig;
+      onChange = ''notify-send "Niri config reloaded"'';
+    };
     "niri/noctalia.kdl".source = ../noctalia/config/noctalia.kdl;
     # "ghostty/config".source = ../config/ghostty/tokyo-night.ghostty;
   };
