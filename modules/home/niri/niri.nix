@@ -75,7 +75,6 @@ in
   xdg.configFile = {
     "gtk-3.0/settings.ini".force = true;
     "gtk-4.0/settings.ini".force = true;
-    "gtk-4.0/gtk.css".force = true;
     "niri/config.kdl" = {
       source = niriConfig;
       onChange = ''notify-send "Niri config reloaded"'';

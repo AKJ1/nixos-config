@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,6 +68,15 @@
     in
     {
       nixosConfigurations = {
+        AbsoluteCinema = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/desktop-AbsoluteCinema ];
+          specialArgs = {
+            host = "AbsoluteCinema";
+            inherit self inputs username;
+          };
+        };
+
         desktop = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/desktop ];

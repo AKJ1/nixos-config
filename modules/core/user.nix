@@ -23,21 +23,19 @@
     };
     users.${username} = {
       imports =
-        if (host == "desktop") then
-          [
-            ./../home/default.desktop.nix
-          ]
+      if (host == "desktop") then
+          [ ./../home/default.AbsoluteCinema.nix ]
+        else if (host == "desktop") then
+          [ ./../home/default.desktop.nix ]
         else if (host == "p1g7") then
           [ ./../home/default.p1g7.nix ]
         else if (host == "z13") then
-          [
-            ./../home/default.z13.nix
-          ]
+          [ ./../home/default.z13.nix ]
         else
           [ ./../home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
-      home.stateVersion = "24.11";
+      home.stateVersion = "25.11";
       programs.home-manager.enable = true;
     };
   };
