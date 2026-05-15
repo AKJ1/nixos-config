@@ -24,7 +24,7 @@
       };
 
       templates = {
-        activeTemplates = ["discord" "zen-browser" "niri" "vscode" "vicinae" "steam" "ghostty"];
+        activeTemplates = ["discord" "zen-browser" "niri" "vicinae" "steam" "ghostty"];
         enableUserTheming = false;
       };
 

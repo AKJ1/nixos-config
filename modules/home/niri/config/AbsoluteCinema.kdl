@@ -50,7 +50,7 @@ layout {
         proportion 0.333333333
         proportion 0.5
         proportion 0.66667
-        proportion 1
+        proportion 1.0
     }
 
     always-center-single-column
@@ -60,7 +60,7 @@ layout {
         proportion 0.33333333
         proportion 0.5
         proportion 0.66667
-        proportion 1
+        proportion 1.0
     }
 }
 
