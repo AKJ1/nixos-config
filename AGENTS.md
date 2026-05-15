@@ -36,6 +36,34 @@ flake.nix
 - **`wallpapers/`** — gruvbox-themed wallpaper collection
 - No secrets management (handled out-of-band)
 
+
+## Verification
+
+```bash
+# Build a NixOS configuration
+nix build ".#nixosConfigurations.<Host>.config.system.build.toplevel"
+
+# Evaluate a foreign-host configuration on your current machine
+# Catches eval errors without needing the target host
+nix eval ".#nixosConfigurations.<Host>.config.system.build.toplevel" --raw 2>&1 | head -5
+
+# Format
+nix fmt
+# Or manually:
+nix run nixpkgs#nixfmt -- file.nix
+```
+
+Apply:
+```bash
+# NixOS
+sudo nixos-rebuild switch --flake .#<Host>
+```
+
+## Workflow Gotchas
+
+- **New `.nix` files must be `git add`ed before `nix build`.** The flake reads from the git store; untracked files are invisible.
+- **Don't use `nix flake check` as a blanket validation.** It tries to build every output and fails on cross-platform configs from your current host. Use the targeted `nix build` (local platform) + `nix eval` (foreign platform) commands above instead.
+- Commit style: semantic with host scope, e.g. `feat(p1g7):`, `fix(absolutecinema):`, `chore:`.
 ## Flake Inputs
 
 15+ external inputs including `niri`, `ghostty`, `zen-browser`, `noctalia`, `vicinae`, `nvf`, `nix-gaming`, `nix-flatpak`, `nix-colors`, `nix-vscode-extensions`, `nur`, `zig`.
