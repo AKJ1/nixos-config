@@ -1,9 +1,13 @@
 { pkgs, inputs, ... }:
 {
+
   home.packages = with pkgs; [
     ## Utils
-    # gamemode
-    # gamescope
+    gamemode
+    gamescope
+
+    winetricks
+    wineWow64Packages.stable
     # winetricks
     # inputs.nix-gaming.packages.${pkgs.system}.wine-ge
 
@@ -27,6 +31,8 @@
     sameboy
     snes9x
     cemu
+    lutris
+    protonup-qt
     # dolphin-emu
   ];
 }

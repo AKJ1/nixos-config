@@ -82,8 +82,7 @@ in
       mission-center # GUI resources monitor
       thunderbird
       vlc
-      winetricks
-      wineWow64Packages.wayland
+
       zenity
 
       # C / C++

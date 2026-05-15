@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, super, ... }:
 {
+  # Drop this override once the fix PR lands in nixos-unstable.
   programs = {
     steam = {
       enable = true;
