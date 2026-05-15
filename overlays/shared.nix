@@ -8,15 +8,6 @@
     '';
   });
 
-  # opencode: vendored from nixpkgs master into ../packages/opencode/ so we
-  # can track upstream faster than the flake's nixos-unstable pin. Upstream
-  # ships frequent releases that fix provider/transform bugs and adjust
-  # agent behavior we depend on (see modules/home-manager/opencode.nix for
-  # the live list of issues we're chasing); waiting for nixos-unstable to
-  # pick them up noticeably lags day-to-day usage.
-  # Refresh with `./packages/opencode/update.sh`.
-  opencode = super.callPackage ../packages/opencode/package.nix { };
-
   # openldap-2.6.13: the syncreplication tests are timing-sensitive and fail
   # on slow / sandboxed builders ("provider and consumer databases differ").
   # First test017 fell over, then surgically skipping it just exposed the
