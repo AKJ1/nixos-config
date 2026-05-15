@@ -2,14 +2,14 @@
   config,
   pkgs,
   lib,
-  hostName,
+  host,
   ...
 }:
 let
   terminal = "${pkgs.alacritty}/bin/alacritty";
   browser = "${pkgs.firefox}/bin/firefox";
 
-  kdlTemplate = builtins.readFile ./config/z13.kdl;
+  kdlTemplate = builtins.readFile ./config/${host}.kdl;
 
   niriConfig = pkgs.writeText "niri-config.kdl" (
     lib.replaceStrings [ "@terminal@" "@browser@" ] [ terminal browser ] kdlTemplate
@@ -37,6 +37,7 @@ in
   systemd.user.targets.niri-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
+
   gtk = {
     enable = true;
     theme = {

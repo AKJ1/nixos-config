@@ -1,0 +1,234 @@
+// Niri configuration file
+// For more details, see: https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+
+// Settings
+prefer-no-csd
+
+input {
+    keyboard {
+        xkb {
+            layout "us,bg,br"
+            variant ",phonetic,"
+            options "grp:alt_caps_toggle"
+        }
+
+        repeat-delay 300
+        repeat-rate 50
+    }
+
+    touchpad {
+        natural-scroll
+        scroll-factor 1.35
+        accel-speed 0.2
+        accel-profile "adaptive"
+        scroll-method "two-finger"
+        disabled-on-external-mouse
+    }
+
+    mouse {
+        accel-speed 0.0
+        accel-profile "flat"
+    }
+
+    focus-follows-mouse
+    warp-mouse-to-focus
+}
+
+output "eDP-1" {
+    scale 1.5
+}
+
+layout {
+    gaps 6
+
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+}
+
+screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
+
+// Spawn commands at startup
+spawn-at-startup "nm-applet"
+spawn-at-startup "poweralertd"
+spawn-at-startup "wl-clip-persist" "--clipboard" "both"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "vicinae" "server"
+spawn-at-startup "noctalia-shell"
+spawn-at-startup "@terminal@" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
+
+cursor {
+    xcursor-theme "BreezeX-RosePine-Linux"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 3000
+}
+
+// Keybindings
+binds {
+    Super+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+    Alt+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+    Super+Shift+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+    
+    Super+B { spawn "@browser@"; }
+    Super+Q { close-window; }
+    Super+F { maximize-column; }
+    Super+Shift+F { fullscreen-window; }
+    Super+Space { toggle-window-floating; }
+    
+    // Launcher and utilities
+    Super+Alt+D { spawn "rofi" "-show" "drun"; }
+    Super+D { spawn "vicinae" "vicinae://toggle"; }
+    Super+Shift+D { spawn "webcord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+    Super+Escape { spawn "loginctl" "lock-session"; }
+    Alt+Escape { spawn "loginctl" "lock-session"; }
+    Super+Shift+Escape { spawn "power-menu"; }
+    
+    Super+E { spawn "nemo"; }
+    Alt+E { spawn "nemo"; }
+    
+    // Color picker and wallpaper
+    Super+C { spawn "wl-color-picker"; }
+    Super+W { spawn "waypaper"; }
+    Super+Shift+W { spawn "waypaper"; }
+    
+    // Notification center
+    Super+N { spawn "swaync-client" "-t" "-sw"; }
+    
+    // Mission center
+    Ctrl+Shift+Escape { spawn "missioncenter"; }
+    
+    // Clipboard manager
+    Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"; }
+    
+    // Screenshots
+    Print { spawn "screenshot" "--copy"; }
+    Super+Print { spawn "screenshot" "--save"; }
+    Super+Shift+Print { spawn "screenshot" "--swappy"; }
+    Super+Shift+S { spawn "screenshot" "--swappy"; }
+    Super+Shift+Alt+S { spawn "screenshot" "--copy"; }
+    
+    // Focus movement - arrow keys
+    Super+Left { focus-column-left; }
+    Super+Right { focus-column-right; }
+    Super+Up { focus-window-up; }
+    Super+Down { focus-window-down; }
+    
+    // Focus movement - vim keys
+    Super+H { focus-column-left; }
+    Super+J { focus-window-down; }
+    Super+K { focus-window-up; }
+    Super+L { focus-column-right; }
+    
+    // Window movement
+    Super+Shift+Left { move-column-left; }
+    Super+Shift+Right { move-column-right; }
+    Super+Shift+Up { move-window-up; }
+    Super+Shift+Down { move-window-down; }
+    
+    Super+Shift+H { move-column-left; }
+    Super+Shift+J { move-window-down; }
+    Super+Shift+K { move-window-up; }
+    Super+Shift+L { move-column-right; }
+    
+    // Window resizing
+    Super+Alt+Left { set-column-width "-80"; }
+    Super+Alt+Right { set-column-width "+80"; }
+    Super+Alt+Up { set-window-height "-80"; }
+    Super+Alt+Down { set-window-height "+80"; }
+    
+    Super+Alt+H { set-column-width "-80"; }
+    Super+Alt+J { set-window-height "+80"; }
+    Super+Alt+K { set-window-height "-80"; }
+    Super+Alt+L { set-column-width "+80"; }
+    
+    // Workspace switching (1-9)
+    Super+1 { focus-workspace 1; }
+    Super+2 { focus-workspace 2; }
+    Super+3 { focus-workspace 3; }
+    Super+4 { focus-workspace 4; }
+    Super+5 { focus-workspace 5; }
+    Super+6 { focus-workspace 6; }
+    Super+7 { focus-workspace 7; }
+    Super+8 { focus-workspace 8; }
+    Super+9 { focus-workspace 9; }
+    Super+0 { focus-workspace 10; }
+    
+    // Move to workspace
+    Super+Shift+1 { move-column-to-workspace 1; }
+    Super+Shift+2 { move-column-to-workspace 2; }
+    Super+Shift+3 { move-column-to-workspace 3; }
+    Super+Shift+4 { move-column-to-workspace 4; }
+    Super+Shift+5 { move-column-to-workspace 5; }
+    Super+Shift+6 { move-column-to-workspace 6; }
+    Super+Shift+7 { move-column-to-workspace 7; }
+    Super+Shift+8 { move-column-to-workspace 8; }
+    Super+Shift+9 { move-column-to-workspace 9; }
+    Super+Shift+0 { move-column-to-workspace 10; }
+    
+    // Media controls
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+    XF86AudioStop { spawn "playerctl" "stop"; }
+    
+    // Mouse wheel workspace switching
+    Super+WheelScrollDown { focus-workspace-down; }
+    Super+WheelScrollUp { focus-workspace-up; }
+}
+
+// Window rules
+window-rule {
+    match app-id="vicinae"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
+}
+window-rule {
+    match app-id="Viewnior" 
+    open-floating true
+}
+window-rule {
+    match app-id="imv" 
+    open-floating true
+}
+window-rule {
+    match app-id="mpv"
+    open-floating true
+}
+window-rule {
+    match title="Sharing Indicator" 
+    open-floating true
+}
+window-rule {
+    match app-id="Picture-in-Picture"
+    open-floating true
+}
+window-rule {
+    match app-id="org.gnome.FileRoller" 
+    open-floating true
+}
+window-rule {
+    match app-id="org.pulseaudio.pavucontrol" 
+    open-floating true
+}
+window-rule {
+    match title="Open File"
+    open-floating true
+}
+window-rule {
+    match title="File Upload"
+    open-floating true
+}
+window-rule {
+    match title="File Operation Progress"
+    open-floating true
+}
+window-rule {
+    match app-id="Vesktop" 
+    open-floating true
+}
