@@ -53,11 +53,6 @@
         inherit system;
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [
-            "electron-36.9.5"
-            "qtwebkit-5.212.0-alpha4"
-            "libsForQt5"
-          ];
         };
       };
       stablepkgs = import nixpkgs-stable {
