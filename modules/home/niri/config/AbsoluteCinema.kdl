@@ -47,20 +47,20 @@ layout {
     }
 
     preset-window-heights {
-        proportion 0.33333
+        proportion 0.333333333
         proportion 0.5
         proportion 0.66667
-        proportion 0.8
+        proportion 1
     }
 
     always-center-single-column
     center-focused-column "on-overflow"
 
     preset-column-widths {
-        proportion 0.33333
+        proportion 0.33333333
         proportion 0.5
         proportion 0.66667
-        proportion 0.8
+        proportion 1
     }
 }
 
@@ -136,7 +136,7 @@ binds {
     Super+Up { focus-window-or-workspace-up; }
     Super+Down { focus-window-or-workspace-down; }
     
-    Super+H { focus-column-left-or-first; }
+    Super+H { focus-column-left-or-last; }
     Super+K { focus-window-or-workspace-up; }
     Super+J { focus-window-or-workspace-down; }
     Super+L { focus-column-right-or-first; }
@@ -156,8 +156,8 @@ binds {
     Super+Alt+Up { set-window-height "-80"; }
     Super+Alt+Down { set-window-height "+80"; }
     
-    Super+Equals { set-column-width "+240"; }
-    Super+Minus { set-column-width "-240; }
+    Super+Equal { set-column-width "+240"; }
+    Super+Minus { set-column-width "-240"; }
     Super+Alt+H { set-column-width "-80"; }
     Super+Alt+J { set-window-height "+80"; }
     Super+Alt+K { set-window-height "-80"; }
