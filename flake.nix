@@ -49,24 +49,20 @@
     let
       username = "ace";
       system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
-      stablepkgs = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
       lib = nixpkgs.lib;
+      baseOverlays = [
+        inputs.nur.overlays.default
+        (import ./overlays/shared.nix)
+      ];
     in
     {
       nixosConfigurations = {
         AbsoluteCinema = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/desktop-AbsoluteCinema ];
+          modules = [
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/absolutecinema.nix) ]; }
+            ./hosts/desktop-AbsoluteCinema
+          ];
           specialArgs = {
             host = "AbsoluteCinema";
             inherit self inputs username;
@@ -75,7 +71,10 @@
 
         desktop = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/desktop ];
+          modules = [
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/desktop.nix) ]; }
+            ./hosts/desktop
+          ];
           specialArgs = {
             host = "desktop";
             inherit self inputs username;
@@ -83,7 +82,10 @@
         };
         p1g7 = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/p1g7 ];
+          modules = [
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/p1g7.nix) ]; }
+            ./hosts/p1g7
+          ];
           specialArgs = {
             host = "p1g7";
             inherit self inputs username;
@@ -91,7 +93,10 @@
         };
         z13 = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/z13 ];
+          modules = [
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/z13.nix) ]; }
+            ./hosts/z13
+          ];
           specialArgs = {
             host = "z13";
             inherit self inputs username;
