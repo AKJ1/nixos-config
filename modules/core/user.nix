@@ -23,7 +23,7 @@
     };
     users.${username} = {
       imports =
-      if (host == "desktop") then
+      if (host == "AbsoluteCinema") then
           [ ./../home/default.AbsoluteCinema.nix ]
         else if (host == "desktop") then
           [ ./../home/default.desktop.nix ]
