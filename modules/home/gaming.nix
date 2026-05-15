@@ -33,6 +33,7 @@
     cemu
     lutris
     protonup-qt
+    heroic
     # dolphin-emu
   ];
 }
