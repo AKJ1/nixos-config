@@ -58,20 +58,20 @@
   };
 
   hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    nvidiaSettings = true;
-    open = false;
-
-    prime = {
-      offload.enable = false;
-      intelBusId = "PCI:0:2:0"; # example, run `lspci`
-      nvidiaBusId = "PCI:1:0:0";
-    };
+#     modesetting.enable = true;
+#     powerManagement.enable = false;
+#     nvidiaSettings = true;
+#     open = false;
+#
+#     prime = {
+#       offload.enable = false;
+#       intelBusId = "PCI:0:2:0"; # example, run `lspci`
+#       nvidiaBusId = "PCI:1:0:0";
+#     };
   };
-
+/*
   services.xserver.videoDrivers = [
     "nvidia"
     "modesetting"
-  ];
+  ];*/
 }

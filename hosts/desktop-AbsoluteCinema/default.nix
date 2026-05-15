@@ -6,6 +6,7 @@
     ./../../modules/core/optional/bluetooth.nix
     ./../../modules/core/optional/printers.nix
   ];
+  _module.args.displayConfig = "1.25";
 
   environment.systemPackages = with pkgs; [
     acpi

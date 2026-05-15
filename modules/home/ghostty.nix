@@ -20,7 +20,7 @@
       selection-invert-fg-bg = true;
 
       # Theme
-      theme = "gruvbox";
+      theme = "noctalia";
       background-opacity = 0.66;
 
       cursor-style = "bar";
