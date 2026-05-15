@@ -58,10 +58,11 @@
   };
 
   hardware.nvidia = {
-#     modesetting.enable = true;
-#     powerManagement.enable = false;
-#     nvidiaSettings = true;
-#     open = false;
+     package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+     modesetting.enable = true;
+     powerManagement.enable = false;
+     nvidiaSettings = true;
+     open = false;
 #
 #     prime = {
 #       offload.enable = false;
@@ -69,9 +70,8 @@
 #       nvidiaBusId = "PCI:1:0:0";
 #     };
   };
-/*
   services.xserver.videoDrivers = [
     "nvidia"
     "modesetting"
-  ];*/
+  ];
 }

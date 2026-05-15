@@ -3,11 +3,12 @@
   pkgs,
   lib,
   host,
+  inputs,
   ...
 }:
 let
-  terminal = "${pkgs.alacritty}/bin/alacritty";
-  browser = "${pkgs.firefox}/bin/firefox";
+  terminal = "${pkgs.ghostty}/bin/ghostty";
+  browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen-beta";
 
   kdlTemplate = builtins.readFile ./config/${host}.kdl;
 
@@ -80,7 +81,7 @@ in
       source = niriConfig;
       onChange = ''notify-send "Niri config reloaded"'';
     };
-    "niri/noctalia.kdl".source = ../noctalia/config/noctalia.kdl;
+    # "niri/noctalia.kdl".source = ../noctalia/config/noctalia.kdl;
     # "ghostty/config".source = ../config/ghostty/tokyo-night.ghostty;
   };
 

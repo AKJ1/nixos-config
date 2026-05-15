@@ -7,8 +7,26 @@
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      # Theme configuration
-      colorSchemes.predefinedScheme = "Noctalia (default)";
+      idle = {
+        enabled = true;
+        screenOffTimeout = 180;
+        lockTimeout = 180;
+        suspendTimeout = 1800;
+        fadeDuration = 10;
+      };
+
+      dock = {
+        enabled = false;
+      };
+
+      ui = {
+        fontDefault = "IBM Plex Sans Cond Text";
+      };
+
+      templates = {
+        activeTemplates = ["discord" "zen-browser" "niri" "vscode" "vicinae" "steam" "ghostty"];
+        enableUserTheming = false;
+      };
 
       # Bar configuration
       bar = {
@@ -19,8 +37,10 @@
 
       # General UI settings
       general = {
+        allowPasswordWithFprintd = false;
         radiusRatio = 1;
-        animationSpeed = 1;
+        scaleRatio = 1.3;
+        animationSpeed = 1.5;
         enableBlurBehind = true;
         enableShadows = true;
       };

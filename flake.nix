@@ -19,6 +19,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nix-colors.url = "github:misterio77/nix-colors";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/00e11463876a04a77fb97ba50c015ab9e5bee90d";
 

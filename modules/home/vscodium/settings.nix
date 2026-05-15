@@ -11,8 +11,8 @@
         "'BlexMono NerdFont', 'Maple Mono', 'SymbolsNerdFont', 'monospace', monospace";
       "terminal.integrated.fontFamily" = "'BlexMono NerdFont', 'Maple Mono', 'SymbolsNerdFont'";
       "editor.fontSize" = 18;
-      "workbench.colorTheme" = "Gruvbox Dark Hard";
-      "workbench.iconTheme" = "gruvbox-material-icon-theme";
+      "workbench.colorTheme" = "Noctalia";
+      "workbench.iconTheme" = "noctalia";
       "material-icon-theme.folders.theme" = "classic";
       "vsicons.dontShowNewVersionMessage" = true;
       "explorer.confirmDragAndDrop" = false;
