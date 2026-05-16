@@ -102,7 +102,7 @@ binds {
     Super+Alt+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Super+D { spawn "vicinae" "vicinae://toggle"; }
     Super+Shift+D { spawn "vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
-    Super+Escape { spawn "noctalia-shell" "ipc" "call" "Lockscreen" "lock"; }
+    Super+Escape { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Alt+Escape { spawn "loginctl" "lock-session"; }
     Super+Shift+Escape { spawn "power-menu"; }
     
@@ -120,15 +120,18 @@ binds {
     // Mission center
     Ctrl+Shift+Escape { spawn "missioncenter"; }
     
+    
     // Clipboard manager
-    Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"; }
+
+    Super+V { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    
+    // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"; }
     
     // Screenshots
-    Print { spawn "screenshot" "--copy"; }
-    Super+Print { spawn "screenshot" "--save"; }
-    Super+Shift+Print { spawn "screenshot" "--swappy"; }
-    Super+Shift+S { spawn "screenshot" "--swappy"; }
-    Super+Shift+Alt+S { spawn "screenshot" "--copy"; }
+    Print { screenshot-screen; }
+    Super+S { screenshot-screen; }
+    Super+Ctrl+S { screenshot-window; }
+    Super+Shift+S { spawn "grim -g \"$(slurp)\" - | satty -f -"; }
     
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
@@ -193,6 +196,10 @@ binds {
     XF86AudioPrev { spawn "playerctl" "previous"; }
     XF86AudioStop { spawn "playerctl" "stop"; }
     
+    XF86AudioRaiseVolume{ spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume{ spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+
+
     // Mouse wheel workspace switching
     Super+WheelScrollDown { focus-column-right; }
     Super+WheelScrollUp { focus-column-left; }

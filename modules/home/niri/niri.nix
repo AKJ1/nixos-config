@@ -19,6 +19,22 @@ in
 {
 
   home.packages = with pkgs; [
+    hyprpicker
+    wl-clipboard
+    tesseract
+    imagemagick
+    mpvpaper
+    zbar
+    curl
+    translate-shell
+    wl-screenrec
+    ffmpeg
+    gifski
+    jq
+    python3
+    python3Packages.pygobject3
+    # python3Packages.pygobject
+
     xwayland-satellite
     tokyonight-gtk-theme
     swayimg
@@ -31,6 +47,7 @@ in
     mpvpaper
     grim # screensht
     slurp # region select
+    satty
     wl-clip-persist
     cliphist # clipboard history
   ];
