@@ -1,6 +1,6 @@
 # NixOS Configuration
 
-Flake-based NixOS configuration for `x86_64-linux`, user `ace`.
+Flake-based NixOS configuration for `x86_64-linux`, user `ace`.   
 
 ## Hosts
 
@@ -80,3 +80,7 @@ sudo nixos-rebuild switch --flake .#<Host>
 | Editor | VSCodium + Neovim |
 | Audio | PipeWire |
 | Theming | Gruvbox throughout |
+
+
+## Notes
+The flake is under active development by a single user, there may be orphaned or deprecated hosts or other unmentioned issues!
