@@ -1,7 +1,25 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   programs.mouse-actions.enable = true;
-  environment.systemPackages = with pkgs; [
-    mouse-actions-gui
+  programs.mouse-actions.autorun = true;
+
+  users.users.${username}.extraGroups = [
+    "input"
+    "plugdev"
   ];
+  users.groups.plugdev = { };
+
+  services.udev.extraRules = ''
+    KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+  '';
+
+  # environment.systemPackages = [
+  #   pkgs.mouse-actions-gui
+  # ];
+  # nixpkgs.config = {
+  #   problems.handlers = {
+  #     mouse-actions-gui.broken = "warn"; # or "ignore"
+
+  #   };
+  # };
 }
