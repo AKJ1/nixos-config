@@ -131,7 +131,7 @@ binds {
     Print { screenshot-screen; }
     Super+S { screenshot-screen; }
     Super+Ctrl+S { screenshot-window; }
-    Super+Shift+S { spawn "grim -g \"$(slurp)\" - | satty -f -"; }
+    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
@@ -235,6 +235,14 @@ window-rule {
     default-window-height { fixed 800; }
     baba-is-float true
 }
+
+window-rule {
+    match app-id="satty"
+    open-floating true
+    default-column-width { fixed 600; }
+    default-window-height { fixed 600; }
+}
+
 window-rule {
     match app-id="Viewnior" 
     open-floating true
