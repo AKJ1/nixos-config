@@ -266,6 +266,8 @@ window-rule {
 window-rule {
     match app-id="org.gnome.FileRoller" 
     open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match app-id="org.pulseaudio.pavucontrol" 
@@ -274,14 +276,20 @@ window-rule {
 window-rule {
     match title="Open File"
     open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match title="File Upload"
     open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match title="File Operation Progress"
     open-floating true
+    default-column-width { fixed 400; }
+    default-window-height { fixed 150; }
 }
 window-rule {
     match app-id="Vesktop" 

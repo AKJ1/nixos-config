@@ -49,10 +49,6 @@
     device = "/dev/disk/by-uuid/3aadc27e-e412-453c-80bc-02ce43f39cb4";
     fsType = "ext4";
   };
-  fileSystems."/home/ace/FATGaming" = {
-    device = "/dev/disk/by-uuid/D468-40E0";
-    fsType = "vfat";
-  };
 
   swapDevices = [
     { device = "/dev/disk/by-uuid/35170f36-6870-415b-8a32-3f6c69706371"; }
