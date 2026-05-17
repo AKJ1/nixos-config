@@ -21,7 +21,6 @@ in
   home.packages = with pkgs; [
     hyprpicker
     wl-clipboard
-    tesseract
     imagemagick
     mpvpaper
     zbar
@@ -90,15 +89,6 @@ in
     platformTheme.name = "qtct";
     style.name = "Fusion";
   };
-
-  programs.tesseract.scripts = [
-    "cyrl"
-  ];
-
-  programs.tesseract.languages = [
-    "eng"
-    "bul"
-  ];
 
   xdg.configFile = {
     "gtk-3.0/settings.ini".force = true;

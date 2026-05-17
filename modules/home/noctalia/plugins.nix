@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 {
   programs.noctalia-shell = {
     plugins = {
@@ -39,7 +39,7 @@
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
       };
+      version = 4;
     };
-    version = 4;
   };
 }
