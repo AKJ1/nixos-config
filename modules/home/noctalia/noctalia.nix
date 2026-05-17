@@ -11,7 +11,7 @@
         enabled = true;
         screenOffTimeout = 180;
         lockTimeout = 180;
-        suspendTimeout = 1800;
+        # suspendTimeout = 1800;
         fadeDuration = 10;
       };
 
@@ -23,8 +23,16 @@
         fontDefault = "IBM Plex Sans Cond Text";
       };
 
+      colorSchemes.predefinedScheme = "Catpuccin Lavender";
       templates = {
-        activeTemplates = ["discord" "zen-browser" "niri" "vicinae" "steam" "ghostty"];
+        activeTemplates = [
+          "discord"
+          "zen-browser"
+          "niri"
+          "vicinae"
+          "steam"
+          "ghostty"
+        ];
         enableUserTheming = false;
       };
 

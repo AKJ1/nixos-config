@@ -2,5 +2,6 @@
 {
   imports = [
     ./noctalia.nix
+    ./plugins.nix
   ];
 }

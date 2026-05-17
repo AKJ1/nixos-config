@@ -34,5 +34,7 @@
     lutris
     protonup-qt
     # dolphin-emu
+
+    wowup-cf
   ];
 }

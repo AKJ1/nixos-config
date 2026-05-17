@@ -91,6 +91,15 @@ in
     style.name = "Fusion";
   };
 
+  programs.tesseract.scripts = [
+    "cyrl"
+  ];
+
+  programs.tesseract.languages = [
+    "eng"
+    "bul"
+  ];
+
   xdg.configFile = {
     "gtk-3.0/settings.ini".force = true;
     "gtk-4.0/settings.ini".force = true;

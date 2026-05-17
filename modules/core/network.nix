@@ -3,10 +3,12 @@
   networking = {
     hostName = "${host}";
     networkmanager.enable = true;
+    extraHosts = "192.168.1.1 routerlogin.net\n";
     nameservers = [
-      "1.1.1.1"
-      "8.8.8.8"
-      "8.8.4.4"
+      "192.168.1.1"
+      # "1.1.1.1"
+      # "8.8.4.4"
+      # "8.8.8.8"
     ];
     firewall = {
       enable = true;
