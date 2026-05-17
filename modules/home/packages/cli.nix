@@ -12,6 +12,7 @@
     ncdu # disk space
     ripgrep # grep replacement
     tldr
+    yazi
 
     ## Tools / useful cli
     aoc-cli # Advent of Code command-line tool
