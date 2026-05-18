@@ -43,6 +43,10 @@ in
     gpu-screen-recorder
     wl-clipboard
     libsForQt5.qt5ct
+    libsForQt5.qtgraphicaleffects
+    qt6.qt5compat
+    pywalfox-native
+
     mpvpaper
     grim # screensht
     slurp # region select
@@ -113,7 +117,6 @@ in
     XCURSOR_THEME = "BreezeX-RosePine-Linux";
     XCURSOR_SIZE = "24";
     NIXOS_OZONE_WL = "1";
-    # ICON_THEME = "Papirus";
-    # QS_ICON_THEME = "Papirus";
+    QS_ICON_THEME = "Papirus-Dark";
   };
 }

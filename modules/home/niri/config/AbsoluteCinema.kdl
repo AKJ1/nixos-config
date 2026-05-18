@@ -107,9 +107,10 @@ binds {
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
+    Super+Y { spawn "ghostty" "+new-window" "-e" "\"yazi\""; }
     
     // Color picker and wallpaper
-    Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+    Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
     
     // Notification center
     Super+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }

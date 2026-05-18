@@ -15,17 +15,10 @@
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
           #network manager vpn
         };
-
         screen-toolkit = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-
-        slwobongo = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-
         wallcards = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -39,7 +32,7 @@
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
       };
-      version = 4;
+      version = 2;
     };
   };
 }

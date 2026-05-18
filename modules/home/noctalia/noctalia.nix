@@ -22,7 +22,6 @@
       ui = {
         fontDefault = "IBM Plex Sans Cond Text";
       };
-
       colorSchemes.predefinedScheme = "Catpuccin Lavender";
       templates = {
         activeTemplates = [
@@ -41,6 +40,51 @@
         position = "top";
         density = "default";
         showCapsule = true;
+        widgets = {
+          right = [
+            {
+              id = "Tray";
+              drawerEnabled = true;
+            }
+            {
+              id = "NotificationHistory";
+              showUnreadBadge = true;
+              unreadBadgeColor = "primary";
+            }
+            {
+              id = "Battery";
+              hideIfIdle = false;
+              hideIfNotDetected = true;
+              deviceNativePath = "__default__";
+              displayMode = "graphic-clean";
+            }
+            {
+              id = "Volume";
+              displayMode = "onhover";
+              middleClickCommand = "pwvucontrol || pavucontrol";
+            }
+            {
+              id = "Brightness";
+              displayMode = "onhover";
+            }
+            {
+              id = "plugin:network-manager-vpn";
+            }
+            {
+              id = "plugin:screen-toolkit";
+            }
+            {
+              id = "plugin:mini-docker";
+            }
+            {
+              id = "plugin:wallcards";
+            }
+            {
+              id = "ControlCenter";
+              icon = "noctalia";
+            }
+          ];
+        };
       };
 
       # General UI settings
@@ -68,13 +112,12 @@
   };
 
   # Ensure noctalia-shell is available in home packages
-  home.packages = with pkgs; [
+  home.packages = [
     inputs.noctalia.packages.${pkgs.system}.default
   ];
 
   # Wire noctalia into niri session startup
   systemd.user.targets.niri-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
-    "noctalia-shell.service"
   ];
 }
