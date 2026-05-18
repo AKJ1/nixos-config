@@ -176,6 +176,10 @@ binds {
     XF86AudioPrev { spawn "playerctl" "previous"; }
     XF86AudioStop { spawn "playerctl" "stop"; }
     
+    // Brightness controls (software gamma via wl-gammarelay-rs)
+    Super+Alt+PageUp { spawn "brightness" "up"; }
+    Super+Alt+PageDown { spawn "brightness" "down"; }
+
     // Mouse wheel workspace switching
     Super+WheelScrollDown { focus-workspace-down; }
     Super+WheelScrollUp { focus-workspace-up; }

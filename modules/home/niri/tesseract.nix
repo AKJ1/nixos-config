@@ -2,10 +2,7 @@
 {
   home.packages = [
     (pkgs.tesseract.override {
-      scripts = [
-        "cyrl"
-      ];
-      languages = [
+      enableLanguages = [
         "eng"
         "bul"
       ];

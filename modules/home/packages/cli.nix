@@ -12,7 +12,9 @@
     ncdu # disk space
     ripgrep # grep replacement
     tldr
-    yazi
+    (yazi.override {
+      _7zz = pkgs._7zz-rar; # Support for RAR extraction
+    })
 
     ## Tools / useful cli
     aoc-cli # Advent of Code command-line tool
@@ -81,6 +83,7 @@
     unzip
     wget
     wl-clipboard # clipboard utils for wayland (wl-copy, wl-paste)
+    wl-gammarelay-rs # software brightness/temperature control via gamma LUT
     xdg-utils
   ];
 }

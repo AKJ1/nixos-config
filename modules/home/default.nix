@@ -35,6 +35,7 @@
     ./viewnior.nix # image viewer
     ./vscodium # vscode fork
     ./waypaper.nix # GUI wallpaper picker
+    ./wl-gammarelay-rs.nix # software brightness control
     ./xdg-mimes.nix # xdg config
     ./zsh # shell
     ./niri # window manager
