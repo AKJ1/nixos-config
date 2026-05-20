@@ -211,8 +211,52 @@ binds {
     Super+Ctrl+WheelScrollUp { focus-workspace-up; }
 }
 
+environment {
+  QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  background-effect {
+    xray false
+  }
+}
+blur {
+  passes 2        // more passes = stronger blur (default: 3)
+  offset 3.0      // sample distance per pass (default: 3.0)
+  noise 0.03      // grain overlay (default: 0.02)
+  saturation 1.5  // color saturation boost (default: 1.5)
+}
+
 window-rule { // Generic WR
     match is-focused=false
+    draw-border-with-background false
+    background-effect {
+        xray true
+        blur true
+        noise 0.075
+        saturation 1
+    }
+    
+    shadow {
+        on
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        inactive-color "#00000064"
+    }
+}
+
+window-rule { // Generic WR
+    match is-focused=true
+    draw-border-with-background false
     background-effect {
         xray true
         blur true
