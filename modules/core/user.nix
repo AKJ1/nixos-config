@@ -25,8 +25,8 @@
       imports =
       if (host == "AbsoluteCinema") then
           [ ./../home/default.AbsoluteCinema.nix ]
-        else if (host == "desktop") then
-          [ ./../home/default.desktop.nix ]
+        else if (host == "PrimeIncarnon") then
+          [ ./../home/default.PrimeIncarnon.nix ]
         else if (host == "p1g7") then
           [ ./../home/default.p1g7.nix ]
         else if (host == "z13") then

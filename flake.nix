@@ -75,10 +75,10 @@
           inherit system;
           modules = [
             { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/desktop.nix) ]; }
-            ./hosts/desktop
+            ./hosts/desktop-PrimeIncarnon
           ];
           specialArgs = {
-            host = "desktop";
+            host = "PrimeIncarnon";
             inherit self inputs username;
           };
         };
