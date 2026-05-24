@@ -13,10 +13,7 @@
       pull.ff = "only";
       color.ui = true;
       url = {
-        "git@github.com:".insteadOf = [
-          "gh:"
-          "https://github.com/"
-        ];
+        "git@github.com:".insteadOf = "gh:";
         "git@github.com:frost-phoenix/".insteadOf = "fp:";
       };
       core.excludesFile = "/home/${username}/.config/git/.gitignore";

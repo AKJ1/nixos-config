@@ -22,7 +22,7 @@
       ui = {
         fontDefault = "IBM Plex Sans Cond Text";
       };
-      colorSchemes.predefinedScheme = "Catpuccin";
+      colorSchemes.predefinedScheme = "Rosepine";
       templates = {
         activeTemplates = [
           "discord"
