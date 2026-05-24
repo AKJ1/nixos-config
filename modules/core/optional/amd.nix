@@ -4,15 +4,14 @@
       mesa
       libva
       libva-utils
-      vappiVdpau
     ];
     
     environment.systemPackages = with pkgs; [
-      rocminfo
+      rocmPackages.clr
       clinfo
       lact
       mangohud
     ];
     
-    programs.corectl.enable = true;
+    programs.corectrl.enable = true;
 }

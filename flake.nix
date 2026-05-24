@@ -71,10 +71,10 @@
           };
         };
 
-        desktop = lib.nixosSystem {
+        PrimeIncarnon = lib.nixosSystem {
           inherit system;
           modules = [
-            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/desktop.nix) ]; }
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/primeincarnon.nix) ]; }
             ./hosts/desktop-PrimeIncarnon
           ];
           specialArgs = {

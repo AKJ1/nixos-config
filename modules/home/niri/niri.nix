@@ -45,6 +45,7 @@ in
     libsForQt5.qt5ct
     libsForQt5.qtgraphicaleffects
     qt6.qt5compat
+    pywal
     pywalfox-native
 
     mpvpaper

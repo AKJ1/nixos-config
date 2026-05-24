@@ -32,8 +32,20 @@ input {
     warp-mouse-to-focus
 }
 
-output "HDMI-A-3" {
-    mode "2560x1440@119.998"
+output "DP-1" {
+    position x=0 y=0
+    mode "3840x2160@239.991"
+    variable-refresh-rate on-demand=true
+    scale 1.25
+}
+output "DP-2" {
+    hot-corners {
+        off
+    }
+    position x=3072 y=0
+    mode "3840x2160@239.991"
+    variable-refresh-rate on-demand=true
+    scale 1.25
 }
 
 layout {

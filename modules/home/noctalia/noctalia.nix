@@ -22,7 +22,7 @@
       ui = {
         fontDefault = "IBM Plex Sans Cond Text";
       };
-      colorSchemes.predefinedScheme = "Catpuccin Lavender";
+      colorSchemes.predefinedScheme = "Catpuccin";
       templates = {
         activeTemplates = [
           "discord"
@@ -31,6 +31,9 @@
           "vicinae"
           "steam"
           "ghostty"
+          "gtk"
+          "qt"
+          "pywalfox"
         ];
         enableUserTheming = false;
       };
