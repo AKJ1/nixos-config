@@ -26,7 +26,10 @@ input {
     }
 
     mouse {
+        scroll-factor 2.0
         accel-speed 0.0
+        scroll-button 274
+        scroll-method "on-button-down"
         accel-profile "flat"
     }
     warp-mouse-to-focus
@@ -225,6 +228,7 @@ binds {
 }
 
 environment {
+    
   QT_QPA_PLATFORMTHEME "qt6ct"
 }
 
