@@ -47,6 +47,21 @@ layout {
         top 0
         bottom 0
     }
+    
+    preset-window-heights {
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    always-center-single-column
+    center-focused-column "on-overflow"
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
 }
 
 screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
@@ -71,76 +86,82 @@ cursor {
 // Keybindings
 binds {
     Super+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
-    Alt+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
-    Super+Shift+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+
     
-    Super+B { spawn "@browser@"; }
+    Super+B { spawn "@browser@" "--new-window"; }
     Super+Q { close-window; }
     Super+F { maximize-column; }
     Super+Shift+F { fullscreen-window; }
     Super+Space { toggle-window-floating; }
+
+    Super+Tab { toggle-overview; }
+    Super+C { center-window; }
     
+
     // Launcher and utilities
-    Super+Alt+D { spawn "rofi" "-show" "drun"; }
+    Super+Alt+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Super+D { spawn "vicinae" "vicinae://toggle"; }
-    Super+Shift+D { spawn "webcord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
-    Super+Escape { spawn "loginctl" "lock-session"; }
+    Super+Shift+D { spawn "vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+    Super+Escape { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Alt+Escape { spawn "loginctl" "lock-session"; }
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
-    Alt+E { spawn "nemo"; }
+    Super+Y { spawn "ghostty" "+new-window" "-e" "\"yazi\""; }
     
     // Color picker and wallpaper
-    Super+C { spawn "wl-color-picker"; }
-    Super+W { spawn "waypaper"; }
-    Super+Shift+W { spawn "waypaper"; }
+    Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
     
     // Notification center
-    Super+N { spawn "swaync-client" "-t" "-sw"; }
+    Super+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
+    Super+Shift+N { spawn "noctalia-shell" "ipc" "call" "network" "togglePanel"; }
+    Super+Shift+B { spawn "noctalia-shell" "ipc" "call" "bluetooth" "togglePanel"; }
+
     
     // Mission center
     Ctrl+Shift+Escape { spawn "missioncenter"; }
     
+    
     // Clipboard manager
-    Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"; }
+
+    Super+V { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    
+    // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"; }
     
     // Screenshots
-    Print { spawn "screenshot" "--copy"; }
-    Super+Print { spawn "screenshot" "--save"; }
-    Super+Shift+Print { spawn "screenshot" "--swappy"; }
-    Super+Shift+S { spawn "screenshot" "--swappy"; }
-    Super+Shift+Alt+S { spawn "screenshot" "--copy"; }
+    Print { screenshot-screen; }
+    Super+S { screenshot-screen; }
+    Super+Ctrl+S { screenshot-window; }
+    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     
     // Focus movement - arrow keys
-    Super+Left { focus-column-left; }
-    Super+Right { focus-column-right; }
-    Super+Up { focus-window-up; }
-    Super+Down { focus-window-down; }
+    Super+Left { focus-column-left-or-last; }
+    Super+Right { focus-column-right-or-first; }
+    Super+Up { focus-window-or-workspace-up; }
+    Super+Down { focus-window-or-workspace-down; }
     
-    // Focus movement - vim keys
-    Super+H { focus-column-left; }
-    Super+J { focus-window-down; }
-    Super+K { focus-window-up; }
-    Super+L { focus-column-right; }
-    
-    // Window movement
-    Super+Shift+Left { move-column-left; }
-    Super+Shift+Right { move-column-right; }
+    Super+H { focus-column-left-or-last; }
+    Super+K { focus-window-or-workspace-up; }
+    Super+J { focus-window-or-workspace-down; }
+    Super+L { focus-column-right-or-first; }
+   
     Super+Shift+Up { move-window-up; }
     Super+Shift+Down { move-window-down; }
+    Super+Shift+Left { consume-or-expel-window-left; }
+    Super+Shift+Right { consume-or-expel-window-right; }
     
-    Super+Shift+H { move-column-left; }
+    Super+Shift+H { consume-or-expel-window-left; }
     Super+Shift+J { move-window-down; }
     Super+Shift+K { move-window-up; }
-    Super+Shift+L { move-column-right; }
-    
-    // Window resizing
+    Super+Shift+L { consume-or-expel-window-right; } // Window resizing
+
     Super+Alt+Left { set-column-width "-80"; }
     Super+Alt+Right { set-column-width "+80"; }
     Super+Alt+Up { set-window-height "-80"; }
     Super+Alt+Down { set-window-height "+80"; }
     
+    Super+Equal { set-column-width "+240"; }
+    Super+Minus { set-column-width "-240"; }
     Super+Alt+H { set-column-width "-80"; }
     Super+Alt+J { set-window-height "+80"; }
     Super+Alt+K { set-window-height "-80"; }
@@ -176,13 +197,83 @@ binds {
     XF86AudioPrev { spawn "playerctl" "previous"; }
     XF86AudioStop { spawn "playerctl" "stop"; }
     
+    XF86AudioRaiseVolume{ spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume{ spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+
     // Brightness controls (software gamma via wl-gammarelay-rs)
-    Super+Alt+PageUp { spawn "brightness" "up"; }
-    Super+Alt+PageDown { spawn "brightness" "down"; }
+    Super+Alt+Page_Up { spawn "brightness" "up"; }
+    Super+Alt+Page_Down { spawn "brightness" "down"; }
 
     // Mouse wheel workspace switching
-    Super+WheelScrollDown { focus-workspace-down; }
-    Super+WheelScrollUp { focus-workspace-up; }
+    Super+WheelScrollDown { focus-column-right; }
+    Super+WheelScrollUp { focus-column-left; }
+    Super+Ctrl+WheelScrollDown { focus-workspace-down; }
+    Super+Ctrl+WheelScrollUp { focus-workspace-up; }
+}
+
+environment {
+  QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  background-effect {
+    xray false
+  }
+}
+
+blur {
+  passes 2        // more passes = stronger blur (default: 3)
+  offset 3.0      // sample distance per pass (default: 3.0)
+  noise 0.03      // grain overlay (default: 0.02)
+  saturation 1.5  // color saturation boost (default: 1.5)
+}
+
+window-rule { // Generic WR
+    match is-focused=false
+    draw-border-with-background false
+    background-effect {
+        xray true
+        blur true
+        noise 0.075
+        saturation 1
+    }
+    
+    shadow {
+        on
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        inactive-color "#00000064"
+    }
+}
+
+window-rule { // Generic WR
+    match is-focused=true
+    draw-border-with-background false
+    background-effect {
+        xray true
+        blur true
+        noise 0.075
+        saturation 1
+    }
+    
+    shadow {
+        on
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        inactive-color "#00000064"
+    }
 }
 
 // Window rules
@@ -191,6 +282,12 @@ window-rule {
     open-floating true
     default-column-width { fixed 800; }
     default-window-height { fixed 800; }
+}
+window-rule {
+    match app-id="satty"
+    open-floating true
+    default-column-width { fixed 600; }
+    default-window-height { fixed 600; }
 }
 window-rule {
     match app-id="Viewnior" 
