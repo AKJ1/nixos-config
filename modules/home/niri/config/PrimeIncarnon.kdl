@@ -9,7 +9,7 @@ input {
         xkb {
             layout "us,bg,br"
             variant ",phonetic,"
-            options "grp:alt_caps_toggle"
+            options "grp:alt_shift_toggle"
         }
 
         repeat-delay 300
@@ -29,7 +29,6 @@ input {
         scroll-factor 2.0
         accel-speed 0.0
         scroll-button 274
-        scroll-method "on-button-down"
         accel-profile "flat"
     }
     warp-mouse-to-focus

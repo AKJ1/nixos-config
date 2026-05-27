@@ -5,5 +5,6 @@
     blender
     openscad-unstable
     freecad-wayland
+    orca-slicer
   ];
 }
