@@ -1,0 +1,39 @@
+From: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Date: Fri, 8 May 2026 00:00:00 +0000
+Subject: [PATCH] Bluetooth: btmtk: handle FUNC_CTRL events without status field
+
+Some MediaTek controllers (MT7922/MT7921) respond to WMT_FUNC_CTRL with
+a truncated event that lacks the status field. Commit 634a4408c061
+("Bluetooth: btmtk: validate WMT event SKB length before struct access")
+added a strict sizeof check that rejects these responses with -EINVAL,
+breaking Bluetooth initialization.
+
+Fix by defaulting to BTMTK_WMT_ON_UNDONE when the status field is absent,
+matching the effective pre-regression behavior.
+
+BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=221511
+Fixes: 634a4408c061 ("Bluetooth: btmtk: validate WMT event SKB length before struct access")
+Signed-off-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+---
+ drivers/bluetooth/btmtk.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index f70c1b0f8990..fb4875760164 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -719,8 +719,10 @@ static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+ 	case BTMTK_WMT_FUNC_CTRL:
+ 		if (!skb_pull_data(data->evt_skb,
+ 				   sizeof(wmt_evt_funcc->status))) {
+-			err = -EINVAL;
+-			goto err_free_skb;
++			bt_dev_dbg(hdev,
++				   "FUNC_CTRL event without status, assuming UNDONE");
++			status = BTMTK_WMT_ON_UNDONE;
++			break;
+ 		}
+ 
+ 		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+-- 
+2.54.0

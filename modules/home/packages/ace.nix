@@ -5,6 +5,8 @@
     godot
     jetbrains.webstorm
     jetbrains.datagrip
+    ungoogled-chromium
+    gnome-maps
 
   ];
 }

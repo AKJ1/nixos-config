@@ -45,7 +45,10 @@ in
     libsForQt5.qt5ct
     libsForQt5.qtgraphicaleffects
     qt6.qt5compat
+    pywal
     pywalfox-native
+    adw-gtk3
+    nwg-look
 
     mpvpaper
     grim # screensht
@@ -62,9 +65,10 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
+      name = "adw-gtk3";
+      package = pkgs.adw-gtk3;
     };
+
     font = {
       name = "IBM Plex Sans Condensed";
       size = 12;
