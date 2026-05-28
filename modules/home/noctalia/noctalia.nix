@@ -22,17 +22,70 @@
       ui = {
         fontDefault = "IBM Plex Sans Cond Text";
       };
-      colorSchemes.predefinedScheme = "Catpuccin Lavender";
+      colorSchemes = {
+        useWallpaperColors = true;
+        predefinedScheme = "Rosepine";
+        darkMode = true;
+        generationMethod = "tonal-spot";
+      };
       templates = {
         activeTemplates = [
-          "discord"
-          "zen-browser"
-          "niri"
-          "vicinae"
-          "steam"
-          "ghostty"
-          "gtk"
-          "qt"
+          {
+            "enabled" = true;
+            "id" = "ghostty";
+          }
+          {
+            "enabled" = true;
+            "id" = "gtk";
+          }
+          {
+            "enabled" = true;
+            "id" = "zenBrowser";
+          }
+          {
+            "enabled" = true;
+            "id" = "pywalfox";
+          }
+          {
+            "enabled" = true;
+            "id" = "niri";
+          }
+          {
+            "enabled" = true;
+            "id" = "steam";
+          }
+          {
+            "enabled" = true;
+            "id" = "vicinae";
+          }
+          {
+            "enabled" = true;
+            "id" = "code";
+          }
+          {
+            "enabled" = true;
+            "id" = "yazi";
+          }
+          {
+            "enabled" = true;
+            "id" = "kcolorscheme";
+          }
+          {
+            "enabled" = true;
+            "id" = "telegram";
+          }
+          {
+            "enabled" = true;
+            "id" = "mango";
+          }
+          {
+            "enabled" = true;
+            "id" = "qt";
+          }
+          {
+            "enabled" = true;
+            "id" = "discord";
+          }
         ];
         enableUserTheming = false;
       };

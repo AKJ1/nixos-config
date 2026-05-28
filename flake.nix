@@ -23,7 +23,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-colors.url = "github:misterio77/nix-colors";
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/00e11463876a04a77fb97ba50c015ab9e5bee90d";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
@@ -54,6 +54,7 @@
       lib = nixpkgs.lib;
       baseOverlays = [
         inputs.nur.overlays.default
+        inputs.nix-vscode-extensions.overlays.default
         (import ./overlays/shared.nix)
       ];
     in
@@ -71,14 +72,14 @@
           };
         };
 
-        desktop = lib.nixosSystem {
+        PrimeIncarnon = lib.nixosSystem {
           inherit system;
           modules = [
-            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/desktop.nix) ]; }
-            ./hosts/desktop
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/primeincarnon.nix) ]; }
+            ./hosts/desktop-PrimeIncarnon
           ];
           specialArgs = {
-            host = "desktop";
+            host = "PrimeIncarnon";
             inherit self inputs username;
           };
         };

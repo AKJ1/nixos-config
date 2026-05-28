@@ -1,19 +1,17 @@
 { pkgs, ... }:
 {
+  hardware.graphics.extraPackages = with pkgs; [
+    mesa
+    libva
+    libva-utils
+  ];
 
-  # hardware.graphics.extraPackages = with pkgs; [
-  #   rocmPackages.clr.icd
-  # ];
+  environment.systemPackages = with pkgs; [
+    rocmPackages.clr
+    clinfo
+    lact
+    mangohud
+  ];
 
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     rocmPackages = super.rocmPackages.overrideScope (
-  #       fs: ps: {
-  #         clr = ps.clr.override {
-  #           localGPUTargets = [ "gfx1200" ]; # on hardware change, add more targets.h
-  #         };
-  #       }
-  #     );
-  #   })
-  # ];
+  programs.corectrl.enable = true;
 }
