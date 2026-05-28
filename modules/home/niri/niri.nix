@@ -19,6 +19,8 @@ in
 {
 
   home.packages = with pkgs; [
+    adw-gtk3
+    nwg-look
     hyprpicker
     wl-clipboard
     imagemagick
