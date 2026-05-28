@@ -79,4 +79,7 @@
     "amdgpu"
     "modesetting"
   ];
+  services.udev.extraRules = ''
+    SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0666", TAG+="uaccess"
+  '';
 }
