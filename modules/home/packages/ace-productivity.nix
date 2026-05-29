@@ -4,8 +4,8 @@
     opencode
     conda
     tk
-    lact
     optipng
+    inkscape
     thunderbird # email client
     remmina # remote desktop tunnel client
     fontbakery
@@ -28,6 +28,5 @@
         ;
     })
     texlab # Tex
-
   ];
 }
