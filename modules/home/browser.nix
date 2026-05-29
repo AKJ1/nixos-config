@@ -1,7 +1,10 @@
 { inputs, pkgs, ... }:
 {
-  home.packages = [
+  home.packages = with pkgs; [
     inputs.zen-browser.packages.${pkgs.system}.default
+    firefox
+    google-chrome
+    jellyfin-desktop
   ];
 }
 

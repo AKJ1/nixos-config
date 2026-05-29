@@ -6,6 +6,7 @@
     ./../../modules/core/optional/bluetooth.nix
     ./../../modules/core/optional/printers.nix
     ./../../modules/core/optional/amd.nix
+    ./../../modules/core/optional/docker.nix
     # ./../../modules/core/optional/mouse-actions.nix
   ];
   _module.args.displayConfig = "1.25";
