@@ -1,0 +1,4 @@
+secrets/*.yaml
+secrets/*.ini
+secrets/*.txt
+secrets/*.yml
