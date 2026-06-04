@@ -14,6 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     matcha.url = "github:floatpane/matcha";
 
     waybar.url = "github:Alexays/Waybar";
@@ -45,6 +48,7 @@
       nixpkgs,
       nixpkgs-stable,
       self,
+      sops-nix,
       nix-vscode-extensions,
       ...
     }@inputs:
