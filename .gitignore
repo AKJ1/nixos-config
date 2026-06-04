@@ -1,4 +1,4 @@
-secrets/*.yaml
-secrets/*.ini
-secrets/*.txt
-secrets/*.yml
+secrets/*.plaintext.yaml
+secrets/*.plaintext.ini
+secrets/*.plaintext.txt
+secrets/*.plaintext.yml
