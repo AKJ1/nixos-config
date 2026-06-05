@@ -5,5 +5,6 @@
     XDG_CURRENT_DESKTOP = "niri";
     QT_QPA_PLATFORM = "wayland";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    TEST_VALUE = config.sops.secrets.syncthing_id_z13.path;
   };
 }

@@ -1,0 +1,7 @@
+{ ... }:
+{
+  services.syncthing = {
+    devices = {
+    };
+  };
+}

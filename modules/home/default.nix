@@ -39,5 +39,6 @@
     ./xdg-mimes.nix # xdg config
     ./zsh # shell
     ./niri # window manager
+    ./ace # ace-specific modules
   ];
 }

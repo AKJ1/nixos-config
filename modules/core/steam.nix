@@ -10,12 +10,15 @@
 
       gamescopeSession.enable = true;
 
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
+      extraCompatPackages = [
+        pkgs.proton-ge-bin
+        pkgs.icu
+      ];
     };
 
     gamescope = {
       enable = true;
-      capSysNice = true;
+      capSysNice = false;
       args = [
         "--rt"
         "--expose-wayland"

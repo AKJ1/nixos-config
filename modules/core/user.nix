@@ -8,7 +8,15 @@
   ...
 }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
+  environment.systemPackages = with pkgs; [
+    sops
+    ssh-to-age
+  ];
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -21,9 +29,12 @@
         displayConfig
         ;
     };
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
     users.${username} = {
-      imports =
-      if (host == "AbsoluteCinema") then
+      imports = (
+        if (host == "AbsoluteCinema") then
           [ ./../home/default.AbsoluteCinema.nix ]
         else if (host == "PrimeIncarnon") then
           [ ./../home/default.PrimeIncarnon.nix ]
@@ -32,7 +43,8 @@
         else if (host == "z13") then
           [ ./../home/default.z13.nix ]
         else
-          [ ./../home ];
+          [ ./../home ]
+      );
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "25.11";

@@ -1,5 +1,6 @@
 keys:
   - &absolutecinema age1l2jngfzmqp7gersl7td8lqkrap7yy3jf348rm22h4tp5sh2fny7qz52p0w # your machine's age public key
+  - &absolutecinemareserve age186438a6uznp3fnx3k764q7fns4fr2xrpt6lj2729p2s7ujtgjdlsxpkrvp
   - &z13 age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl   # laptop's age key
   - &primeincarnon age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl
 creation_rules:
@@ -8,5 +9,6 @@ creation_rules:
       - age: 
         - *z13
         - *absolutecinema
+        - *absolutecinemareserve
         - *primeincarnon
 
