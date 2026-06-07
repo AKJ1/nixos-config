@@ -7,6 +7,6 @@
 {
   imports = [
     ./sops.nix
-    # ./syncthing/syncthing.nix
+    ./syncthing
   ];
 }

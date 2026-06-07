@@ -1,13 +1,11 @@
 { pkgs, host, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    syncthing
+  home.packages = with pkgs; [
     syncthingtray
   ];
 
   imports = [
-    ./syncthing.
-    "host".nix
+    ./syncthing.${host}.nix
   ];
 
   services.syncthing = {
@@ -15,16 +13,16 @@
     settings = {
       devices = {
         "pixel9pro" = {
-          id = "DEVICE-ID-GOES-HERE";
+          id = "U2EDJHT-HENOUG2-RW52NBD-DY3OLG7-KHK2RKN-3RC5JLR-76GOAGD-XFP5XQF";
         };
-        "PrimeIncarnon" = {
-          id = "DEVICE-ID-GOES-HERE";
+        "primeincarnon" = {
+          id = "DXFAEPV-Q6S7EK5-6CC6PDC-MVLA3IG-RCPZPR6-LN3O2WG-H4QKNCW-PDI7XQG";
         };
         "z13" = {
-          id = "DEVICE-ID-GOES-HERE";
+          id = "7GZC2ZZ-XQFNPJV-7R4HGDR-AKN3LI2-BOTNUIM-VLTXK5B-IGBGOKL-TTOK3QL";
         };
         "absolutecinema" = {
-          id = "DEVICE-ID-GOES-HERE";
+          id = "WQSV2AV-AZXI5RB-TZ72H2G-MSVMNSX-M6ZPFMU-QMMQWMB-35MUTUV-TTV6AAB";
         };
         "homeserver" = {
           id = "DEVICE-ID-GOES-HERE";
@@ -34,36 +32,26 @@
         "Documents" = {
           path = "/home/ace/Documents";
           devices = [
-            "device1"
-            "device2"
+            "pixel9pro"
+            "absolutecinema"
+            "primeincarnon"
           ];
         };
         "Photos" = {
           path = "/home/myusername/Example";
-          devices = [ "device1" ];
+          devices = [
+            "pixel9pro"
+            "absolutecinema"
+            "primeincarnon"
+          ];
           # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
           ignorePerms = false;
         };
         "Addons" = {
           path = "/home/ace/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_/WTF";
           devices = [
-            "PrimeIncarnon"
-          ];
-        };
-        "Sensitive" = {
-          path = "/home/myusername/Sensitive";
-          devices = [
-            # We trust this device to have access
-            # to the decrypted contents of this folder.
-            "device1"
-            # We do not trust this device, but we want to have another
-            # (encrypted) copy of the data for redundancy/backup/sync purposes.
-            {
-              name = "device2";
-              # encryptionPasswordFile is a path to a file containing the encryption password.
-              # See below for information about managing secrets on NixOS.
-              encryptionPasswordFile = "/run/secrets/st-sensitive-password";
-            }
+            "primeincarnon"
+            "absolutecinema"
           ];
         };
       };
