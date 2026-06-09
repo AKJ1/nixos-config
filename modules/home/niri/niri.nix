@@ -40,7 +40,7 @@ in
     python3
     python3Packages.pygobject3
     # python3Packages.pygobject
-    nirimod
+    # nirimod << ADD IN FUTURE
     xwayland-satellite
     tokyonight-gtk-theme
     swayimg
