@@ -18,6 +18,9 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     matcha.url = "github:floatpane/matcha";
+    inputactions = {
+      url = "github:taj-ny/InputActions?submodules=1";
+    };
 
     waybar.url = "github:Alexays/Waybar";
     nur.url = "github:nix-community/NUR";

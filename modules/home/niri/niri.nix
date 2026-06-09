@@ -9,11 +9,16 @@
 let
   terminal = "${pkgs.ghostty}/bin/ghostty";
   browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen-beta";
+  animation_open = builtins.readFile ./../../../shaders/polka-dots-curtain/open.glsl;
+  animation_close = builtins.readFile ./../../../shaders/polka-dots-curtain/close.glsl;
 
   kdlTemplate = builtins.readFile ./config/${host}.kdl;
 
   niriConfig = pkgs.writeText "niri-config.kdl" (
-    lib.replaceStrings [ "@terminal@" "@browser@" ] [ terminal browser ] kdlTemplate
+    lib.replaceStrings
+      [ "@terminal@" "@browser@" "@animation_open@" "@animation_close@" ]
+      [ terminal browser animation_open animation_close ]
+      kdlTemplate
   );
 in
 {
@@ -35,7 +40,7 @@ in
     python3
     python3Packages.pygobject3
     # python3Packages.pygobject
-
+    nirimod
     xwayland-satellite
     tokyonight-gtk-theme
     swayimg

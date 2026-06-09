@@ -3,6 +3,24 @@
 // Settings
 prefer-no-csd
 
+animations {
+    window-open {
+        duration-ms 350
+        curve "ease-in-quad"
+        custom-shader r"@animation_open@"
+    }
+    window-close {
+        duration-ms 350
+        curve "ease-out-quad"
+        custom-shader r"@animation_close@"
+    }
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+}
 input {
     keyboard {
         xkb {
@@ -41,14 +59,13 @@ layout {
     struts {
         left 0
         right 0
-        top 0
-        bottom 0
+        top 448
+        bottom 448
     }
 
     preset-window-heights {
-        proportion 0.333333333
         proportion 0.5
-        proportion 0.66667
+        proportion 0.75
         proportion 1.0
     }
 
@@ -57,7 +74,7 @@ layout {
 
     preset-column-widths {
         proportion 0.5
-        proportion 0.66667
+        proportion 0.75
         proportion 1.0
     }
 }
@@ -92,6 +109,8 @@ binds {
     Super+Q { close-window; }
     Super+F { maximize-column; }
     Super+Shift+F { fullscreen-window; }
+    Super+Space { toggle-window-floating; }
+    Super+Space { toggle-window-floating; }
     Super+Space { toggle-window-floating; }
 
     Super+Tab { toggle-overview; }
@@ -161,7 +180,10 @@ binds {
     Super+Alt+Down { set-window-height "+80"; }
     
     Super+Equal { set-column-width "+240"; }
+    Super+Alt+Equal { set-column-height "+240"; }
     Super+Minus { set-column-width "-240"; }
+    Super+Alt+Minus { set-column-height "-240"; }
+
     Super+Alt+H { set-column-width "-80"; }
     Super+Alt+J { set-window-height "+80"; }
     Super+Alt+K { set-window-height "-80"; }
@@ -207,8 +229,12 @@ binds {
     // Mouse wheel workspace switching
     Super+WheelScrollDown { focus-column-right; }
     Super+WheelScrollUp { focus-column-left; }
-    Super+Ctrl+WheelScrollDown { focus-workspace-down; }
-    Super+Ctrl+WheelScrollUp { focus-workspace-up; }
+    Super+Shift+WheelScrollDown { focus-workspace-down; }
+    Super+Shift+WheelScrollUp { focus-workspace-up; }
+    Super+Alt+WheelScrollUp { set-window-height "+80"; }
+    Super+Alt+WheelScrollDown { set-window-height "-80"; }
+    Super+Ctrl+WheelScrollUp { set-window-width "+80"; }
+    Super+Ctrl+WheelScrollDown { set-window-width "-80"; }
 }
 
 environment {

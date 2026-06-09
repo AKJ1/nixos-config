@@ -1,7 +1,16 @@
-{ pkgs, username, ... }:
 {
-  programs.mouse-actions.enable = true;
-  programs.mouse-actions.autorun = true;
+  pkgs,
+  inputs,
+  username,
+  ...
+}:
+{
+  # programs.mouse-actions.enable = true;
+  # programs.mouse-actions.autorun = true;
+  environment.systemPackages = [
+    inputs.inputactions.packages.${pkgs.system}.default
+    inputs.inputactions.packages.${pkgs.system}.ctl
+  ];
 
   users.users.${username}.extraGroups = [
     "input"

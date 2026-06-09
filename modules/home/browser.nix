@@ -5,6 +5,8 @@
     firefox
     google-chrome
     jellyfin-desktop
+    vivaldi
+    vivaldi-ffmpeg-codecs
   ];
 }
 
