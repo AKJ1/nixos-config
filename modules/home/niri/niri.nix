@@ -9,8 +9,8 @@
 let
   terminal = "${pkgs.ghostty}/bin/ghostty";
   browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen-beta";
-  animation_open = builtins.readFile ./../../../shaders/polka-dots-curtain/open.glsl;
-  animation_close = builtins.readFile ./../../../shaders/polka-dots-curtain/close.glsl;
+  animation_open = builtins.readFile ./../../../shader/polka-dots-curtain/open.glsl;
+  animation_close = builtins.readFile ./../../../shader/polka-dots-curtain/close.glsl;
 
   kdlTemplate = builtins.readFile ./config/${host}.kdl;
 
