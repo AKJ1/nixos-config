@@ -20,6 +20,9 @@ animations {
     horizontal-view-movement {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
 }
 input {
     keyboard {
@@ -110,8 +113,8 @@ binds {
     Super+F { maximize-column; }
     Super+Shift+F { fullscreen-window; }
     Super+Space { toggle-window-floating; }
-    Super+Space { toggle-window-floating; }
-    Super+Space { toggle-window-floating; }
+    Super+Space+Ctrl { switch-preset-column-width; }
+    Super+Space+Alt { switch-preset-window-height; }
 
     Super+Tab { toggle-overview; }
     Super+C { center-window; }
@@ -307,7 +310,13 @@ window-rule {
     open-floating true
     default-column-width { fixed 800; }
     default-window-height { fixed 800; }
-    baba-is-float true
+}
+
+window-rule {
+    match app-id="nemo"
+    open-floating false
+    default-column-width { 0.33; }
+    default-window-height { 0.5; }
 }
 
 window-rule {
