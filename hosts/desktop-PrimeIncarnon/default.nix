@@ -8,6 +8,7 @@
     ./../../modules/core/optional/amd.nix
     ./../../modules/core/optional/ntfs.nix
     ./../../modules/core/optional/ssh.nix
+    ./../../modules/core/optional/keyd.nix
     # ./../../modules/core/optional/mouse-actions.nix
 
   ];

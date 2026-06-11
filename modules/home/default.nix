@@ -40,5 +40,6 @@
     ./zsh # shell
     ./niri # window manager
     ./ace # ace-specific modules
+    ./keyd # keyd service
   ];
 }
