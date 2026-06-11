@@ -3,6 +3,8 @@ keys:
   - &absolutecinemareserve age186438a6uznp3fnx3k764q7fns4fr2xrpt6lj2729p2s7ujtgjdlsxpkrvp
   - &z13 age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl   # laptop's age key
   - &primeincarnon age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl
+  - &primeincarnon2 age1ln6c4kunkf6le2zgdftr2za647qevtkjy2eppqf2skpte6ueay5sfgvd63
+  - &primeincarnonThree age1sfcxf4xavppcsaukww6ycw4q2xp3e7hp4e3zlgq2ny5cnv4h3vvqdszwja
 creation_rules:
   - path_regex: secrets/.*
     key_groups:
@@ -11,4 +13,13 @@ creation_rules:
         - *absolutecinema
         - *absolutecinemareserve
         - *primeincarnon
+        - *primeincarnon2
+        - *primeincarnonThree
 
+
+syncthing_cert_primeincarnon: 
+syncthing_cert_absolutecinema:
+syncthing_cert_z13: 
+syncthing_key_primeincarnon: 
+syncthing_key_absolutecinema:
+syncthing_key_z13: 

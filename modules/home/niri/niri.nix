@@ -105,7 +105,7 @@ in
     "gtk-4.0/settings.ini".force = true;
     "niri/config.kdl" = {
       source = niriConfig;
-      onChange = ''notify-send "Niri config reloaded"'';
+      # onChange = ''notify-send "Niri config reloaded"'';
     };
     # "niri/noctalia.kdl".source = ../noctalia/config/noctalia.kdl;
     # "ghostty/config".source = ../config/ghostty/tokyo-night.ghostty;

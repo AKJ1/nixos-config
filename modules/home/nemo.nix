@@ -12,7 +12,7 @@
       last-server-connect-method = 3;
       quick-renames-with-pause-in-between = true;
       show-edit-icon-toolbar = false;
-      show-full-path-titles = false;
+      show-full-path-titles = true;
       show-hidden-files = true;
       show-home-icon-toolbar = true;
       show-new-folder-icon-toolbar = true;
@@ -32,7 +32,7 @@
       search-sort-column = "name";
     };
     "org/nemo/window-state" = {
-      maximized = true;
+      maximized = false;
       network-expanded = true;
       side-pane-view = "places";
       sidebar-bookmark-breakpoint = 2;

@@ -58,10 +58,10 @@
             "enabled" = true;
             "id" = "vicinae";
           }
-          {
-            "enabled" = true;
-            "id" = "code";
-          }
+          # {
+          #   "enabled" = true;
+          #   "id" = "code";
+          # }
           {
             "enabled" = true;
             "id" = "yazi";

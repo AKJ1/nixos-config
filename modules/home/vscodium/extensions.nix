@@ -21,7 +21,7 @@ in
       tamasfe.even-better-toml
       golang.go
       vscodevim.vim
-      pkgs.nix-vscode-extensions.vscode-marketplace.noctalia.noctaliatheme
+      # pkgs.nix-vscode-extensions.vscode-marketplace.noctalia.noctaliatheme
       # pkgs.vscode-extensions.open-vsx.noctalia.noctalia-theme
       # pkgs.vscode-extensions.vscode-marketplace.buildVscodeMarketplaceExtension
       # noctalia.noctaliatheme

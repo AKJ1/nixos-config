@@ -1,4 +1,13 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  zenPref = "user_pref(\"browser.link.open_newwindow.override.external\", 3);";
+in
 {
   home.packages = with pkgs; [
     inputs.zen-browser.packages.${pkgs.system}.default
@@ -6,6 +15,24 @@
     google-chrome
     jellyfin-desktop
   ];
+
+  home.activation.zenBrowserExternalLinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    PROFILES_INI="$HOME/.zen/browser/profiles.ini"
+    if [ -f "$PROFILES_INI" ]; then
+      PROFILE_PATH=$("${pkgs.gawk}/bin/awk" -F= '
+        /^\[Profile[0-9]+\]/ { profile_num = $0; gsub(/^\[|\]$/, "", profile_num) }
+        /^Default=1$/ { default_num = profile_num }
+        /^Path=/ && profile_num == default_num { path = substr($0, 6) }
+        END { if (path) print path }
+      ' "$PROFILES_INI")
+
+      if [ -n "$PROFILE_PATH" ]; then
+        ZEN_PROFILE="$HOME/.zen/browser/$PROFILE_PATH"
+        mkdir -p "$ZEN_PROFILE"
+        printf '%s\n' '${zenPref}' > "$ZEN_PROFILE/user.js"
+      fi
+    fi
+  '';
 }
 
 # let

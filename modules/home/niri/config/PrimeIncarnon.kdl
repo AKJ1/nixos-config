@@ -30,6 +30,7 @@ input {
         accel-speed 0.0
         scroll-button 274
         accel-profile "flat"
+        scroll-method "on-button-down"
     }
     warp-mouse-to-focus
 }
@@ -51,11 +52,11 @@ output "DP-2" {
 }
 
 layout {
-    gaps 10
+    gaps 20
 
     struts {
-        left 0
-        right 0
+        left 50 
+        right 50
         top 0
         bottom 0
     }
@@ -123,7 +124,7 @@ binds {
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
-    Super+Y { spawn "ghostty" "+new-window" "-e" "\"yazi\""; }
+    Super+Y { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "-e" "\"yazi\""; }
     
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
@@ -148,7 +149,8 @@ binds {
     Print { screenshot-screen; }
     Super+S { screenshot-screen; }
     Super+Ctrl+S { screenshot-window; }
-    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
+    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | wl-copy"; }
+    Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
@@ -225,6 +227,9 @@ binds {
     Super+WheelScrollUp { focus-column-left; }
     Super+Ctrl+WheelScrollDown { focus-workspace-down; }
     Super+Ctrl+WheelScrollUp { focus-workspace-up; }
+
+    Super+R { maximize-column; }
+    Super+Alt+R { maximize-column; }
 }
 
 environment {
@@ -274,6 +279,10 @@ window-rule { // Generic WR
 window-rule { // Generic WR
     match is-focused=true
     draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+
+    default-window-height { proportion 0.5; }
     background-effect {
         xray true
         blur true
@@ -359,4 +368,10 @@ window-rule {
 window-rule {
     match app-id="Vesktop" 
     open-floating true
+}
+
+window-rule {
+    match app-id="zen-beta"
+    open-floating true
+    open-focused true
 }
