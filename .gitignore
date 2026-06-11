@@ -2,5 +2,5 @@ secrets/*.plaintext.yaml
 secrets/*.plaintext.ini
 secrets/*.plaintext.txt
 secrets/*.plaintext.yml
+!*./AGENTS.md
 work/*
-!*/AGENTS.md
