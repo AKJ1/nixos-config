@@ -3,5 +3,6 @@ secrets/*.plaintext.ini
 secrets/*.plaintext.txt
 secrets/*.plaintext.yml
 !.*/AGENTS.md
+/work/*/*
 /work/*
 !/work/AGENTS.md
