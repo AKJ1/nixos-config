@@ -47,6 +47,12 @@ layout {
         top 0
         bottom 0
     }
+
+    focus-ring {
+        width 2
+        active-color "#d65d0e"
+        inactive-color "#3c3836"
+    }
     
     preset-window-heights {
         proportion 0.5
@@ -63,6 +69,8 @@ layout {
         proportion 1.0
     }
 }
+
+include optional=true "./noctalia.kdl"
 
 screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
 
@@ -107,7 +115,7 @@ binds {
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
-    Super+Y { spawn "ghostty" "+new-window" "-e" "\"yazi\""; }
+    Super+Y { spawn "ghostty" "+new-window" "-e" "yazi"; }
     
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
@@ -126,7 +134,7 @@ binds {
 
     Super+V { spawn "vicinae" "vicinae://launch/clipboard/history"; }
     
-    // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"; }
+    // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy "; }
     
     // Screenshots
     Print { screenshot-screen; }

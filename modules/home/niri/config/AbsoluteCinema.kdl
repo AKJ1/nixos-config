@@ -47,6 +47,12 @@ layout {
         bottom 0
     }
 
+    focus-ring {
+        width 2
+        active-color "#d65d0e"
+        inactive-color "#3c3836"
+    }
+
     preset-window-heights {
         proportion 0.333333333
         proportion 0.5
@@ -63,6 +69,8 @@ layout {
         proportion 1.0
     }
 }
+
+include optional=true "./noctalia.kdl"
 
 screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
 
@@ -109,7 +117,7 @@ binds {
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
-    Super+Y { spawn "ghostty" "+new-window" "-e" "\"yazi\""; }
+    Super+Y { spawn "ghostty" "+new-window" "-e" "yazi"; }
     
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
