@@ -158,7 +158,7 @@ binds {
     Print { screenshot-screen; }
     Super+S { screenshot-screen; }
     Super+Ctrl+S { screenshot-window; }
-    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | wl-copy -p -t image/png"; }
+    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t png - | wl-copy -t image/png"; }
     Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     
     // Focus movement - arrow keys
