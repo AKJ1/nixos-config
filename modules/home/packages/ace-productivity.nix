@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
+
   home.packages = with pkgs; [
-    opencode
     conda
     tk
     optipng

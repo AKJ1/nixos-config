@@ -25,6 +25,7 @@
     ./noctalia # shell / panel / notifications
     ./nvim.nix # neovim editor
     ./obsidian.nix
+    ./opencode
     ./p10k/p10k.nix
     ./packages # other packages
     ./retroarch.nix
