@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./../../modules/core
     ./../../modules/core/optional/bluetooth.nix
+    ./../../modules/core/optional/ssh.nix
   ];
   _module.args.displayConfig = "1.5";
 
