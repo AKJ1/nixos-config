@@ -116,7 +116,6 @@ binds {
     
     Super+E { spawn "nemo"; }
     Super+Y { spawn "ghostty" "+new-window" "-e" "yazi"; }
-    
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
     
@@ -136,11 +135,12 @@ binds {
     
     // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy "; }
     
-    // Screenshots
-    Print { screenshot-screen; }
-    Super+S { screenshot-screen; }
-    Super+Ctrl+S { screenshot-window; }
-    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
+     // Screenshots
+     Print { screenshot-screen; }
+     Super+S { screenshot-screen; }
+     Super+Ctrl+S { screenshot-window; }
+     Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | wl-copy"; }
+     Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
@@ -212,11 +212,14 @@ binds {
     Super+Alt+Page_Up { spawn "brightness" "up"; }
     Super+Alt+Page_Down { spawn "brightness" "down"; }
 
-    // Mouse wheel workspace switching
-    Super+WheelScrollDown { focus-column-right; }
-    Super+WheelScrollUp { focus-column-left; }
-    Super+Ctrl+WheelScrollDown { focus-workspace-down; }
-    Super+Ctrl+WheelScrollUp { focus-workspace-up; }
+     // Mouse wheel workspace switching
+     Super+WheelScrollDown { focus-column-right; }
+     Super+WheelScrollUp { focus-column-left; }
+     Super+Ctrl+WheelScrollDown { focus-workspace-down; }
+     Super+Ctrl+WheelScrollUp { focus-workspace-up; }
+
+     Super+R { maximize-column; }
+     Super+Alt+R { maximize-column; }
 }
 
 environment {
@@ -266,6 +269,10 @@ window-rule { // Generic WR
 window-rule { // Generic WR
     match is-focused=true
     draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+
+    default-window-height { proportion 0.5; }
     background-effect {
         xray true
         blur true
@@ -290,6 +297,7 @@ window-rule {
     open-floating true
     default-column-width { fixed 800; }
     default-window-height { fixed 800; }
+    baba-is-float true
 }
 window-rule {
     match app-id="satty"
@@ -320,6 +328,8 @@ window-rule {
 window-rule {
     match app-id="org.gnome.FileRoller" 
     open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match app-id="org.pulseaudio.pavucontrol" 
@@ -328,14 +338,20 @@ window-rule {
 window-rule {
     match title="Open File"
     open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match title="File Upload"
     open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 800; }
 }
 window-rule {
     match title="File Operation Progress"
     open-floating true
+    default-column-width { fixed 400; }
+    default-window-height { fixed 150; }
 }
 window-rule {
     match app-id="Vesktop" 
