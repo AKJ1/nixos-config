@@ -5,6 +5,7 @@
 prefer-no-csd
 
 input {
+    focus-follows-mouse max-scroll-amount="0%"
     keyboard {
         xkb {
             layout "us,bg,br"
@@ -29,8 +30,6 @@ input {
         accel-speed 0.0
         accel-profile "flat"
     }
-
-    focus-follows-mouse
     warp-mouse-to-focus
 }
 
@@ -39,11 +38,11 @@ output "eDP-1" {
 }
 
 layout {
-    gaps 6
+    gaps 20
 
     struts {
-        left 0
-        right 0
+        left 50 
+        right 50
         top 0
         bottom 0
     }
@@ -83,6 +82,7 @@ spawn-at-startup "swww-daemon"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "@terminal@" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
+spawn-at-startup "syncthingtray"
 
 cursor {
     xcursor-theme "BreezeX-RosePine-Linux"
@@ -115,7 +115,7 @@ binds {
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
-    Super+Y { spawn "ghostty" "+new-window" "-e" "yazi"; }
+    Super+Y { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "-e" "yazi"; }
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
     
