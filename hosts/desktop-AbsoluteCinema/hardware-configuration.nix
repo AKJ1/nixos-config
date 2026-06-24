@@ -52,6 +52,17 @@
     fsType = "ext4";
   };
 
+  fileSystems."/run/media/ace/D468-40E0" = {
+    device = "/dev/disk/by-uuid/D468-40E0";
+    fsType = "vfat";
+    options = [
+      "uid=1000"
+      "gid=100"
+      "fmask=113"
+      "dmask=002"
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/35170f36-6870-415b-8a32-3f6c69706371"; }
   ];

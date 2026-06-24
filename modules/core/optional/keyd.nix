@@ -11,7 +11,8 @@
       default = {
         ids = [
           "25a7:fa7b:f1066c13"
-          "m:25a7:fa7c"
+          "m:25a7:fa7c" # xlite
+          "m:046d:409e" # g305
           "*"
         ];
         settings = {

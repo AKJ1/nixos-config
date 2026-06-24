@@ -7,6 +7,8 @@
     ./../../modules/core/optional/printers.nix
     ./../../modules/core/optional/amd.nix
     ./../../modules/core/optional/docker.nix
+    ./../../modules/core/optional/ssh.nix
+    ./../../modules/core/optional/keyd.nix
     # ./../../modules/core/optional/mouse-actions.nix
   ];
   _module.args.displayConfig = "1.25";
@@ -19,6 +21,12 @@
   ];
 
   services = {
+    logind.settings.Login = {
+      IdleAction = "ignore";
+      HandleSuspendKey = "ignore";
+      HandleHibernateKey = "ignore";
+      HandleLidSwitch = "ignore";
+    };
 
     tlp.settings = {
       # High performance when on AC

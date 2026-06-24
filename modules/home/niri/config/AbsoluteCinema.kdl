@@ -4,6 +4,7 @@
 prefer-no-csd
 
 input {
+    focus-follows-mouse max-scroll-amount="0%"
     keyboard {
         xkb {
             layout "us,bg,br"
@@ -28,7 +29,7 @@ input {
         accel-speed 0.0
         scroll-button 274
         accel-profile "flat"
-        scroll-button-lock
+        scroll-method "on-button-down"
     }
     warp-mouse-to-focus
 }
@@ -36,13 +37,16 @@ input {
 output "HDMI-A-2" {
     mode "3840x2160@120.000"
 }
+output "HDMI-A-1" {
+    mode "3840x2160@120.000"
+}
 
 layout {
-    gaps 10
+    gaps 15
 
     struts {
-        left 0
-        right 0
+        left 50
+        right 50
         top 0
         bottom 0
     }
@@ -64,6 +68,7 @@ layout {
     center-focused-column "on-overflow"
 
     preset-column-widths {
+        proportion 0.333333333
         proportion 0.5
         proportion 0.66667
         proportion 1.0
@@ -104,7 +109,8 @@ binds {
     Super+Shift+F { fullscreen-window; }
     Super+Space { toggle-window-floating; }
 
-    Super+Tab { toggle-overview; }
+    Super+Tab { switch-preset-window-height; }
+    Super+Shift+Tab { switch-preset-column-width; }
     Super+C { center-window; }
     
 
@@ -142,7 +148,8 @@ binds {
     Print { screenshot-screen; }
     Super+S { screenshot-screen; }
     Super+Ctrl+S { screenshot-window; }
-    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
+    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t png - | wl-copy -t image/png"; }
+    Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
     
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
@@ -246,6 +253,9 @@ blur {
 window-rule { // Generic WR
     match is-focused=false
     draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+
     background-effect {
         xray true
         blur true
@@ -267,6 +277,9 @@ window-rule { // Generic WR
 window-rule { // Generic WR
     match is-focused=true
     draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+
     background-effect {
         xray true
         blur true
