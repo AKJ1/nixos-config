@@ -30,15 +30,18 @@
       };
       folders = {
         "Documents" = {
-          path = "/home/ace/Documents";
+          path = "/home/ace/Documents/Shared";
+          id = "oymsc-ynvyk";
           devices = [
+            "z13"
             "pixel9pro"
             "absolutecinema"
             "primeincarnon"
           ];
         };
         "Photos" = {
-          path = "/home/myusername/Example";
+          path = "/home/Pictures/Pixel9ProCam";
+          id = "pixel_9_pro_xemv-photos";
           devices = [
             "pixel9pro"
             "absolutecinema"
