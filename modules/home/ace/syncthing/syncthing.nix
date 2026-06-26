@@ -40,8 +40,9 @@
           ];
         };
         "Photos" = {
-          path = "/home/Pictures/Pixel9ProCam";
+          path = "/home/ace/Pictures/Pixel9ProCam";
           id = "pixel_9_pro_xemv-photos";
+          # type = "receive"; # Don't allow deletions to interfere with device storage.
           devices = [
             "pixel9pro"
             "absolutecinema"
