@@ -20,7 +20,8 @@
       };
 
       ui = {
-        fontDefault = "IBM Plex Sans Cond Text";
+        fontDefault = "IBM Plex Sans Condensed";
+        fontFixed = "IBM Plex Mono";
       };
       colorSchemes = {
         useWallpaperColors = true;

@@ -73,6 +73,7 @@ include optional=true "./noctalia.kdl"
 screenshot-path "~/Pictures/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
 
 // Spawn commands at startup
+spawn-at-startup "@polkit-agent@"
 spawn-at-startup "nm-applet"
 spawn-at-startup "poweralertd"
 spawn-at-startup "wl-clip-persist" "--clipboard" "both"

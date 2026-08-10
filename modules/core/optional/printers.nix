@@ -38,6 +38,8 @@
 
   environment.systemPackages = with pkgs; [
     simple-scan
+    pdftk
+    pdfsam-basic
     brscan5
   ];
 
