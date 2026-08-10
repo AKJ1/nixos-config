@@ -109,6 +109,17 @@
             inherit self inputs username;
           };
         };
+        xps9340 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            { nixpkgs.overlays = baseOverlays ++ [ (import ./overlays/xps9340.nix) ]; }
+            ./hosts/xps9340
+          ];
+          specialArgs = {
+            host = "xps9340";
+            inherit self inputs username;
+          };
+        };
       };
     };
 }

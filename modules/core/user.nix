@@ -43,6 +43,8 @@
           [ ./../home/default.p1g7.nix ]
         else if (host == "z13") then
           [ ./../home/default.z13.nix ]
+        else if (host == "xps9340") then
+          [ ./../home/default.xps9340.nix ]
         else
           [ ./../home ]
       );
