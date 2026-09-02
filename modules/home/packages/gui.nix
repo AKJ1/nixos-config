@@ -9,6 +9,10 @@
     soundwireserver
     video-trimmer
     vlc
+    ipmiview
+    ipmitool
+    ipmicfg
+    ipmiutil
 
     ## Office
     libreoffice-still

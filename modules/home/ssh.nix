@@ -18,6 +18,18 @@
         identityFile = "~/.ssh/id_github";
         identitiesOnly = true;
       };
+      dockerhost = {
+        host = "dockerhost";
+        hostname = "192.168.1.151";
+        user = "ace";
+        port = 22;
+      };
+      mintyfresh = {
+        host = "mintyfresh";
+        hostname = "192.168.1.149";
+        user = "ace";
+        port = 22;
+      };
     };
   };
 
