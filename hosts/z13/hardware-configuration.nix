@@ -29,6 +29,20 @@
     device = "/dev/disk/by-uuid/88a0ff80-5bf0-477d-a606-9937dc8bfd1d";
     fsType = "ext4";
   };
+  fileSystems."/mnt/zfs-store" = {
+    device = "//192.168.1.200/ZFS";
+    fsType = "cifs";
+    options = [
+      "uid=ace"
+      "gid=users"
+      "noperm"
+      "file_mode=0660"
+      "dir_mode=0770"
+      "credentials=/etc/samba/zfs-credentials"
+      "vers=3.0"
+      "rw"
+    ];
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/6B8E-9684";

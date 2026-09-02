@@ -9,9 +9,12 @@
     soundwireserver
     video-trimmer
     vlc
+    ipmiview
+    ipmitool
+    ipmicfg
+    ipmiutil
     alsa-scarlett-gui
     easyeffects
-
     ## Office
     libreoffice-still
     gnome-calculator

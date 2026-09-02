@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./../../modules/core
     ./../../modules/core/optional/bluetooth.nix
+    ./../../modules/core/optional/docker.nix
     ./../../modules/core/optional/printers.nix
     ./../../modules/core/optional/ssh.nix
   ];
