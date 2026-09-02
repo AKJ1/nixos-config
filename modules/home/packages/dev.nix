@@ -19,8 +19,8 @@
     llvmPackages_20.clang-tools
 
     ## Python
-    python313
-    python313Packages.tkinter
-    python313Packages.ipython
+    python314
+    python314Packages.tkinter
+    python314Packages.ipython
   ];
 }

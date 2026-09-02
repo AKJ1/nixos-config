@@ -14,7 +14,8 @@ let
   kdlTemplate = builtins.readFile ./config/${host}.kdl;
 
   niriConfig = pkgs.writeText "niri-config.kdl" (
-    lib.replaceStrings [ "@terminal@" "@browser@" "@polkit-agent@" ] [ terminal browser polkitAgent ] kdlTemplate
+    lib.replaceStrings [ "@terminal@" "@browser@" "@polkit-agent@" ] [ terminal browser polkitAgent ]
+      kdlTemplate
   );
 in
 {
@@ -38,7 +39,6 @@ in
     # python3Packages.pygobject
 
     xwayland-satellite
-    tokyonight-gtk-theme
     swayimg
     rose-pine-cursor
     nemo
