@@ -8,8 +8,8 @@
     inkscape
     thunderbird # email client
     remmina # remote desktop tunnel client
-    fontbakery
-    font-manager
+    # fontbakery
+    # font-manager
     fontpreview
     (inputs.matcha.packages.${pkgs.system}.default.overrideAttrs (old: {
       GOTOOLCHAIN = "local";

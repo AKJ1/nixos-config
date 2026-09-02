@@ -9,6 +9,8 @@
     soundwireserver
     video-trimmer
     vlc
+    alsa-scarlett-gui
+    easyeffects
 
     ## Office
     libreoffice-still
