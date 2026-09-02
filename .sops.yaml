@@ -2,6 +2,7 @@ keys:
   - &absolutecinema age1l2jngfzmqp7gersl7td8lqkrap7yy3jf348rm22h4tp5sh2fny7qz52p0w # your machine's age public key
   - &absolutecinemareserve age186438a6uznp3fnx3k764q7fns4fr2xrpt6lj2729p2s7ujtgjdlsxpkrvp
   - &z13 age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl   # laptop's age key
+  - &z132 age1rp9shyll5ujgm4yhh48ygcnqkx766w8vfy28x877mjqza00h95uq9pkfv0
   - &primeincarnon age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl
   - &primeincarnon2 age1ln6c4kunkf6le2zgdftr2za647qevtkjy2eppqf2skpte6ueay5sfgvd63
   - &primeincarnonThree age1sfcxf4xavppcsaukww6ycw4q2xp3e7hp4e3zlgq2ny5cnv4h3vvqdszwja
@@ -10,6 +11,7 @@ creation_rules:
     key_groups:
       - age: 
         - *z13
+        - *z132
         - *absolutecinema
         - *absolutecinemareserve
         - *primeincarnon
