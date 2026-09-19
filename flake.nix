@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +46,7 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-stable,
+      stablepkgs,
       self,
       sops-nix,
       nix-vscode-extensions,

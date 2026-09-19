@@ -34,9 +34,9 @@ in
     ffmpeg
     gifski
     jq
-    python3
-    python3Packages.pygobject3
-    # python3Packages.pygobject
+    # python3
+    python313Packages.pygobject3
+    # python313Packages.pygobject
 
     xwayland-satellite
     swayimg

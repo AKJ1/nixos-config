@@ -1,25 +1,7 @@
 { pkgs, stablepkgs, ... }:
 {
 
-  # home.packages = with pkgs; [
-  #   dejavu_fonts
-  #   dejavu_fontsEnv
-  #   liberation_ttf
-  #   noto-fonts
-  #   cantarell-fonts
-  #   nerd-fonts.blex-mono
-  #   ibm-plex
-  #   nerd-fonts.jetbrains-mono
-  #   nerd-fonts.fira-code
-  #   nerd-fonts.caskaydia-cove
-  #   nerd-fonts.symbols-only
-  #   twemoji-color-font
-  #   noto-fonts-color-emoji
-  #   fantasque-sans-mono
-  #   maple-mono.truetype-autohint
-  # ];
-  fonts.enableDefaultPackages = true;
-  fonts.packages = with pkgs; [
+  home.packages = with pkgs; [
     dejavu_fonts
     dejavu_fontsEnv
     liberation_ttf
@@ -36,6 +18,24 @@
     fantasque-sans-mono
     maple-mono.truetype-autohint
   ];
+  # fonts.enableDefaultPackages = true;
+  # fonts.packages = with pkgs; [
+  #   dejavu_fonts
+  #   dejavu_fontsEnv
+  #   liberation_ttf
+  #   noto-fonts
+  #   cantarell-fonts
+  #   nerd-fonts.blex-mono
+  #   ibm-plex
+  #   nerd-fonts.jetbrains-mono
+  #   nerd-fonts.fira-code
+  #   nerd-fonts.caskaydia-cove
+  #   nerd-fonts.symbols-only
+  #   twemoji-color-font
+  #   noto-fonts-color-emoji
+  #   fantasque-sans-mono
+  #   maple-mono.truetype-autohint
+  # ];
   fonts.fontconfig.enable = true;
 
   gtk = {

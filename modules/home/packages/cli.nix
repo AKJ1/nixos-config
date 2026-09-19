@@ -2,6 +2,9 @@
 {
   home.packages = with pkgs; [
     ## Better core utils
+    android-tools
+    android-studio-tools
+    scrcpy
     duf # disk information
     eza # ls replacement
     fd # find replacement

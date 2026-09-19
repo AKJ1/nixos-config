@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     ## Multimedia
@@ -16,9 +16,8 @@
     alsa-scarlett-gui
     easyeffects
     ## Office
-    libreoffice-still
+    inputs.stablepkgs.legacyPackages.${pkgs.system}.libreoffice-still
     gnome-calculator
-
     ## Utility
     dconf-editor
     gnome-disk-utility
