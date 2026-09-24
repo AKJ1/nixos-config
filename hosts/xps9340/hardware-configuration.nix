@@ -24,8 +24,27 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "pcie_aspm=off"
+  ];
 
-  swapDevices = [ ];
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/0b32b31e-a997-4b3a-8e6d-2eb944d8e23d";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/DC6A-9A18";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
+
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/e8cb0c06-8279-4714-a7be-3e34132f9aa8"; }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.npu.enable = true;
