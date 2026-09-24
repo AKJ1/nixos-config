@@ -90,6 +90,7 @@
     "amdgpu"
     "modesetting"
   ];
+  environment.variables.HSA_OVERRIDE_GFX_VERSION = "12.0.0";
   services.udev.extraRules = ''
     SUBSYSTEM=="hidraw", KERNEL=="hidraw*", MODE="0666", TAG+="uaccess"
   '';
