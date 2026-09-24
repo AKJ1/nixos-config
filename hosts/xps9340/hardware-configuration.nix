@@ -26,6 +26,15 @@
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "pcie_aspm=off"
+    # MAP1202 misreports power-state transition latencies; keep it in PS0
+    "nvme_core.default_ps_max_latency_us=0"
+  ];
+  boot.blacklistedKernelModules = [
+    "intel_ipu6"
+    "intel_ipu6_isys"
+    "ivsc_csi"
+    "ivsc_ace"
+    "ov02c10"
   ];
 
   fileSystems."/" = {
@@ -42,9 +51,9 @@
     ];
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/e8cb0c06-8279-4714-a7be-3e34132f9aa8"; }
-  ];
+  # swapDevices = [
+  # { device = "/dev/disk/by-uuid/e8cb0c06-8279-4714-a7be-3e34132f9aa8"; }
+  # ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.npu.enable = true;
