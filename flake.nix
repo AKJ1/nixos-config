@@ -18,6 +18,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     matcha.url = "github:floatpane/matcha";
+    handy.url = "github:cjpais/Handy";
 
     waybar.url = "github:Alexays/Waybar";
     nur.url = "github:nix-community/NUR";

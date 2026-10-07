@@ -121,7 +121,8 @@ binds {
     Super+Shift+F { fullscreen-window; }
     Super+Space { toggle-window-floating; }
 
-    Super+Tab { toggle-overview; }
+    Super+Tab { switch-preset-window-height; }
+    Super+Shift+Tab { switch-preset-column-width; }
     Super+C { center-window; }
     
 
