@@ -8,6 +8,13 @@
     '';
   });
 
+  pipewire-control-center = super.pipewire-control-center.overrideAttrs (old: {
+    postPatch = (old.postPatch or "") + ''
+      substituteInPlace pwctl/backend/chains.py \
+        --replace-fail "/usr/bin/pipewire" "${super.pipewire}/bin/pipewire"
+    '';
+  });
+
   # openldap-2.6.13: the syncreplication tests are timing-sensitive and fail
   # on slow / sandboxed builders ("provider and consumer databases differ").
   # First test017 fell over, then surgically skipping it just exposed the

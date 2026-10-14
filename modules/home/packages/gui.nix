@@ -27,5 +27,7 @@
     ## Level editor
     ldtk
     tiled
+
+    inputs.photocraft.packages.${pkgs.system}.default
   ];
 }

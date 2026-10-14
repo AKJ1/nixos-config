@@ -21,6 +21,7 @@ in
 {
 
   home.packages = with pkgs; [
+    nirimod
     adw-gtk3
     nwg-look
     hyprpicker
@@ -98,8 +99,8 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
-    style.name = "Fusion";
+    # platformTheme.name = "qt6ct";
+    # style.name = "Fusion";
   };
 
   xdg.configFile = {

@@ -37,16 +37,16 @@ input {
 }
 
 output "DP-1" {
-    position x=0 y=0
+    hot-corners {
+        off
+    }
+    position x=3072 y=0
     mode "3840x2160@239.991"
     variable-refresh-rate on-demand=true
     scale 1.25
 }
 output "DP-2" {
-    hot-corners {
-        off
-    }
-    position x=3072 y=0
+    position x=0 y=0
     mode "3840x2160@239.991"
     variable-refresh-rate on-demand=true
     scale 1.25
@@ -243,11 +243,6 @@ binds {
     Super+Alt+R { maximize-column; }
 }
 
-environment {
-    
-  QT_QPA_PLATFORMTHEME "qt6ct"
-}
-
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
@@ -326,6 +321,13 @@ window-rule {
     open-floating true
     default-column-width { fixed 600; }
     default-window-height { fixed 600; }
+}
+
+window-rule {
+    match app-id="ghostty"
+    open-floating false
+    default-column-width { proportion 0.4 ; }
+    default-window-height { proportion 0.5; }
 }
 
 window-rule {

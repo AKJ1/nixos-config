@@ -1,10 +1,12 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   home.packages = with pkgs; [
-    # inputs.handy
-    inputs.handy.packages.${pkgs.system}.default
+    handy
+    # alsa-plugins
+    # inputs.handy.packages.${pkgs.system}.default
   ];
 }

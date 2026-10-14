@@ -29,6 +29,12 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
+    #omp
+    oh-my-pi.url = "github:can1357/oh-my-pi";
+
+    #craftapps
+    photocraft.url = "github:makemake-kbo/photocraft";
+
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
       flake = false;
