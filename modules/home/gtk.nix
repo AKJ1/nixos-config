@@ -3,7 +3,6 @@
 
   home.packages = with pkgs; [
     dejavu_fonts
-    dejavu_fontsEnv
     liberation_ttf
     noto-fonts
     cantarell-fonts

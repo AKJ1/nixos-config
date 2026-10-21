@@ -3,14 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
     stablepkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    # Pinned for orca-slicer 2.4.1 (last revision before the 2.4.2 bump, which is broken)
+    orca-pkgs.url = "github:NixOS/nixpkgs/138998ca74d541ca9410f5823c07d25dc44b9267";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri/main";
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -79,7 +82,12 @@
           ];
           specialArgs = {
             host = "AbsoluteCinema";
-            inherit self inputs username;
+            inherit
+              self
+              inputs
+              username
+              stablepkgs
+              ;
           };
         };
 
@@ -91,7 +99,12 @@
           ];
           specialArgs = {
             host = "PrimeIncarnon";
-            inherit self inputs username;
+            inherit
+              self
+              inputs
+              username
+              stablepkgs
+              ;
           };
         };
         p1g7 = lib.nixosSystem {

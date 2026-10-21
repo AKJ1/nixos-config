@@ -1,9 +1,14 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  stablepkgs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     ## Multimedia
     audacity
-    gimp
+    # gimp
     obs-studio
     pavucontrol
     soundwireserver
@@ -14,7 +19,7 @@
     ipmicfg
     ipmiutil
     alsa-scarlett-gui
-    easyeffects
+    stablepkgs.legacyPackages.${pkgs.system}.easyeffects
     ## Office
     inputs.stablepkgs.legacyPackages.${pkgs.system}.libreoffice-still
     gnome-calculator

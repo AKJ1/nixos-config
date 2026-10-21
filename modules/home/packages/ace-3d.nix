@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     kicad
     blender
     openscad-unstable
     freecad-wayland
-    orca-slicer
+    inputs.orca-pkgs.legacyPackages.${pkgs.system}.orca-slicer
   ];
 }
