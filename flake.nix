@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hermes-agent.url = "github:NousResearch/hermes-agent";
     stablepkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     # Pinned for orca-slicer 2.4.1 (last revision before the 2.4.2 bump, which is broken)
     orca-pkgs.url = "github:NixOS/nixpkgs/138998ca74d541ca9410f5823c07d25dc44b9267";
