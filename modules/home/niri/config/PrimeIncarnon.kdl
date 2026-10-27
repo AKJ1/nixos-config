@@ -173,6 +173,8 @@ binds {
     Super+K { focus-window-or-workspace-up; }
     Super+J { focus-window-or-workspace-down; }
     Super+L { focus-column-right-or-first; }
+
+    Super+Grave { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED; then paplay .../dialog-warning.oga; else paplay .../dialog-information.oga; fi"; }
    
     Super+Shift+Up { move-window-up; }
     Super+Shift+Down { move-window-down; }
