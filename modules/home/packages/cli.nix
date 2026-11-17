@@ -13,9 +13,6 @@
     ncdu # disk space
     ripgrep # grep replacement
     tldr # short man
-    (yazi.override {
-      _7zz = pkgs._7zz-rar; # Support for RAR extraction
-    })
 
     ## Tools / useful cli
     aoc-cli # Advent of Code command-line tool

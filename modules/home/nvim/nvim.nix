@@ -3,12 +3,6 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    extras = {
-      lang.nix.enable = true;
-      lang.python.enable = true;
-      # lang.csharp.enable = true;
-      # lang.typescript.enable = true;
-    };
   };
 
   imports = [ inputs.nvf.homeModules.nvf ];
@@ -17,7 +11,7 @@
     settings.vim = {
       theme = {
         enable = true;
-        name = "gruvbox";
+        style = "dark";
       };
       lsp.enable = true;
       languages = {
@@ -28,4 +22,5 @@
       statusline.lualine.enable = true;
     };
   };
+
 }

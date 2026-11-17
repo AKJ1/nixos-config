@@ -36,7 +36,8 @@
     ./vscodium # vscode fork
     ./waypaper.nix # GUI wallpaper picker
     ./wl-gammarelay-rs.nix # software brightness control
-    ./xdg-mimes.nix # xdg config
+    ./xdg-mimes.nix
+    ./yazi.nix # terminal file manager # xdg config
     ./zsh # shell
     ./niri # window manager
     ./ace # ace-specific modules
