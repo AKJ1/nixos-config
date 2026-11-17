@@ -23,6 +23,7 @@
     python313Packages.tkinter
     python313Packages.ipython
     python313Packages.pip
+    python313Packages.uv
     python313Packages.huggingface-hub
   ];
 }

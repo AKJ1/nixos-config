@@ -112,9 +112,8 @@ cursor {
 
 // Keybindings
 binds {
-    Super+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
+    Super+Return { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "--wait-after-command=true" "-e" "zsh" "-c" "fetch; clear; zsh;"; }
 
-    
     Super+B { spawn "@browser@" "--new-window"; }
     Super+Q { close-window; }
     Super+F { maximize-column; }

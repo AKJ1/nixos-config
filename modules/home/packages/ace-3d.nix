@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   home.packages = with pkgs; [
     kicad
@@ -7,4 +12,8 @@
     freecad-wayland
     inputs.orca-pkgs.legacyPackages.${pkgs.system}.orca-slicer
   ];
+
+  home.sessionVariables = {
+    OPENSCADPATH = "${config.home.homeDirectory}/Projects/OpenSCAD/Libraries";
+  };
 }
