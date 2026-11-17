@@ -23,7 +23,6 @@
     ./nemo.nix # file manager
     ./nix-search/nix-search.nix # TUI to search nixpkgs
     ./noctalia # shell / panel / notifications
-    ./nvim.nix # neovim editor
     ./obsidian.nix
     ./opencode
     ./p10k/p10k.nix
@@ -42,5 +41,6 @@
     ./niri # window manager
     ./ace # ace-specific modules
     ./keyd # keyd service
+    ./nvim # nvim
   ];
 }
