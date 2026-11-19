@@ -50,8 +50,8 @@ in
     libsForQt5.qtgraphicaleffects
     qt6.qt5compat
     kdePackages.polkit-kde-agent-1
-    pywal
-    pywalfox-native
+    # pywal
+    # pywalfox-native
     adw-gtk3
     nwg-look
 

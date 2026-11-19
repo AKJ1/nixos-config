@@ -31,7 +31,7 @@
     sameboy
     snes9x
     cemu
-    lutris
+    # lutris
     protonup-qt
     heroic
     # dolphin-emu

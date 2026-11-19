@@ -2,12 +2,12 @@
 {
   programs.ssh = {
     enable = true;
-
-    addKeysToAgent = "1h";
-
-    controlMaster = "auto";
-    controlPath = "~/.ssh/control-%r@%h:%p";
-    controlPersist = "10m";
+    settings."*" = {
+      AddKeysToAgent = "8h";
+      ControlMaster = "auto";
+      ControlPath = "~/.ssh/control-%r@%h:%p";
+      ControlPersist = "10m";
+    };
 
     matchBlocks = {
       github = {
