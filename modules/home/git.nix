@@ -1,12 +1,22 @@
 { pkgs, username, ... }:
+
 {
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      line-numbers = true;
+      side-by-side = false;
+      diff-so-fancy = true;
+      navigate = true;
+    };
+  };
   programs.git = {
     enable = true;
 
-    userName = "Ace777";
-    userEmail = "kellerr1@abv.bg";
-
-    extraConfig = {
+    settings = {
+      user.name = "Ace777";
+      user.email = "kellerr1@abv.bg";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
@@ -18,17 +28,11 @@
       };
       core.excludesFile = "/home/${username}/.config/git/.gitignore";
     };
+
+    # extraConfig = {
+    # };
     signing.format = "openpgp";
 
-    delta = {
-      enable = true;
-      options = {
-        line-numbers = true;
-        side-by-side = false;
-        diff-so-fancy = true;
-        navigate = true;
-      };
-    };
   };
 
   home.packages = [ pkgs.gh ]; # pkgs.git-lfs

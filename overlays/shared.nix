@@ -57,4 +57,39 @@
   xdg-desktop-portal = super.xdg-desktop-portal.overrideAttrs (_: {
     doCheck = false;
   });
+
+  # kernel 7.3 + nixpkgs' deterministic module signing (`kmodigest`, see
+  # pkgs/os-specific/linux/kernel/common-flags.nix): every module now ships a
+  # `<module>.ko.cer` certificate sidecar, which `system.modulesTree` merges
+  # into the kernel's `modules.cer`. Out-of-tree `acpi-call` still copies a
+  # bare, unsigned `acpi_call.ko` out of its build tree, so the modules tree
+  # build dies with:
+  #     cat: misc/acpi_call.ko.cer: No such file or directory
+  # Install through the kernel's `modules_install` target instead, which runs
+  # the `cmd_sign` hook and installs the certificate alongside the module.
+  # `modules/core/bootloader.nix` pins every host to `linuxPackages_latest`,
+  # and most hosts load `acpi_call` via `boot.kernelModules`.
+  linuxPackages_latest = super.linuxPackages_latest.extend (
+    _lpFinal: lpPrev: {
+      acpi_call = lpPrev.acpi_call.overrideAttrs (_: {
+        # Drop upstream's installPhase (a bare `install acpi_call.ko`) so the
+        # generic builder runs `make modules_install` instead.
+        installPhase = null;
+        installFlags = [
+          "-C"
+          "${lpPrev.kernel.dev}/lib/modules/${lpPrev.kernel.modDirVersion}/build"
+          "M=$(sourceRoot)"
+          "INSTALL_MOD_PATH=${placeholder "out"}"
+          "INSTALL_MOD_DIR=misc"
+        ];
+        installTargets = [ "modules_install" ];
+        # make resolves `$(sourceRoot)` after `-C`-ing into the kernel build
+        # directory, so it has to be exported as an absolute path.
+        preInstall = ''export sourceRoot="$PWD"'';
+        postInstall = ''
+          install -D -m755 examples/turn_off_gpu.sh $out/bin/test_discrete_video_off.sh
+        '';
+      });
+    }
+  );
 })

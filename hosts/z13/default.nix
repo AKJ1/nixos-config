@@ -18,14 +18,40 @@
   ];
 
   services = {
-    power-profiles-daemon.enable = true;
+    # LightDM's Wayland autologin is unreliable on this host: it fails with
+    # "session_run: assertion 'priv->display_server != NULL'" and leaves a
+    # blank console. Use greetd, which handles Wayland sessions natively.
+    xserver.displayManager.lightdm.enable = false;
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${pkgs.niri}/bin/niri-session";
+          user = "ace";
+        };
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd ${pkgs.niri}/bin/niri-session";
+          user = "greeter";
+        };
+      };
+    };
 
+    power-profiles-daemon.enable = true;
     upower = {
       enable = true;
       percentageLow = 20;
       percentageCritical = 5;
       percentageAction = 3;
       criticalPowerAction = "PowerOff";
+    };
+
+    # Lid switch is handled here; idle suspend is handled by noctalia
+    # (see modules/home/noctalia/noctalia.nix) so it can lock before sleeping.
+    logind.settings.Login = {
+      HandlePowerKey = "hibernate";
+      HandleSuspendKey = "hibernate";
+      HandleHibernateKey = "hibernat";
+      HandleLidSwitch = "suspend";
     };
 
     tlp.settings = {
@@ -50,12 +76,13 @@
 
   boot = {
     kernelModules = [ "acpi_call" ];
-    extraModulePackages =
-      with config.boot.kernelPackages;
-      [
-        acpi_call
-        cpupower
-      ]
-      ++ [ pkgs.cpupower-gui ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      acpi_call
+      cpupower
+    ];
+
+    # Resume from hibernate. Swap (33G) is larger than RAM (30G), so this is
+    # just the missing piece; without it hibernate can't come back.
+    resumeDevice = "/dev/disk/by-uuid/449dba86-86d8-41fc-a678-857c7c2007ba";
   };
 }

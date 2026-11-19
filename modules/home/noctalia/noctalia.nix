@@ -4,14 +4,14 @@
     inputs.noctalia.homeModules.default
   ];
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
     settings = {
       idle = {
         enabled = true;
         screenOffTimeout = 180;
         lockTimeout = 180;
-        # suspendTimeout = 1800;
+        suspendTimeout = 1800;
         fadeDuration = 10;
       };
 
