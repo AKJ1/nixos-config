@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
     ./opencode.nix
-    ./omp.nix
+    ./omp
   ];
 }
