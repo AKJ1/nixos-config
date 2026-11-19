@@ -34,6 +34,12 @@
     #omp
     oh-my-pi.url = "github:can1357/oh-my-pi";
 
+    # omp-adapted fork of obra/superpowers; matches the installed 7.0.2-omp.3
+    omp-superpowers = {
+      url = "github:LoneExile/omp-superpowers/v7.0.2-omp.3";
+      flake = false;
+    };
+
     #craftapps
     photocraft.url = "github:makemake-kbo/photocraft";
 
