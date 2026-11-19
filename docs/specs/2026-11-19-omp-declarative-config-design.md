@@ -218,10 +218,21 @@ Add a pinned flake input:
 omp-superpowers.url = "github:LoneExile/omp-superpowers/v7.0.2-omp.3";
 ```
 
-The tag matches the currently installed marketplace version. The overlay's
-`extensions` list points at the input's store path. omp loads the package's
-`pi.extensions` entry and scans its `agents/` and `skills/` siblings, which
-replaces what `/marketplace install` did.
+This is not a source switch. The marketplace currently installed on this host
+was added from `loneexile/omp-superpowers` (verified: `marketplaces.json`
+`sourceUri`, the cached clone's `origin`, and the installed plugin's
+`package.json` all name LoneExile), at commit
+`fad5b9e7ec578fbac11c7dbe1b251ceb1d7f19a9`, which is exactly tag
+`v7.0.2-omp.3`. `obra/superpowers` is the upstream Claude Code skills library
+by Jesse Vincent; the LoneExile repo is the omp adaptation that adds the
+`pi.extensions` entry, omp task-agent definitions, and the skill mapping. The
+catalog metadata still credits the upstream author because the fork preserves
+it. Pinning the fork reproduces today's behavior; pinning upstream would load a
+Claude-format plugin and lose the omp-specific agents.
+
+The overlay's `extensions` list points at the input's store path. omp loads the
+package's `pi.extensions` entry and scans its `agents/` and `skills/` siblings,
+which replaces what `/marketplace install` did.
 
 Cutover: uninstall the marketplace copy
 (`omp plugin uninstall superpowers@superpowers-dev`) after the switch when it is

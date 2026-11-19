@@ -46,6 +46,7 @@
 After the `oh-my-pi` line in `flake.nix`:
 
 ```nix
+    # omp-adapted fork of obra/superpowers; matches the installed 7.0.2-omp.3
     omp-superpowers = {
       url = "github:LoneExile/omp-superpowers/v7.0.2-omp.3";
       flake = false;
