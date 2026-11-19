@@ -23,6 +23,15 @@ let
 
   overlayFile = yaml.generate "omp-config.yml" overlaySettings;
 
+  agents = [ ];
+
+  agentFiles = lib.listToAttrs (
+    map (file: {
+      name = ".omp/agent/agents/${baseNameOf file}";
+      value.source = file;
+    }) agents
+  );
+
   omp = pkgs.writeShellScriptBin "omp" ''
     export PI_CONFIG_FILES=${overlayFile}
     exec ${pkgs.omp}/bin/omp "$@"
@@ -30,4 +39,8 @@ let
 in
 {
   home.packages = [ omp ];
+
+  home.file = {
+    ".omp/agent/models.yml".source = ./models.yml;
+  } // agentFiles;
 }
