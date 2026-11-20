@@ -1,4 +1,13 @@
 { inputs, pkgs, ... }:
+let
+  # Upstream only focuses the notification's sender window when the
+  # notification has no default action. Nearly every application sets one, and
+  # niri does not switch to the window's workspace when that action is invoked,
+  # so clicking a notification appears to do nothing.
+  noctalia-shell = inputs.noctalia.packages.${pkgs.system}.default.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [ ./focus-sender-on-notification-click.patch ];
+  });
+in
 {
   imports = [
     inputs.noctalia.homeModules.default
@@ -6,6 +15,7 @@
 
   programs.noctalia-shell = {
     enable = true;
+    package = noctalia-shell;
     settings = {
       idle = {
         enabled = true;
@@ -166,11 +176,6 @@
       };
     };
   };
-
-  # Ensure noctalia-shell is available in home packages
-  home.packages = [
-    inputs.noctalia.packages.${pkgs.system}.default
-  ];
 
   # Wire noctalia into niri session startup
   systemd.user.targets.niri-session.Unit.Wants = [
