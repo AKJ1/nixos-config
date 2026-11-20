@@ -51,26 +51,22 @@
     # The hall sensor behind the lid switch is dead on this host (confirmed by
     # Lenovo's UEFI checker; /proc/acpi/button/lid/LID/state is stuck "open"
     # and a magnet over either half never flips it), so HandleLidSwitch never
-    # fires. Suspend is entered with the power key instead; the lid action is
-    # left in place for the case the sensor ever gets repaired.
+    # fires. Lid action is left in place for the case the sensor gets repaired.
+    #
+    # The power key hibernates rather than suspends. This unit only offers
+    # s2idle (the firmware exports no S3), and key presses wake it from s2idle
+    # whatever the OS does: with the EC GPE hard-masked, ec_no_wakeup=1 and
+    # every wakeup sysfs node disabled except PNP0C0C:00, the keyboard and
+    # TrackPoint still resumed it. That wake is asserted by the EC below
+    # anything Linux arms, so "only the power button wakes it" cannot be built
+    # out of wake-source configuration. In S4 the rail is down, so the power
+    # button is a hardware power-on and nothing else can bring it back.
     logind.settings.Login = {
-      HandlePowerKey = "suspend";
+      HandlePowerKey = "hibernate";
       HandleSuspendKey = "hibernate";
       HandleHibernateKey = "hibernate";
       HandleLidSwitch = "suspend";
     };
-
-    # Wake from suspend must come from the power button only: while carried in
-    # a bag the keyboard and TrackPoint produce ghost input that otherwise
-    # resumes the machine. Both are i8042 serio devices, which is where their
-    # wakeup flag lives; the touchpad and pen are i2c-hid and cannot wake it at
-    # all. Power Button (PNP0C0C:00) is deliberately left enabled.
-    udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="serio", KERNEL=="serio0", ATTR{power/wakeup}="disabled"
-      ACTION=="add", SUBSYSTEM=="serio", KERNEL=="serio1", ATTR{power/wakeup}="disabled"
-      ACTION=="add", SUBSYSTEM=="platform", KERNEL=="PNP0C0D:00", ATTR{power/wakeup}="disabled"
-      ACTION=="add", SUBSYSTEM=="platform", KERNEL=="PNP0C0E:00", ATTR{power/wakeup}="disabled"
-    '';
 
     tlp.settings = {
       CPU_ENERGY_PERF_POLICY_ON_AC = "power";
