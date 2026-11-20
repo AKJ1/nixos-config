@@ -47,12 +47,30 @@
 
     # Lid switch is handled here; idle suspend is handled by noctalia
     # (see modules/home/noctalia/noctalia.nix) so it can lock before sleeping.
+    #
+    # The hall sensor behind the lid switch is dead on this host (confirmed by
+    # Lenovo's UEFI checker; /proc/acpi/button/lid/LID/state is stuck "open"
+    # and a magnet over either half never flips it), so HandleLidSwitch never
+    # fires. Suspend is entered with the power key instead; the lid action is
+    # left in place for the case the sensor ever gets repaired.
     logind.settings.Login = {
-      HandlePowerKey = "hibernate";
+      HandlePowerKey = "suspend";
       HandleSuspendKey = "hibernate";
-      HandleHibernateKey = "hibernat";
+      HandleHibernateKey = "hibernate";
       HandleLidSwitch = "suspend";
     };
+
+    # Wake from suspend must come from the power button only: while carried in
+    # a bag the keyboard and TrackPoint produce ghost input that otherwise
+    # resumes the machine. Both are i8042 serio devices, which is where their
+    # wakeup flag lives; the touchpad and pen are i2c-hid and cannot wake it at
+    # all. Power Button (PNP0C0C:00) is deliberately left enabled.
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="serio", KERNEL=="serio0", ATTR{power/wakeup}="disabled"
+      ACTION=="add", SUBSYSTEM=="serio", KERNEL=="serio1", ATTR{power/wakeup}="disabled"
+      ACTION=="add", SUBSYSTEM=="platform", KERNEL=="PNP0C0D:00", ATTR{power/wakeup}="disabled"
+      ACTION=="add", SUBSYSTEM=="platform", KERNEL=="PNP0C0E:00", ATTR{power/wakeup}="disabled"
+    '';
 
     tlp.settings = {
       CPU_ENERGY_PERF_POLICY_ON_AC = "power";
