@@ -31,5 +31,4 @@ in
   xdg.configFile."opencode/opencode.json" = {
     text = builtins.toJSON opencodeConfig;
   };
-
 }
