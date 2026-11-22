@@ -29,6 +29,10 @@ in
       ## Color scheme
       jdinhlife.gruvbox
       jonathanharty.gruvbox-material-icon-theme
+
+      ## AI
+      pkgs.vscode-marketplace."sst-dev".opencode # official OpenCode ext; shares active tab/selection with opencode
+      pkgs.vscode-marketplace.continue.continue # Continue
     ];
   };
 }

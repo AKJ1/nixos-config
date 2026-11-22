@@ -15,4 +15,6 @@
   sops.secrets.syncthing_key_z13 = { };
   sops.secrets.syncthing_cert_primeincarnon = { };
   sops.secrets.syncthing_key_primeincarnon = { };
+  sops.secrets.openrouter_api_key = { };
+  sops.secrets.opencode_api_key = { };
 }

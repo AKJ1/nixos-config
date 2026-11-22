@@ -3,7 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    # Pinned for orca-slicer 2.4.1 (last revision before the 2.4.2 bump, which is broken)
+    orca-pkgs.url = "github:NixOS/nixpkgs/138998ca74d541ca9410f5823c07d25dc44b9267";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +20,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     matcha.url = "github:floatpane/matcha";
+    handy.url = "github:cjpais/Handy";
 
     waybar.url = "github:Alexays/Waybar";
     nur.url = "github:nix-community/NUR";
@@ -27,6 +30,18 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    #omp
+    oh-my-pi.url = "github:can1357/oh-my-pi";
+
+    # omp-adapted fork of obra/superpowers; matches the installed 7.0.2-omp.3
+    omp-superpowers = {
+      url = "github:LoneExile/omp-superpowers/v7.0.2-omp.3";
+      flake = false;
+    };
+
+    #craftapps
+    photocraft.url = "github:makemake-kbo/photocraft";
 
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
@@ -39,6 +54,7 @@
 
     zig.url = "github:mitchellh/zig-overlay";
     vicinae.url = "github:vicinaehq/vicinae";
+    areofyl-fetch.url = "github:areofyl/fetch";
 
     nvf.url = "github:notashelf/nvf";
   };
@@ -46,7 +62,7 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-stable,
+      stablepkgs,
       self,
       sops-nix,
       nix-vscode-extensions,
@@ -72,7 +88,12 @@
           ];
           specialArgs = {
             host = "AbsoluteCinema";
-            inherit self inputs username;
+            inherit
+              self
+              inputs
+              username
+              stablepkgs
+              ;
           };
         };
 
@@ -84,7 +105,12 @@
           ];
           specialArgs = {
             host = "PrimeIncarnon";
-            inherit self inputs username;
+            inherit
+              self
+              inputs
+              username
+              stablepkgs
+              ;
           };
         };
         p1g7 = lib.nixosSystem {

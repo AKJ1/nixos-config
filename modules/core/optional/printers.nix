@@ -27,12 +27,12 @@
     enable = true;
     brscan5 = {
       enable = true;
-      netDevices = {
-        CinemaMFD = {
-          model = "DCP-L2622DW";
-          ip = "192.168.1.2";
-        };
-      };
+      #netDevices = {
+      #  CinemaMFD = {
+      #    model = "DCP-L2622DW";
+      #    ip = "192.168.1.2";
+      # };
+      #};
     };
   };
 

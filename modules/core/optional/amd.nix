@@ -16,7 +16,10 @@
     ffmpeg-full
   ];
 
+  services.lact.enable = true;
   programs.corectrl.enable = true;
+  hardware.amdgpu.overdrive.enable = true;
+
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     LIBVA_DRIVER_NAME = "radeonsi";

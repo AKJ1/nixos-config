@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+
   home.packages = with pkgs; [
     ## Better core utils
     duf # disk information
@@ -11,16 +12,13 @@
     man-pages # extra man pages
     ncdu # disk space
     ripgrep # grep replacement
-    tldr
-    (yazi.override {
-      _7zz = pkgs._7zz-rar; # Support for RAR extraction
-    })
+    tldr # short man
 
     ## Tools / useful cli
     aoc-cli # Advent of Code command-line tool
-    asciinema
+    asciinema # terminal session recorder
     asciinema-agg
-    binsider
+    binsider # binary editor
     bitwise # cli tool for bit / hex manipulation
     broot # tree files view
     caligula # User-friendly, lightweight TUI for disk imaging
@@ -30,8 +28,8 @@
     tdf # cli pdf viewer
     tokei # project line counter
     translate-shell # cli translator
-    woomer
-    yt-dlp-light
+    woomer # wayland zoom utility
+    yt-dlp-light # youtube downloader
 
     ## TUI
     epy # ebook reader
@@ -44,7 +42,7 @@
     ## Monitoring / fetch
     htop
     fastfetch
-    nitch # systhem fetch util
+    nitch # system fetch util
     onefetch # fetch utility for git repo
     wavemon # monitoring for wireless network devices
 
@@ -58,6 +56,7 @@
     fortune
     lavat
     lolcat
+    neovim
     pipes
     sl
     tty-clock
@@ -82,6 +81,7 @@
     poweralertd
     unzip
     wget
+    btop
     wl-clipboard # clipboard utils for wayland (wl-copy, wl-paste)
     wl-gammarelay-rs # software brightness/temperature control via gamma LUT
     xdg-utils

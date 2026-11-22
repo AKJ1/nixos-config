@@ -1,21 +1,26 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     ## Multimedia
-    audacity
-    gimp
+    inputs.stablepkgs.legacyPackages.${pkgs.system}.audacity
+    # gimp
     obs-studio
     pavucontrol
-    soundwireserver
     video-trimmer
     vlc
+    ipmiview
+    ipmitool
+    ipmicfg
+    ipmiutil
     alsa-scarlett-gui
-    easyeffects
-
+    # stablepkgs.legacyPackages.${pkgs.system}.easyeffects
     ## Office
-    libreoffice-still
+    inputs.stablepkgs.legacyPackages.${pkgs.system}.libreoffice-still
     gnome-calculator
-
     ## Utility
     dconf-editor
     gnome-disk-utility
@@ -25,5 +30,8 @@
     ## Level editor
     ldtk
     tiled
+    inputs.photocraft.packages.${pkgs.system}.default
+    qbittorrent
   ];
+
 }

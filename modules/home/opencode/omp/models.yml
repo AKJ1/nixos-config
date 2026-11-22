@@ -1,0 +1,5 @@
+providers:
+  openrouter:
+    apiKey: "!cat $HOME/.config/sops-nix/secrets/openrouter_api_key"
+  opencode-go:
+    apiKey: "!cat $HOME/.config/sops-nix/secrets/opencode_api_key"

@@ -21,6 +21,7 @@ in
 {
 
   home.packages = with pkgs; [
+    nirimod
     adw-gtk3
     nwg-look
     hyprpicker
@@ -34,9 +35,9 @@ in
     ffmpeg
     gifski
     jq
-    python3
-    python3Packages.pygobject3
-    # python3Packages.pygobject
+    # python3
+    python313Packages.pygobject3
+    # python313Packages.pygobject
 
     xwayland-satellite
     swayimg
@@ -49,8 +50,8 @@ in
     libsForQt5.qtgraphicaleffects
     qt6.qt5compat
     kdePackages.polkit-kde-agent-1
-    pywal
-    pywalfox-native
+    # pywal
+    # pywalfox-native
     adw-gtk3
     nwg-look
 
@@ -98,8 +99,8 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
-    style.name = "Fusion";
+    # platformTheme.name = "qt6ct";
+    # style.name = "Fusion";
   };
 
   xdg.configFile = {

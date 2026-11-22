@@ -12,7 +12,8 @@
         ids = [
           "25a7:fa7b:f1066c13"
           "m:25a7:fa7c" # xlite
-          "m:046d:409e" # g305
+          "m:046d:409e" # g305 (wireless receiver)
+          "m:046d:c097" # g303 shroud (usb cable)
           "*"
         ];
         settings = {

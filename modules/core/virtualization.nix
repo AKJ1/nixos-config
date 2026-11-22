@@ -26,4 +26,5 @@
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
+  programs.firejail.enable = true;
 }

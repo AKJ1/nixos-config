@@ -9,6 +9,8 @@
     ./../../modules/core/optional/ntfs.nix
     ./../../modules/core/optional/ssh.nix
     ./../../modules/core/optional/keyd.nix
+    ./../../modules/core/optional/docker.nix
+    ./../../modules/core/optional/torrentservice.nix
     # ./../../modules/core/optional/mouse-actions.nix
 
   ];

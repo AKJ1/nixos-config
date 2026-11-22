@@ -23,7 +23,6 @@
     ./nemo.nix # file manager
     ./nix-search/nix-search.nix # TUI to search nixpkgs
     ./noctalia # shell / panel / notifications
-    ./nvim.nix # neovim editor
     ./obsidian.nix
     ./opencode
     ./p10k/p10k.nix
@@ -37,10 +36,12 @@
     ./vscodium # vscode fork
     ./waypaper.nix # GUI wallpaper picker
     ./wl-gammarelay-rs.nix # software brightness control
-    ./xdg-mimes.nix # xdg config
+    ./xdg-mimes.nix
+    ./yazi.nix # terminal file manager # xdg config
     ./zsh # shell
     ./niri # window manager
     ./ace # ace-specific modules
     ./keyd # keyd service
+    ./nvim # nvim
   ];
 }
