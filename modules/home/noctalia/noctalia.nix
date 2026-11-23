@@ -167,7 +167,7 @@
     };
   };
 
-  # Ensure noctalia-shell is available in home packages
+  # Ensure noctalia (v5+ binary name) is available in home packages
   home.packages = [
     inputs.noctalia.packages.${pkgs.system}.default
   ];

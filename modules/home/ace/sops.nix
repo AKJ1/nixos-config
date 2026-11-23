@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   host,
   pkgs,
@@ -17,4 +18,14 @@
   sops.secrets.syncthing_key_primeincarnon = { };
   sops.secrets.openrouter_api_key = { };
   sops.secrets.opencode_api_key = { };
+
+  # GitHub SSH keypair (passphrase-protected RSA, extracted from sops)
+  sops.secrets.github_rsa_private = {
+    path = "${config.home.homeDirectory}/.ssh/id_github";
+    mode = "0600";
+  };
+  sops.secrets.github_rsa_public = {
+    path = "${config.home.homeDirectory}/.ssh/id_github.pub";
+    mode = "0644";
+  };
 }
