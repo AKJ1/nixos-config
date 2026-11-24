@@ -1084,6 +1084,22 @@
         "type": "github"
       }
     },
+    "noctalia-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795454840,
+        "narHash": "sha256-EoUipKt+d3yGT8lPy+y0vsdWuWfDKLob5SkarHOb2RY=",
+        "owner": "noctalia-dev",
+        "repo": "community-plugins",
+        "rev": "5efc3bbca3a98015822776db20a5138454022cec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "community-plugins",
+        "type": "github"
+      }
+    },
     "numen": {
       "inputs": {
         "nixpkgs": [
@@ -1234,6 +1250,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs_8",
         "noctalia": "noctalia",
+        "noctalia-plugins": "noctalia-plugins",
         "nur": "nur",
         "nvf": "nvf",
         "oh-my-pi": "oh-my-pi",

@@ -98,7 +98,7 @@ spawn-at-startup "wl-clip-persist" "--clipboard" "both"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "vicinae" "server"
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "@terminal@" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
 spawn-at-startup "wl-gammarelay-rs"
 spawn-at-startup "syncthingtray"
@@ -126,10 +126,10 @@ binds {
     
 
     // Launcher and utilities
-    Super+Alt+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Super+Alt+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Super+D { spawn "vicinae" "vicinae://toggle"; }
     Super+Shift+D { spawn "vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
-    Super+Escape { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Super+Escape { spawn "noctalia" "msg" "session" "lock"; }
     Alt+Escape { spawn "loginctl" "lock-session"; }
     Super+Shift+Escape { spawn "power-menu"; }
     
@@ -137,12 +137,12 @@ binds {
     Super+Y { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "-e" "yazi"; }
     
     // Color picker and wallpaper
-    Super+Alt+W { spawn "noctalia-shell" "ipc" "call" "plugin:wallcards" "toggle"; }
+    Super+Alt+W { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
     
     // Notification center
-    Super+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
-    Super+Shift+N { spawn "noctalia-shell" "ipc" "call" "network" "togglePanel"; }
-    Super+Shift+B { spawn "noctalia-shell" "ipc" "call" "bluetooth" "togglePanel"; }
+    Super+N { spawn "noctalia" "msg" "panel-toggle" "control-center" "notifications"; }
+    Super+Shift+N { spawn "noctalia" "msg" "panel-toggle" "control-center" "network"; }
+    Super+Shift+B { spawn "noctalia" "msg" "panel-toggle" "control-center" "bluetooth"; }
 
     
     // Mission center
@@ -227,8 +227,8 @@ binds {
     XF86AudioPrev { spawn "playerctl" "previous"; }
     XF86AudioStop { spawn "playerctl" "stop"; }
     
-    XF86AudioRaiseVolume{ spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume{ spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioRaiseVolume{ spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioLowerVolume{ spawn "noctalia" "msg" "volume-down"; }
 
     // Brightness controls (software gamma via wl-gammarelay-rs)
     Super+Alt+Page_Up { spawn "brightness" "up"; }

@@ -15,6 +15,12 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Pinned community plugin source: avoids the runtime git fetch that races
+    # with network availability at login and leaves plugin bar widgets missing.
+    noctalia-plugins = {
+      url = "github:noctalia-dev/community-plugins";
+      flake = false;
+    };
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
