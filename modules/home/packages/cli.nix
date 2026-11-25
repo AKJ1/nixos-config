@@ -15,7 +15,6 @@
     tldr # short man
 
     ## Tools / useful cli
-    aoc-cli # Advent of Code command-line tool
     asciinema # terminal session recorder
     asciinema-agg
     binsider # binary editor

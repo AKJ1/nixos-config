@@ -1,16 +1,9 @@
-{
-  pkgs,
-  inputs,
-  config,
-  ...
-}:
-{
+{ pkgs, config, ... }: {
   home.packages = with pkgs; [
-    kicad
     blender
     openscad-unstable
-    freecad-wayland
-    inputs.orca-pkgs.legacyPackages.${pkgs.system}.orca-slicer
+    # freecad-wayland
+    inputs.stablepkgs.legacyPackages.${pkgs.system}.orca-slicer
   ];
 
   home.sessionVariables = {

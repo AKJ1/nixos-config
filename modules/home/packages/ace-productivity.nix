@@ -1,11 +1,9 @@
 { pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
-    conda
     viber
     tk
     optipng
-    inkscape
     thunderbird # email client
     remmina # remote desktop tunnel client
     # fontbakery

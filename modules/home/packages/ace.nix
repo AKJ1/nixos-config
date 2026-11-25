@@ -1,13 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    code-cursor
-    godot
-    lact
-    jetbrains.webstorm
-    jetbrains.datagrip
-    ungoogled-chromium
+    # code-cursor
+    # jetbrains.webstorm // 3gb, no point
+    # jetbrains.datagrip // 3gb, no point
     gnome-maps
-
   ];
 }
