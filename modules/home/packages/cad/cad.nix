@@ -1,4 +1,10 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
+{
   home.packages = with pkgs; [
     blender
     openscad-unstable
