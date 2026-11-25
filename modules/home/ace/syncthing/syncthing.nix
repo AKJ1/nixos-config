@@ -1,9 +1,5 @@
-{ pkgs, host, ... }:
+{ host, ... }:
 {
-  home.packages = with pkgs; [
-    syncthingtray
-  ];
-
   imports = [
     ./syncthing.${host}.nix
   ];

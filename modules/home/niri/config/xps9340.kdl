@@ -83,7 +83,6 @@ spawn-at-startup "swww-daemon"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "noctalia"
 spawn-at-startup "@terminal@" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
-spawn-at-startup "syncthingtray"
 
 cursor {
     xcursor-theme "BreezeX-RosePine-Linux"

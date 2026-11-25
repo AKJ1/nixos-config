@@ -24,6 +24,7 @@
     path = "${config.home.homeDirectory}/.ssh/id_github";
     mode = "0600";
   };
+
   sops.secrets.github_rsa_public = {
     path = "${config.home.homeDirectory}/.ssh/id_github.pub";
     mode = "0644";
