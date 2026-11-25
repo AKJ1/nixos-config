@@ -13,6 +13,8 @@
         font_family = "IBM Plex Sans Condensed";
         corner_radius_scale = 1.0;
         animation.speed = 1.5;
+        # Noctalia's built-in polkit agent; replaces polkit-kde-agent-1.
+        polkit_agent = true;
         panel = {
           transparency_mode = "soft";
           shadow = true;
@@ -79,6 +81,7 @@
           "vpn"
           "screen-toolkit"
           "docker"
+          "syncthing"
           "wallpaper"
           "control-center"
         ];
@@ -140,6 +143,7 @@
         vpn.type = "andrewdems/vpn-manager:bar";
         "screen-toolkit".type = "alexander/screen-toolkit:widget";
         docker.type = "8bury/mini-docker:mini-docker";
+        syncthing.type = "rylos/syncthing:bar";
 
         control-center.glyph = "noctalia";
       };
@@ -189,6 +193,7 @@
           "andrewdems/vpn-manager"
           "alexander/screen-toolkit"
           "8bury/mini-docker"
+          "rylos/syncthing"
         ];
         # Read plugins from the pinned flake input instead of fetching the
         # community git source at every login.

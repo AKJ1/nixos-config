@@ -9,12 +9,10 @@
 let
   terminal = "${pkgs.ghostty}/bin/ghostty";
   browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen-beta";
-  polkitAgent = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-
   kdlTemplate = builtins.readFile ./config/${host}.kdl;
 
   niriConfig = pkgs.writeText "niri-config.kdl" (
-    lib.replaceStrings [ "@terminal@" "@browser@" "@polkit-agent@" ] [ terminal browser polkitAgent ]
+    lib.replaceStrings [ "@terminal@" "@browser@" ] [ terminal browser ]
       kdlTemplate
   );
 in
@@ -49,7 +47,6 @@ in
     libsForQt5.qt5ct
     libsForQt5.qtgraphicaleffects
     qt6.qt5compat
-    kdePackages.polkit-kde-agent-1
     # pywal
     # pywalfox-native
     adw-gtk3
