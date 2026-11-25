@@ -18,6 +18,8 @@ input {
     }
 
     touchpad {
+        tap
+        click-method "clickfinger"
         natural-scroll
         scroll-factor 1.35
         accel-speed 0.2
