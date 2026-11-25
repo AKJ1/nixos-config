@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
-    ./cad.nix
+    ./gamedev.nix
+    ./unity.nix
   ];
 }

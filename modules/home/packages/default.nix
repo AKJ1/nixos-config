@@ -7,7 +7,7 @@
     ./ace.nix
     ./ace-productivity.nix
     ./cad
-    ./android-dev.nix
+    ./android.nix
     ./fancyfetch.nix
   ];
 }

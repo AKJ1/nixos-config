@@ -61,7 +61,6 @@
     zig.url = "github:mitchellh/zig-overlay";
     vicinae.url = "github:vicinaehq/vicinae";
     areofyl-fetch.url = "github:areofyl/fetch";
-
     nvf.url = "github:notashelf/nvf";
   };
 

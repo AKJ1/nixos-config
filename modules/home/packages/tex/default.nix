@@ -1,5 +1,5 @@
 { ... }: {
   imports = [
-    ./cad.nix
+    ./tex.nix
   ];
 }

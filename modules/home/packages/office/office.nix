@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [
-    libreoffice
+{ pkgs, inputs, ... }: {
+  home.packages = [
+    inputs.stablepkgs.legacyPackages.${pkgs.system}.libreoffice-still
   ];
 }

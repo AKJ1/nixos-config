@@ -18,9 +18,6 @@
     ipmiutil
     alsa-scarlett-gui
     # stablepkgs.legacyPackages.${pkgs.system}.easyeffects
-    ## Office
-    inputs.stablepkgs.legacyPackages.${pkgs.system}.libreoffice-still
-    gnome-calculator
     ## Utility
     dconf-editor
     gnome-disk-utility
