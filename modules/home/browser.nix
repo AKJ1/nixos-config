@@ -10,7 +10,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.system}.twilight
     firefox
     google-chrome
     jellyfin-desktop

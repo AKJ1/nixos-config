@@ -29,6 +29,7 @@
     tiled
     inputs.photocraft.packages.${pkgs.system}.default
     qbittorrent
+    zed-editor
   ];
 
 }
