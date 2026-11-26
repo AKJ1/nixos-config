@@ -6,6 +6,7 @@
     # is binary-cache-cold for days, incl. libreoffice/texlive → hours of local
     # compiles). fzf here is 0.75.0, which home-manager's fzf module asserts
     # (>=0.73) when nushell integration is on — 26.05's 0.72.0 fails that.
+
     nixpkgs.url = "github:NixOS/nixpkgs/390a25727ab14d1a6bfc9a392556cecd84d97b2b";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Pinned for orca-slicer 2.4.1 (last revision before the 2.4.2 bump, which is broken)
@@ -19,6 +20,7 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    luciole.url = "github:noctalia-dev/luciole/cachix";
     # Pinned community plugin source: avoids the runtime git fetch that races
     # with network availability at login and leaves plugin bar widgets missing.
     noctalia-plugins = {

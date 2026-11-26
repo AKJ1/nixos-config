@@ -6,6 +6,7 @@
     ./../../modules/core/optional/bluetooth.nix
     ./../../modules/core/optional/printers.nix
     ./../../modules/core/optional/ssh.nix
+    ./../../modules/core/optional/keyd
   ];
   _module.args.displayConfig = "1.5";
 
