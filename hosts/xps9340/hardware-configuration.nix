@@ -25,9 +25,18 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
-    "pcie_aspm=off"
-    # MAP1202 misreports power-state transition latencies; keep it in PS0
+    # SM2263XT (ORIGIN Inception TLC830 Pro) wedges if it enters a deep
+    # non-operational power state; keep APST off entirely.
     "nvme_core.default_ps_max_latency_us=0"
+    # The Dell ACPI _DSM marks storage D3-on-suspend ("platform quirk: setting
+    # simple suspend"), and nvme_suspend() additionally forces a full controller
+    # shutdown whenever ASPM is disabled. That shutdown + reset on every s2idle
+    # resume wedges the drive firmware ("Device not ready; aborting reset,
+    # CSTS=0x1", then reset failure, ext4 journal abort, PID 1 dies, panic).
+    # Ignore the D3 hint and keep ASPM enabled so the driver uses the
+    # kernel-managed suspend path and never powers down/reset the controller.
+    "nvme.noacpi=1"
+    "pcie_aspm.policy=performance"
   ];
   boot.blacklistedKernelModules = [
     "intel_ipu6"
