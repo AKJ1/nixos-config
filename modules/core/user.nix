@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  stablepkgs,
+  unstable,
   username,
   host,
   displayConfig,
@@ -25,7 +25,7 @@
     extraSpecialArgs = {
       inherit
         inputs
-        stablepkgs
+        unstable
         username
         host
         displayConfig

@@ -15,23 +15,12 @@
     '';
   });
 
-  # openldap-2.6.13: the syncreplication tests are timing-sensitive and fail
-  # on slow / sandboxed builders ("provider and consumer databases differ").
-  # First test017 fell over, then surgically skipping it just exposed the
-  # next one (test019-syncreplication-cascade). The failure cascades into
-  # bottles / lutris / wine FHS envs pulled in by the gaming hosts
-  # (BrightFalls, CauldronLake), killing their full system builds in CI.
-  #
-  # Disabling the check phase entirely until upstream lands a real fix —
-  # going test-by-test is whack-a-mole.
-  #   Issue: https://github.com/NixOS/nixpkgs/issues/516392 (CLOSED, links to PR)
-  #   Fix:   https://github.com/NixOS/nixpkgs/pull/516445   (OPEN as of 2026-05-05,
-  #          only patches test017 — won't fully unbreak us; revisit when
-  #          upstream addresses test019 too)
-  # Drop this override once nixos-unstable ships a build that passes checks.
-  openldap = super.openldap.overrideAttrs (_: {
-    doCheck = false;
-  });
+  # openldap-2.6.13: the old `doCheck = false` override was here because the
+  # syncreplication tests (test017/test019) failed on slow / sandboxed
+  # builders. It is dropped now: nixos-26.11's openldap-2.6.13 is built by
+  # Hydra with checks enabled and substitutes from cache. Keeping the override
+  # would make openldap (and every dependent, e.g. libreoffice) cache-cold and
+  # force multi-hour local builds. Re-add only if checks actually fail again.
 
   # xdg-desktop-portal-1.20.4: two integration tests fail in the Nix build
   # sandbox because the validator helpers (xdg-desktop-portal-validate-sound

@@ -6,7 +6,7 @@
 {
   home.packages = with pkgs; [
     ## Multimedia
-    inputs.stablepkgs.legacyPackages.${pkgs.system}.audacity
+    audacity
     # gimp
     obs-studio
     pavucontrol
@@ -17,7 +17,6 @@
     ipmicfg
     ipmiutil
     alsa-scarlett-gui
-    # stablepkgs.legacyPackages.${pkgs.system}.easyeffects
     ## Utility
     dconf-editor
     gnome-disk-utility
@@ -25,8 +24,8 @@
     zenity
 
     ## Level editor
-    ldtk
-    tiled
+    # ldtk
+    # tiled
     inputs.photocraft.packages.${pkgs.system}.default
     qbittorrent
     zed-editor

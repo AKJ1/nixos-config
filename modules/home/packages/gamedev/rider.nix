@@ -8,10 +8,10 @@ with lib;
 let
 
   extra-path = with pkgs; [
-    inputs.stablepkgs.legacyPackages.${pkgs.system}.dotnetCorePackages.sdk_10_0
-    inputs.stablepkgs.legacyPackages.${pkgs.system}.dotnetPackages.Nuget
-    inputs.stablepkgs.legacyPackages.${pkgs.system}.mono
-    inputs.stablepkgs.legacyPackages.${pkgs.system}.msbuild
+    dotnetCorePackages.sdk_10_0
+    dotnetPackages.Nuget
+    mono
+    msbuild
   ];
 
   extra-lib = with pkgs; [
