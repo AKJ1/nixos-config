@@ -4,7 +4,7 @@
     ./default.nix
     ./vicinae.nix
     ./packages/office
-    ./packages/tex
+    # ./packages/tex
     ./packages/cad
   ];
 }

@@ -18,7 +18,6 @@ input {
     }
 
     touchpad {
-        tap
         click-method "clickfinger"
         natural-scroll
         scroll-factor 1.35
@@ -43,7 +42,7 @@ layout {
     gaps 20
 
     struts {
-        left 50 
+        left 50
         right 50
         top 0
         bottom 0
@@ -54,7 +53,7 @@ layout {
         active-color "#d65d0e"
         inactive-color "#3c3836"
     }
-    
+
     preset-window-heights {
         proportion 0.5
         proportion 0.66667
@@ -96,7 +95,7 @@ cursor {
 binds {
     Super+Return { spawn "@terminal@" "--gtk-single-instance=true"; }
 
-    
+
     Super+B { spawn "@browser@" "--new-window"; }
     Super+Q { close-window; }
     Super+F { maximize-column; }
@@ -105,7 +104,7 @@ binds {
 
     Super+Tab { toggle-overview; }
     Super+C { center-window; }
-    
+
 
     // Launcher and utilities
     Super+Alt+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
@@ -114,51 +113,51 @@ binds {
     Super+Escape { spawn "noctalia" "msg" "session" "lock"; }
     Alt+Escape { spawn "loginctl" "lock-session"; }
     Super+Shift+Escape { spawn "power-menu"; }
-    
+
     Super+E { spawn "nemo"; }
     Super+Y { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "-e" "yazi"; }
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
-    
+
     // Notification center
     Super+N { spawn "noctalia" "msg" "panel-toggle" "control-center" "notifications"; }
     Super+Shift+N { spawn "noctalia" "msg" "panel-toggle" "control-center" "network"; }
     Super+Shift+B { spawn "noctalia" "msg" "panel-toggle" "control-center" "bluetooth"; }
 
-    
+
     // Mission center
     Ctrl+Shift+Escape { spawn "missioncenter"; }
-    
-    
+
+
     // Clipboard manager
 
     Super+V { spawn "vicinae" "vicinae://launch/clipboard/history"; }
-    
+
     // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy "; }
-    
+
      // Screenshots
      Print { screenshot-screen; }
      Super+S { screenshot-screen; }
      Super+Ctrl+S { screenshot-window; }
      Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | wl-copy"; }
      Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
-    
+
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
     Super+Right { focus-column-right-or-first; }
     Super+Up { focus-window-or-workspace-up; }
     Super+Down { focus-window-or-workspace-down; }
-    
+
     Super+H { focus-column-left-or-last; }
     Super+K { focus-window-or-workspace-up; }
     Super+J { focus-window-or-workspace-down; }
     Super+L { focus-column-right-or-first; }
-   
+
     Super+Shift+Up { move-window-up; }
     Super+Shift+Down { move-window-down; }
     Super+Shift+Left { consume-or-expel-window-left; }
     Super+Shift+Right { consume-or-expel-window-right; }
-    
+
     Super+Shift+H { consume-or-expel-window-left; }
     Super+Shift+J { move-window-down; }
     Super+Shift+K { move-window-up; }
@@ -168,14 +167,14 @@ binds {
     Super+Alt+Right { set-column-width "+80"; }
     Super+Alt+Up { set-window-height "-80"; }
     Super+Alt+Down { set-window-height "+80"; }
-    
+
     Super+Equal { set-column-width "+240"; }
     Super+Minus { set-column-width "-240"; }
     Super+Alt+H { set-column-width "-80"; }
     Super+Alt+J { set-window-height "+80"; }
     Super+Alt+K { set-window-height "-80"; }
     Super+Alt+L { set-column-width "+80"; }
-    
+
     // Workspace switching (1-9)
     Super+1 { focus-workspace 1; }
     Super+2 { focus-workspace 2; }
@@ -187,7 +186,7 @@ binds {
     Super+8 { focus-workspace 8; }
     Super+9 { focus-workspace 9; }
     Super+0 { focus-workspace 10; }
-    
+
     // Move to workspace
     Super+Shift+1 { move-column-to-workspace 1; }
     Super+Shift+2 { move-column-to-workspace 2; }
@@ -199,13 +198,13 @@ binds {
     Super+Shift+8 { move-column-to-workspace 8; }
     Super+Shift+9 { move-column-to-workspace 9; }
     Super+Shift+0 { move-column-to-workspace 10; }
-    
+
     // Media controls
     XF86AudioPlay { spawn "playerctl" "play-pause"; }
     XF86AudioNext { spawn "playerctl" "next"; }
     XF86AudioPrev { spawn "playerctl" "previous"; }
     XF86AudioStop { spawn "playerctl" "stop"; }
-    
+
     XF86AudioRaiseVolume{ spawn "noctalia" "msg" "volume-up"; }
     XF86AudioLowerVolume{ spawn "noctalia" "msg" "volume-down"; }
 
@@ -255,7 +254,7 @@ window-rule { // Generic WR
         noise 0.075
         saturation 1
     }
-    
+
     shadow {
         on
         softness 40
@@ -280,7 +279,7 @@ window-rule { // Generic WR
         noise 0.075
         saturation 1
     }
-    
+
     shadow {
         on
         softness 40
@@ -307,11 +306,11 @@ window-rule {
     default-window-height { fixed 600; }
 }
 window-rule {
-    match app-id="Viewnior" 
+    match app-id="Viewnior"
     open-floating true
 }
 window-rule {
-    match app-id="imv" 
+    match app-id="imv"
     open-floating true
 }
 window-rule {
@@ -319,7 +318,7 @@ window-rule {
     open-floating true
 }
 window-rule {
-    match title="Sharing Indicator" 
+    match title="Sharing Indicator"
     open-floating true
 }
 window-rule {
@@ -327,13 +326,13 @@ window-rule {
     open-floating true
 }
 window-rule {
-    match app-id="org.gnome.FileRoller" 
+    match app-id="org.gnome.FileRoller"
     open-floating true
     default-column-width { fixed 800; }
     default-window-height { fixed 800; }
 }
 window-rule {
-    match app-id="org.pulseaudio.pavucontrol" 
+    match app-id="org.pulseaudio.pavucontrol"
     open-floating true
 }
 window-rule {
@@ -355,7 +354,7 @@ window-rule {
     default-window-height { fixed 150; }
 }
 window-rule {
-    match app-id="Vesktop" 
+    match app-id="Vesktop"
     open-floating true
 }
 
