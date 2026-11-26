@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    herdr.url = "github:AKJ1/herdr-app/nix-flake";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
