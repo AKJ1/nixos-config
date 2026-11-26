@@ -2,8 +2,12 @@
   description = "Ace's modified nixos configuration (based on FrostPhoenix)";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    stablepkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    # release-26.11 pinned to a rev Hydra has finished building (the branch tip
+    # is binary-cache-cold for days, incl. libreoffice/texlive → hours of local
+    # compiles). fzf here is 0.75.0, which home-manager's fzf module asserts
+    # (>=0.73) when nushell integration is on — 26.05's 0.72.0 fails that.
+    nixpkgs.url = "github:NixOS/nixpkgs/390a25727ab14d1a6bfc9a392556cecd84d97b2b";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Pinned for orca-slicer 2.4.1 (last revision before the 2.4.2 bump, which is broken)
     orca-pkgs.url = "github:NixOS/nixpkgs/138998ca74d541ca9410f5823c07d25dc44b9267";
     home-manager = {
@@ -27,6 +31,7 @@
 
     matcha.url = "github:floatpane/matcha";
     handy.url = "github:cjpais/Handy";
+    warcraft.url = "github:jacobjdowning/battlenet-umu";
 
     waybar.url = "github:Alexays/Waybar";
     nur.url = "github:nix-community/NUR";
@@ -67,7 +72,7 @@
   outputs =
     {
       nixpkgs,
-      stablepkgs,
+      unstable,
       self,
       sops-nix,
       nix-vscode-extensions,
@@ -97,7 +102,7 @@
               self
               inputs
               username
-              stablepkgs
+              unstable
               ;
           };
         };
@@ -114,7 +119,7 @@
               self
               inputs
               username
-              stablepkgs
+              unstable
               ;
           };
         };
