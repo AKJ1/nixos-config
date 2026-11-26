@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  unstable,
   ...
 }:
 {
@@ -28,7 +29,7 @@
     # tiled
     inputs.photocraft.packages.${pkgs.system}.default
     qbittorrent
-    zed-editor
+    inputs.luciole.packages.${pkgs.system}.default
   ];
 
 }
