@@ -41,5 +41,6 @@
     ./ace # ace-specific modules
     ./keyd # keyd service
     ./nvim # nvim
+    ./zed.nix # Zed editor (vim mode)
   ];
 }
