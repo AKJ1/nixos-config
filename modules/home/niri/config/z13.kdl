@@ -361,3 +361,13 @@ window-rule {
     open-floating true
     open-focused true
 }
+
+// Handy's recording overlay is an xdg-toplevel; keep it from stealing focus
+// so the transcript pastes into the previously focused window.
+window-rule {
+    match title="^Recording$"
+    open-floating true
+    open-focused false
+    focus-ring { off; }
+    shadow { off; }
+}

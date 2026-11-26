@@ -1,0 +1,104 @@
+Focus the notification sender window after its default action is invoked.
+
+Notification popups only call NotificationService.focusSenderWindow() when a
+notification has no default action. Nearly every application sets one, and on
+niri invoking it typically raises the window without switching to its
+workspace, so clicking a notification appears to do nothing. Schedule a
+compositor-side focus of the sender application instead, after giving the
+application a chance to focus a specific window itself.
+
+--- a/Services/System/NotificationService.qml
++++ b/Services/System/NotificationService.qml
+@@ -950,9 +950,11 @@
+ 
+   function invokeAction(id, actionId) {
+     let invoked = false;
++    let senderAppName = "";
+     const notifData = popupState[id];
+ 
+     if (notifData && notifData.notification) {
++      senderAppName = notifData.notification.appName || "";
+       const actionsToUse = (notifData.notification.actions && notifData.notification.actions.length > 0) ? notifData.notification.actions : (notifData.cachedActions || []);
+ 
+       if (actionsToUse && actionsToUse.length > 0) {
+@@ -990,6 +992,7 @@
+       for (var i = 0; i < historyModel.count; i++) {
+         if (historyModel.get(i).id === id) {
+           const histEntry = historyModel.get(i);
++          senderAppName = histEntry.appName || "";
+           if (histEntry.originalId) {
+             invoked = manualInvoke(histEntry.originalId, actionId);
+           }
+@@ -1003,6 +1006,13 @@
+       return false;
+     }
+ 
++    // Apps often only raise their window when their default action is invoked,
++    // which does not switch workspaces in niri. Give the app a moment to focus
++    // its own window (a specific chat, message, ...) and then make sure the
++    // sender application is focused through the compositor.
++    if (actionId === "default")
++      focusSenderWindowEventually(senderAppName);
++
+     // Clear actions after use
+     updateModel(popupModel, id, "actionsJson", "[]");
+     updateModel(historyModel, id, "actionsJson", "[]");
+@@ -1029,11 +1039,35 @@
+     }
+   }
+ 
++  property string pendingFocusAppName: ""
++
++  Timer {
++    id: senderFocusTimer
++    interval: 200
++    repeat: false
++    onTriggered: {
++      const appName = root.pendingFocusAppName;
++      root.pendingFocusAppName = "";
++      if (appName)
++        root.focusSenderWindow(appName);
++    }
++  }
++
++  function focusSenderWindowEventually(appName) {
++    if (!appName || appName === "" || appName === "Unknown")
++      return false;
++
++    root.pendingFocusAppName = appName;
++    senderFocusTimer.restart();
++    return true;
++  }
++
+   function focusSenderWindow(appName) {
+     if (!appName || appName === "" || appName === "Unknown")
+       return false;
+ 
+     const normalizedName = appName.toLowerCase().replace(/\s+/g, "");
++    let candidate = null;
+ 
+     for (var i = 0; i < CompositorService.windows.count; i++) {
+       const win = CompositorService.windows.get(i);
+@@ -1043,11 +1077,20 @@
+       const lastSegment = segments[segments.length - 1] || "";
+ 
+       if (winAppId === normalizedName || lastSegment === normalizedName || winAppId.includes(normalizedName) || normalizedName.includes(lastSegment)) {
+-        CompositorService.focusWindow(win);
+-        return true;
++        // Already on one of the sender's windows: don't jump to another one.
++        if (win.isFocused)
++          return true;
++
++        if (!candidate)
++          candidate = win;
+       }
+     }
+ 
++    if (candidate) {
++      CompositorService.focusWindow(candidate);
++      return true;
++    }
++
+     Logger.d("NotificationService", "No window found for app: " + appName);
+     return false;
+   }
