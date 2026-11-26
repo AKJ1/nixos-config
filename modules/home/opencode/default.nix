@@ -1,7 +1,7 @@
 { ... }: {
   imports = [
     ./opencode.nix
-    ./herdr.nixg
+    ./herdr.nix
     ./omp
   ];
 }
