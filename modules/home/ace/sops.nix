@@ -17,4 +17,6 @@
   sops.secrets.syncthing_key_primeincarnon = { };
   sops.secrets.openrouter_api_key = { };
   sops.secrets.opencode_api_key = { };
+  sops.secrets.github_rsa_private = { };
+  sops.secrets.github_rsa_public = { };
 }
