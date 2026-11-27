@@ -38,8 +38,8 @@
   fonts.fontconfig.enable = true;
 
   gtk = {
-    # enable = true;
-    # gtk4.theme = null;
+    enable = true;
+    gtk4.theme = null;
     # theme = {
     #   name = "Colloid-Green-Dark-Gruvbox";
     #   package = pkgs.colloid-gtk-theme.override {

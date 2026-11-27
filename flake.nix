@@ -34,7 +34,7 @@
 
     matcha.url = "github:floatpane/matcha";
     handy.url = "github:cjpais/Handy";
-    warcraft.url = "github:jacobjdowning/battlenet-umu";
+    battlenet-umu.url = "github:jacobjdowning/battlenet-umu";
 
     waybar.url = "github:Alexays/Waybar";
     nur.url = "github:nix-community/NUR";
@@ -89,6 +89,18 @@
         inputs.nur.overlays.default
         inputs.nix-vscode-extensions.overlays.default
         (import ./overlays/shared.nix)
+        # `inputs.unstable.legacyPackages.<system>` instantiates nixpkgs with the
+        # *default* config (allowUnfree = false, no overlays), so anything taken
+        # from it bypasses `nixpkgs.config` — e.g. lutris pulling in steam dies
+        # with "Refusing to evaluate package 'steam-...' unfreeRedistributable"
+        # even though system.nix sets allowUnfree. Re-instantiate unstable with
+        # the config of the evaluated package set and use `pkgs.unstable.<pkg>`.
+        (final: _prev: {
+          unstable = import inputs.unstable {
+            system = final.stdenv.hostPlatform.system;
+            config = final.config;
+          };
+        })
       ];
     in
     {

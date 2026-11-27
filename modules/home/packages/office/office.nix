@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }: {
   home.packages = with pkgs; [
-    libreoffice-fresh
+    libreoffice-stable
   ];
 }

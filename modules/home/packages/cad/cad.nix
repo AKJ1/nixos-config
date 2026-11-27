@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   config,
   ...
 }:
@@ -9,7 +8,7 @@
     blender
     openscad-unstable
     # freecad-wayland
-    inputs.unstable.legacyPackages.${pkgs.system}.orca-slicer
+    pkgs.unstable.orca-slicer
   ];
 
   home.sessionVariables = {

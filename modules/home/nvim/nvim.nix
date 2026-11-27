@@ -1,6 +1,8 @@
 { inputs, ... }:
 {
   programs.neovim = {
+    withRuby = false;
+    withPython3 = true;
     enable = true;
     vimAlias = true;
   };

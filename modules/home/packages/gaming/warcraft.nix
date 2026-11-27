@@ -4,6 +4,9 @@ let
   addonFolder = "Interface/Addons";
 in
 {
+  imports = [
+    inputs.battlenet-umu.homeModules.default
+  ];
   programs.battlenet-umu = {
     enable = true;
     games = [
@@ -15,19 +18,21 @@ in
     ];
     addons = {
       enable = true;
-      tokens = {
-        wagoAddons = "SECRET";
-      };
       versions = [
         {
           name = "era";
-          addonDir = "${wow}/_classic_era_/${addonFolder}";
-          flavour = "forever";
+          addonDir = "${wow}/_forever_/${addonFolder}";
+          flavour = "forever_classic";
           addons = [
-            "github:Peterodox/YUI-Dialogue"
-            "github:Total-RP/Total-RP-3"
+            "github:Questie/Questie"
+            "curse:opie"
+            "curse:bartender4"
+            "curse:baganator`"
             "github:DustinChecketts/VendorPricePlus"
           ];
+          #   "github:Peterodox/YUI-Dialogue"
+          #   "github:Total-RP/Total-RP-3"
+          # ];
         }
       ];
     };
