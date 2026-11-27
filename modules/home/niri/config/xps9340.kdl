@@ -10,7 +10,7 @@ input {
         xkb {
             layout "us,bg,br"
             variant ",phonetic,"
-            options "grp:alt_caps_toggle"
+            options "grp:alt_shift_toggle"
         }
 
         repeat-delay 300
@@ -27,8 +27,11 @@ input {
     }
 
     mouse {
+        scroll-factor 2.0
         accel-speed 0.0
+        scroll-button 274
         accel-profile "flat"
+        scroll-method "on-button-down"
     }
     warp-mouse-to-focus
 }
@@ -114,7 +117,7 @@ binds {
     Alt+Escape { spawn "loginctl" "lock-session"; }
     Super+Shift+Escape { spawn "power-menu"; }
 
-    Super+E { spawn "nemo"; }
+    Super+E { spawn "luciole"; }
     Super+Y { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "-e" "yazi"; }
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
@@ -136,11 +139,11 @@ binds {
     // Super+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy "; }
 
      // Screenshots
-     Print { screenshot-screen; }
-     Super+S { screenshot-screen; }
-     Super+Ctrl+S { screenshot-window; }
-     Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | wl-copy"; }
-     Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
+    Print { screenshot-screen; }
+    Super+S { screenshot-screen; }
+    Super+Ctrl+S { screenshot-window; }
+    Super+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t png - | wl-copy -t image/png"; }
+    Super+Ctrl+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp -c '#ff0000ff')\" -t ppm - | satty --filename -"; }
 
     // Focus movement - arrow keys
     Super+Left { focus-column-left-or-last; }
