@@ -370,3 +370,15 @@ window-rule {
     open-floating true
     open-focused true
 }
+
+// WoW runs ~40 fps at 120 Hz — exactly 3 vblanks. Enable on-demand VRR for
+// the game window so presentation is not quantised to 40; this does NOT force
+// fullscreen, the in-game Display Mode keeps control of that.
+window-rule {
+    match app-id="wow.exe"
+    variable-refresh-rate true
+}
+window-rule {
+    match title="World of Warcraft"
+    variable-refresh-rate true
+}
