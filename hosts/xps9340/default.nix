@@ -81,8 +81,6 @@
 
         "$amixer" -c sofsoundwire sset 'rt714 ADC 22 Mux' 'DMIC3'
         "$amixer" -c sofsoundwire sset 'rt714 ADC 23 Mux' 'DMIC4'
-        "$amixer" -c sofsoundwire sset 'rt714 FU02 Capture Switch' '1'
-        "$amixer" -c sofsoundwire sset 'rt714 FU02 Capture Volume' '47'
       '';
     };
   };
