@@ -39,6 +39,10 @@ input {
 output "eDP-1" {
     scale 1.25
     mode "1920x1200@120.000"
+    // The panel is 120 Hz VRR-capable. Without this, a game that cannot hold
+    // 60 fps gets quantised to 40 fps (3 x 8.33 ms) because presentation is
+    // FIFO; with VRR it just runs at 45-55 Hz smoothly.
+    variable-refresh-rate on-demand=true
 }
 
 layout {
