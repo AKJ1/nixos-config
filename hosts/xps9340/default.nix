@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -28,25 +33,26 @@
       criticalPowerAction = "PowerOff";
     };
 
-    tlp.settings = {
-      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-
-      CPU_BOOST_ON_AC = 1;
-      CPU_BOOST_ON_BAT = 1;
-
-      CPU_HWP_DYN_BOOST_ON_AC = 1;
-      CPU_HWP_DYN_BOOST_ON_BAT = 1;
-
-      PLATFORM_PROFILE_ON_AC = "performance";
-      PLATFORM_PROFILE_ON_BAT = "performance";
-
-      # PCIE_ASPM_ON_AC = "default";
-      # PCIE_ASPM_ON_BAT = "powersupersave";
-    };
+    # NOTE: no tlp.settings here — TLP is not enabled on this host, the dead
+    # settings were only shadowing power-profiles-daemon, which owns
+    # platform_profile (currently "performance").
   };
 
   powerManagement.cpuFreqGovernor = "performance";
+
+  # power-profiles-daemon comes back as "balanced" on every boot, which drops
+  # energy_performance_preference to balance_performance. Pin it to performance
+  # on AC; still switchable at runtime from the shell/quick settings.
+  systemd.services.ppd-performance = {
+    description = "Default power-profiles-daemon to the performance profile";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "power-profiles-daemon.service" ];
+    wants = [ "power-profiles-daemon.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
+    };
+  };
 
   # ALSA state persistence restores with `alsactl restore -U`, which skips the
   # UCM BootSequence. On this machine that leaves the RT715 SDCA ADC muxes on
@@ -94,5 +100,8 @@
         cpupower
       ]
       ++ [ pkgs.cpupower-gui ];
+
+    # Gaming/host-local tradeoff: drops Spectre/Meltdown-class mitigations.
+    kernelParams = [ "mitigations=off" ];
   };
 }

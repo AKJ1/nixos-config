@@ -66,5 +66,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.npu.enable = true;
+  #disabled because it breaks mic on xps9340
+  hardware.alsa.enablePersistence = lib.mkForce false;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
