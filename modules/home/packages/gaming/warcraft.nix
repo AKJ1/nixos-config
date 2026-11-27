@@ -4,11 +4,11 @@ let
   addonFolder = "Interface/Addons";
   prefix = "$HOME/.local/share/battlenet-umu/prefix";
 
-  # The battlenet-umu module only generates `umu-run <exe>` wrappers, which
-  # leaves nowhere to hang gamemode/mangohud/Proton env tuning. Keep the module
-  # for the Battle.net prefix and addon sync, launch the game through this.
-  wowLauncher = pkgs.writeShellApplication {
-    name = "wow-classic";
+  # WoW must be started from Battle.net so Blizzard gets the login cookie.
+  # Apply the tuning to the launcher instead of a dedicated Wow.exe shortcut:
+  # env and affinity are inherited by every game the launcher spawns.
+  bnetLauncher = pkgs.writeShellApplication {
+    name = "battle-net-umu";
     runtimeInputs = with pkgs; [
       gamemode
       umu-launcher
@@ -22,8 +22,7 @@ let
       # Do not re-check the umu runtime on every single launch.
       export UMU_RUNTIME_UPDATE=0
 
-      # Use Wine's native Wayland driver instead of going through
-      # xwayland-satellite.
+      # Use Wine's native Wayland driver instead of xwayland-satellite.
       export PROTON_ENABLE_WAYLAND=1
 
       export MANGOHUD=1
@@ -31,9 +30,10 @@ let
       # Pin ANV so the Vulkan loader cannot fall back to a software ICD.
       export VK_DRIVER_FILES=/run/opengl-driver/share/vulkan/icd.d/intel_icd.x86_64.json
 
-      exe="$WINEPREFIX/drive_c/${wowDir}/_forever_/Wow.exe"
+      exe="$WINEPREFIX/drive_c/Program Files (x86)/Battle.net/Battle.net Launcher.exe"
       if [ ! -f "$exe" ]; then
-        echo "WoW Classic is not installed at $exe" >&2
+        echo "Battle.net is not installed at $exe" >&2
+        echo "Install it once with the battlenet-umu installer, then relaunch." >&2
         exit 1
       fi
 
@@ -43,10 +43,10 @@ let
     '';
   };
 
-  wowDesktop = pkgs.makeDesktopItem {
-    name = "wow-classic";
-    desktopName = "World of Warcraft";
-    exec = "${wowLauncher}/bin/wow-classic";
+  bnetDesktop = pkgs.makeDesktopItem {
+    name = "battle-net-umu";
+    desktopName = "Battle.net";
+    exec = "${bnetLauncher}/bin/battle-net-umu";
     terminal = false;
     categories = [ "Game" ];
   };
@@ -56,14 +56,14 @@ in
     inputs.battlenet-umu.homeModules.default
   ];
   home.packages = [
-    wowLauncher
-    wowDesktop
+    bnetLauncher
+    bnetDesktop
   ];
   programs.battlenet-umu = {
     enable = true;
-    games = [
-      { name = "Battle.net"; }
-    ];
+    # The generated launcher is replaced by the tuned wrapper above; the
+    # module is still used for the Wine prefix and the addon sync.
+    games = [ ];
     addons = {
       enable = true;
       versions = [
