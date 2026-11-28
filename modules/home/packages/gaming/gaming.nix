@@ -15,6 +15,7 @@
 
     umu-launcher
     wowup-cf
+    lact
 
     pkgs.unstable.lutris
   ];
