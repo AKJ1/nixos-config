@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./../../modules/core
     ./../../modules/core/optional/bluetooth.nix
+    ./../../modules/core/optional/coreultra.nix
     ./../../modules/core/optional/printers.nix
     ./../../modules/core/optional/ssh.nix
     ./../../modules/core/optional/keyd
@@ -38,7 +39,7 @@
     # platform_profile (currently "performance").
   };
 
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "balance_power";
 
   # power-profiles-daemon comes back as "balanced" on every boot, which drops
   # energy_performance_preference to balance_performance. Pin it to performance
@@ -50,7 +51,7 @@
     wants = [ "power-profiles-daemon.service" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
+      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set blance_power";
     };
   };
 

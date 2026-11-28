@@ -20,6 +20,7 @@
     "nvme"
     "usb_storage"
     "sd_mod"
+    "xe"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
@@ -64,9 +65,11 @@
   # { device = "/dev/disk/by-uuid/e8cb0c06-8279-4714-a7be-3e34132f9aa8"; }
   # ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.npu.enable = true;
   #disabled because it breaks mic on xps9340
   hardware.alsa.enablePersistence = lib.mkForce false;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  services.fwupd.enable = true;
+  hardware.cpu.intel.npu.enable = true;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
