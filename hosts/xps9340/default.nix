@@ -102,6 +102,15 @@
       ++ [ pkgs.cpupower-gui ];
 
     # Gaming/host-local tradeoff: drops Spectre/Meltdown-class mitigations.
-    kernelParams = [ "mitigations=off" ];
+    kernelParams = [
+      "mitigations=off"
+      # Meteor Lake iGPU (8086:7d55) is i915 by default; move it to Xe.
+      "i915.force_probe=!7d55"
+      "xe.force_probe=7d55"
+    ];
+
+    # Belt-and-suspenders with the force-probe params above so i915 never
+    # claims the iGPU before Xe can bind to it.
+    blacklistedKernelModules = [ "i915" ];
   };
 }
