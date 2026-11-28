@@ -6,11 +6,12 @@ Flake-based NixOS configuration for `x86_64-linux`, user `ace`.
 
 | Host | Path | CPU | GPU |
 |------|------|-----|-----|
-| `desktop` | `hosts/desktop/` | Intel (integrated) | Intel |
-| `AbsoluteCinema` | `hosts/desktop-AbsoluteCinema/` | Intel | AMD 9060XT |
-| `p1g7` | `hosts/p1g7/` | Intel | Intel + NVIDIA (optimus) |
-| `z13` | `hosts/z13/` | AMD (integrated) | AMD |
-| `laptop` | `hosts/laptop/` | AMD | AMD (not wired in flake) |
+| `PrimeIncarnon` | `hosts/desktop-PrimeIncarnon/` | AMD 9700X + 6800XT | sff Desktop |
+| `AbsoluteCinema` | `hosts/desktop-AbsoluteCinema/` | Intel i3-12100 | AMD 9060XT | sff Desktop | currently out of use.
+| `z13` | `hosts/z13/` | AMD 6860Z, (680M, integrated) | AMD | laptop
+| `p1g7` | `hosts/p1g7/` | Intel Arrow Lake 165H (with integrated 140T GPU) + RTX 4070 dGPU | laptop
+| `xps9340` | `hosts/xps9340/` | Intel 155H (with integrated 140T GPU) | Intel | laptop
+| `laptop` | `hosts/laptop/` | Generic, Unused | laptop
 
 ## Architecture
 
@@ -25,7 +26,7 @@ flake.nix
         ├── default.<host>.nix      # Host-specific extras
         ├── packages/               # CLI, dev, GUI, custom pkg groupings
         ├── scripts/scripts/        # ~20 custom shell scripts
-        ├── niri/config/            # Per-host niri WM layouts
+        ├── niri/config/            # Per-host niri WM settings
         └── <app>/                  # Per-app config (ghostty, zsh, vscodium, etc.)
 ```
 
@@ -53,11 +54,10 @@ nix fmt
 nix run nixpkgs#nixfmt -- file.nix
 ```
 
-Apply:
-```bash
-# NixOS
-sudo nixos-rebuild switch --flake .#<Host>
-```
+## Agent Workflow
+- sudo is restricted, never try to rebuild the user's system, they will apply the changes permanently.
+- atomic - commit semantically per-change. If changes to different components are made during the same turn - commit them separately
+- never apply a fix to a battery-powered (laptop, handheld, etc) host that would change it's power behaviour on battery without explicity asking the user for confirmation. If you are asked to make a change pertaining to performance, limit that behaviour to AC-only unless e
 
 ## Workflow Gotchas
 
@@ -72,14 +72,15 @@ sudo nixos-rebuild switch --flake .#<Host>
 
 | Layer | Choice |
 |-------|--------|
+| Desktop-Shell | Noctalia |
 | Compositor | Niri (scrollable-tiling Wayland) |
 | Shell | ZSH + Powerlevel10k |
 | Terminal | Ghostty / Kitty |
 | Bar/Notifications | Noctalia-shell |
 | Browser | Zen Browser |
-| Editor | VSCodium + Neovim |
+| Editor | VSCodium + Neovim + Zed |
 | Audio | PipeWire |
-| Theming | Gruvbox throughout |
+| Theming | Noctalia throughout |
 
 
 ## Notes
