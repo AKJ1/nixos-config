@@ -51,7 +51,7 @@
     wants = [ "power-profiles-daemon.service" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set blance_power";
+      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
     };
   };
 
