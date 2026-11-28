@@ -34,25 +34,54 @@
       criticalPowerAction = "PowerOff";
     };
 
-    # NOTE: no tlp.settings here — TLP is not enabled on this host, the dead
-    # settings were only shadowing power-profiles-daemon, which owns
-    # platform_profile (currently "performance").
+    # NOTE: no tlp.settings here — TLP is not enabled on this host; PPD owns
+    # platform_profile and is set to "balanced" at boot (see below).
   };
 
-  powerManagement.cpuFreqGovernor = "balance_power";
+  # intel_pstate only exposes "performance" and "powersave" as governors.
+  # "balance_power" is an energy_performance_preference value, so setting it as
+  # a governor made cpupower.service fail on CPU 0 every boot. The EPP is set
+  # explicitly by the oneshot below instead.
+  powerManagement.cpuFreqGovernor = "powersave";
 
-  # power-profiles-daemon comes back as "balanced" on every boot, which drops
-  # energy_performance_preference to balance_performance. Pin it to performance
-  # on AC; still switchable at runtime from the shell/quick settings.
-  systemd.services.ppd-performance = {
-    description = "Default power-profiles-daemon to the performance profile";
+  systemd.services.ppd-balanced = {
+    description = "Default power-profiles-daemon to the balanced profile";
     wantedBy = [ "multi-user.target" ];
     after = [ "power-profiles-daemon.service" ];
     wants = [ "power-profiles-daemon.service" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced";
     };
+  };
+
+  # What actually fixed WoW's framerate on this host. PPD "balanced" maps to
+  # balance_performance, which still overspends the shared CPU+GPU power budget;
+  # balance_power gives the Xe iGPU enough headroom to hold a steady framerate.
+  # Must run after PPD and cpufreq, both of which write EPP/governor on boot.
+  systemd.services.xps9340-epp = {
+    description = "Set Intel EPP to balance_power on xps9340";
+    wantedBy = [ "multi-user.target" ];
+    wants = [
+      "power-profiles-daemon.service"
+      "ppd-balanced.service"
+    ];
+    after = [
+      "power-profiles-daemon.service"
+      "ppd-balanced.service"
+      "cpufreq.service"
+    ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      for epp in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
+        [ -w "$epp" ] || continue
+        echo balance_power > "$epp"
+      done
+    '';
   };
 
   # ALSA state persistence restores with `alsactl restore -U`, which skips the
