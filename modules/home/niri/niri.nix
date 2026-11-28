@@ -6,19 +6,16 @@
   inputs,
   ...
 }:
-let
-  terminal = "${pkgs.ghostty}/bin/ghostty";
-  browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen-beta";
-  kdlTemplate = builtins.readFile ./config/${host}.kdl;
-
-  niriConfig = pkgs.writeText "niri-config.kdl" (
-    lib.replaceStrings [ "@terminal@" "@browser@" ] [ terminal browser ]
-      kdlTemplate
-  );
-in
 {
-
   home.packages = with pkgs; [
+    (pkgs.writeShellApplication {
+      name = "sysbrowser";
+      text = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen-beta";
+    })
+    (pkgs.writeShellApplication {
+      name = "systerm";
+      text = "${pkgs.ghostty}/bin/ghostty";
+    })
     nirimod
     adw-gtk3
     nwg-look
@@ -100,16 +97,17 @@ in
     # style.name = "Fusion";
   };
 
-  xdg.configFile = {
-    "gtk-3.0/settings.ini".force = true;
-    "gtk-4.0/settings.ini".force = true;
-    "niri/config.kdl" = {
-      source = niriConfig;
-      # onChange = ''notify-send "Niri config reloaded"'';
-    };
-    # "niri/noctalia.kdl".source = ../noctalia/config/noctalia.kdl;
-    # "ghostty/config".source = ../config/ghostty/tokyo-night.ghostty;
-  };
+  xdg.configFile."niri/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/home/niri/config/${host}.kdl";
+
+  # xdg.configFile = {
+  # "niri/config.kdl" = {
+  #   source = niriConfig;
+  #   # onChange = ''notify-send "Niri config reloaded"'';
+  # };
+  # "niri/noctalia.kdl".source = ../noctalia/config/noctalia.kdl;
+  # "ghostty/config".source = ../config/ghostty/tokyo-night.ghostty;
+  # };
 
   home.pointerCursor = {
     name = "BreezeX-RosePine-Linux";

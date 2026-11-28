@@ -98,7 +98,7 @@ spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "noctalia"
-spawn-at-startup "@terminal@" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
+spawn-at-startup "systerm" "--gtk-single-instance=true" "--quit-after-last-window-closed=false" "--initial-window=false"
 spawn-at-startup "wl-gammarelay-rs"
 
 cursor {
@@ -110,9 +110,9 @@ cursor {
 
 // Keybindings
 binds {
-    Super+Return { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "--wait-after-command=true" "-e" "zsh" "-c" "fetch; clear; zsh;"; }
+    Super+Return { spawn "systerm" "--gtk-single-instance=true" "+new-window" "--wait-after-command=true" "-e" "zsh" "-c" "fetch; clear; zsh;"; }
 
-    Super+B { spawn "@browser@" "--new-window"; }
+    Super+B { spawn "sysbrowser" "--new-window"; }
     Super+Q { close-window; }
     Super+F { maximize-column; }
     Super+Shift+F { fullscreen-window; }
@@ -132,7 +132,7 @@ binds {
     Super+Shift+Escape { spawn "power-menu"; }
     
     Super+E { spawn "nemo"; }
-    Super+Y { spawn "@terminal@" "--gtk-single-instance=true" "+new-window" "-e" "yazi"; }
+    Super+Y { spawn "systerm" "--gtk-single-instance=true" "+new-window" "-e" "yazi"; }
     
     // Color picker and wallpaper
     Super+Alt+W { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
